@@ -274,6 +274,55 @@ export function rebuildEdges(): void {
   highlightEdges(null)
 }
 
+// ── Module-level animation state (updated by main.ts) ─────────────────────
+export const animState = {
+  selectedId: null as string | null,
+  hoverId: null as string | null,
+  quizActive: false,
+  quizCandidates: new Set<string>(),
+  reducedMotion: false,
+}
+
+export function startAnimate(): void {
+  if (!ctx) return
+  requestAnimationFrame(startAnimate)
+  const dt = Math.min(0.05, ctx.clock.getDelta())
+  const el = ctx.clock.elapsedTime
+  const { selectedId, hoverId, quizActive, quizCandidates, reducedMotion } = animState
+
+  if (ctx.scene.userData.sky) ctx.scene.userData.sky.uniforms.t.value = el
+
+  if (ctx.center.userData.orb) {
+    ctx.center.userData.orb.rotation.y += dt * 0.12
+    ctx.center.userData.shell.scale.setScalar(1 + Math.sin(el * 1.3) * 0.035)
+    ctx.center.userData.ring.rotation.z += dt * 0.06
+  }
+
+  ctx.nodes.forEach((n, id) => {
+    const base = n.mesh.userData.base as number
+    let target = base
+    if (id === hoverId) target = base * 1.3
+    if (id === selectedId) target = base * (1.18 + Math.sin(el * 4) * 0.04)
+    if (quizActive && quizCandidates.size && !quizCandidates.has(id)) target = base * 0.74
+    n.mesh.scale.lerp(new THREE.Vector3(target, target, target), 0.12)
+    n.glow.material.opacity = id === selectedId ? 0.32 : id === hoverId ? 0.26 : 0.14 + Math.sin(el * 1.8 + (n.mesh.userData.pulse as number)) * 0.025
+    ;(n.mat as THREE.MeshStandardMaterial).emissiveIntensity = id === selectedId ? 1.05 : id === hoverId ? 0.9 : 0.52
+  })
+
+  ctx.edges.forEach((e) => {
+    e.t = (e.t + dt * e.speed) % 1
+    e.part.position.copy(e.curve.getPoint(e.t))
+  })
+
+  if (ctx.flight) flyStep()
+
+  ctx.controls.autoRotate = !reducedMotion && !ctx.isMind && !quizActive && Date.now() - ctx.lastInteraction > 10000
+  ctx.controls.autoRotateSpeed = 0.22
+  ctx.controls.update()
+  ctx.renderer.render(ctx.scene, ctx.camera)
+  if (ctx.labels) ctx.labels.render(ctx.scene, ctx.camera)
+}
+
 export function animate(
   selectedId: string | null,
   hoverId: string | null,
