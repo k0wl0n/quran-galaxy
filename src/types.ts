@@ -51,6 +51,7 @@ export interface AppStore {
   muted: boolean
   theme: 'dark' | 'light'
   reducedMotion: boolean
+  notes: Record<string, string>
 }
 
 export interface SearchEntry {

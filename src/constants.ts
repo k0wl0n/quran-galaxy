@@ -22,12 +22,12 @@ export const TAFSIR_URLS = [
 export const AUDIO_BASE_URL = 'https://cdn.islamic.network/quran/audio/128/ar.alafasy/'
 
 export const CATEGORIES: Record<CategoryKey, CategoryConfig> = {
-  akidah: { label: 'Akidah / Tauhid', color: '#10b981' },
-  akhlak: { label: 'Akhlak', color: '#d4a574' },
-  ibadah: { label: 'Ibadah', color: '#2563eb' },
-  kisah: { label: 'Kisah / Sirah', color: '#8b5cf6' },
-  kosmos: { label: 'Alam / Kosmos', color: '#22d3ee' },
-  akhirat: { label: 'Akhirat', color: '#f6c768' },
+  akidah: { label: 'Akidah / Tauhid', color: '#7fd9c4' },
+  akhlak: { label: 'Akhlak', color: '#e7c98b' },
+  ibadah: { label: 'Ibadah', color: '#9cc4f0' },
+  kisah: { label: 'Kisah / Sirah', color: '#b9a3d6' },
+  kosmos: { label: 'Alam / Kosmos', color: '#b6d29a' },
+  akhirat: { label: 'Akhirat', color: '#f0a3a3' },
 }
 
 export const STORE_DEFAULTS: AppStore = {
@@ -46,6 +46,7 @@ export const STORE_DEFAULTS: AppStore = {
   muted: false,
   theme: 'dark',
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
+  notes: {},
 }
 
 export const BADGE_DEFS: BadgeDef[] = [
