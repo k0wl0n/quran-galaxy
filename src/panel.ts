@@ -90,7 +90,7 @@ export function renderCard(v: AyatItem, markedKeys: string[]): string {
   const ref = `${v.surahName} ${v.surah}:${v.ayah}`
   return `<article class="verse-card" data-key="${esc(v.key)}">
     <div class="vc-head">
-      <span class="vc-ref">${esc(ref)}</span>
+      <button class="vc-ref" data-surah="${v.surah}" data-ayah="${v.ayah}" title="Buka ${esc(v.surahName)}">${esc(ref)}</button>
       <div class="vc-actions">
         <button class="vc-btn audio" data-key="${esc(v.key)}" title="Putar audio">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>

@@ -8,6 +8,7 @@ import {
 } from './scene3d'
 import { initCanvas, resizeCanvas, draw2d, pick2d } from './scene2d'
 import { togglePanel, topicVerses, renderPanelBody, esc } from './panel'
+import { openSurahReader } from './reader'
 import { playVerseAudio, stopCurrentAudio, whoosh, chime } from './audio'
 import { createInitialQuizState, makeQuestions, getCandidates } from './quiz'
 import { checkBadges, renderAchievements } from './achievements'
@@ -37,6 +38,8 @@ const d = {
   qscore: $('qscore'), qstreak: $('qstreak'), qbonus: $('qbonus'),
   achOverlay: $('ach-overlay'), closeach: $('closeach'),
   stats: $('stats'), breakdown: $('breakdown'), badges: $('badges'),
+  readerOverlay: $('reader-overlay'), closereader: $('closereader'),
+  readerTitle: $('reader-title'), readerSub: $('reader-sub'), readerBody: $('reader-body'),
   htopic: $('htopic'), hcat: $('hcat'), hexp: $('hexp'), htotal: $('htotal'), hbar: $('hbar'),
   quiz: $('quiz'), ach: $('ach'), mind: $('mind'),
   toasts: $('toasts'), error: $('error'),
@@ -405,6 +408,7 @@ function bind(): void {
   d.startquiz.onclick = startQuiz
   d.ach.onclick = () => d.achOverlay.classList.contains('open') ? closeAch() : openAch()
   d.closeach.onclick = closeAch
+  d.closereader.onclick = closeReader
   d.mind.onclick = toggleMind
   d.mute.onclick = toggleMute
   d.theme.onclick = toggleTheme
@@ -438,8 +442,19 @@ function bind(): void {
     const target = e.target as HTMLElement
     const audioBtn = target.closest<HTMLButtonElement>('.audio')
     const markBtn = target.closest<HTMLButtonElement>('.markayah')
+    const surahLink = target.closest<HTMLButtonElement>('.vc-ref[data-surah]')
     const chipBtn = target.closest<HTMLButtonElement>('.chip[data-id]')
     const noteSaveBtn = target.closest<HTMLButtonElement>('#note-save')
+
+    if (surahLink) {
+      openSurahReader(
+        Number(surahLink.dataset.surah),
+        Number(surahLink.dataset.ayah),
+        ayat,
+        d.readerOverlay, d.readerTitle, d.readerSub, d.readerBody,
+      )
+      return
+    }
 
     if (audioBtn) {
       const key = audioBtn.dataset.key!
@@ -540,6 +555,7 @@ function bind(): void {
       togglePanel(false, d.panel)
       closeQuiz()
       closeAch()
+      closeReader()
       hideSuggestions(d.suggest)
     } else if (!typing && ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(e.key)) {
       e.preventDefault()
@@ -556,6 +572,7 @@ function bind(): void {
 // ── UI helpers ────────────────────────────────────────────────────────────
 function openAch(): void { renderAch(); d.achOverlay.classList.add('open'); d.ach.classList.add('active') }
 function closeAch(): void { d.achOverlay.classList.remove('open'); d.ach.classList.remove('active') }
+function closeReader(): void { d.readerOverlay.classList.remove('open'); d.readerOverlay.setAttribute('aria-hidden', 'true') }
 
 function toggleMute(): void {
   store.muted = !store.muted

@@ -185,6 +185,22 @@
     </div>
   </div>
 
+  <!-- Surah reader overlay -->
+  <div id="reader-overlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card glass reader-card">
+      <div class="overlay-head">
+        <div>
+          <h2 id="reader-title" class="overlay-title"></h2>
+          <p id="reader-sub" class="overlay-sub"></p>
+        </div>
+        <button class="overlay-close" id="closereader" aria-label="Tutup">
+          <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l10 10M14 4 4 14"/></svg>
+        </button>
+      </div>
+      <div id="reader-body" class="reader-body"></div>
+    </div>
+  </div>
+
   <div id="toasts" class="toasts"></div>
   <div id="error" class="error"></div>
   <script type="module" src="/src/main.ts"></script>
