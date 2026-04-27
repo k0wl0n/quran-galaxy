@@ -1,0 +1,5212 @@
+[
+  {
+    "id": "allah",
+    "label_id": "Allah",
+    "label_en": "Allah",
+    "category": "akidah",
+    "arabic": "الله",
+    "synonyms_id": [
+      "allah",
+      "allah",
+      "tuhan",
+      "rabb",
+      "ilah",
+      "yang maha esa",
+      "god"
+    ],
+    "synonyms_ar": [
+      "الله"
+    ],
+    "related_ayat_keys": [
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255"
+    ],
+    "connected_topics": [
+      "tauhid",
+      "asmaul_husna",
+      "rahmat",
+      "penciptaan",
+      "surga",
+      "arasy",
+      "islam"
+    ],
+    "position": {
+      "theta": 0.15,
+      "phi": 0.62,
+      "radius": 27.0
+    },
+    "size": 1.35
+  },
+  {
+    "id": "tauhid",
+    "label_id": "Tauhid",
+    "label_en": "Oneness",
+    "category": "akidah",
+    "arabic": "التوحيد",
+    "synonyms_id": [
+      "tauhid",
+      "tauhid",
+      "esa",
+      "keesaan",
+      "monoteisme",
+      "wahid"
+    ],
+    "synonyms_ar": [
+      "التوحيد"
+    ],
+    "related_ayat_keys": [
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18"
+    ],
+    "connected_topics": [
+      "allah",
+      "syirik",
+      "ikhlas",
+      "islam",
+      "iman",
+      "ihsan"
+    ],
+    "position": {
+      "theta": 0.232,
+      "phi": 1.355,
+      "radius": 39.43
+    },
+    "size": 1.35
+  },
+  {
+    "id": "iman",
+    "label_id": "Iman",
+    "label_en": "Faith",
+    "category": "akidah",
+    "arabic": "الإيمان",
+    "synonyms_id": [
+      "iman",
+      "iman",
+      "beriman",
+      "percaya",
+      "keimanan",
+      "faith"
+    ],
+    "synonyms_ar": [
+      "الإيمان"
+    ],
+    "related_ayat_keys": [
+      "2:3",
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136"
+    ],
+    "connected_topics": [
+      "amal",
+      "taqwa",
+      "rasul",
+      "kitab",
+      "islam",
+      "tauhid",
+      "syirik"
+    ],
+    "position": {
+      "theta": 0.344,
+      "phi": 2.09,
+      "radius": 35.55
+    },
+    "size": 1.35
+  },
+  {
+    "id": "islam",
+    "label_id": "Islam",
+    "label_en": "Submission",
+    "category": "akidah",
+    "arabic": "الإسلام",
+    "synonyms_id": [
+      "islam",
+      "islam",
+      "berserah",
+      "agama",
+      "din",
+      "muslim"
+    ],
+    "synonyms_ar": [
+      "الإسلام"
+    ],
+    "related_ayat_keys": [
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102"
+    ],
+    "connected_topics": [
+      "ihsan",
+      "iman",
+      "malaikat"
+    ],
+    "position": {
+      "theta": 0.56,
+      "phi": 0.83,
+      "radius": 30.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "ihsan",
+    "label_id": "Ihsan",
+    "label_en": "Excellence",
+    "category": "akidah",
+    "arabic": "الإحسان",
+    "synonyms_id": [
+      "ihsan",
+      "ihsan",
+      "kebaikan sempurna",
+      "berbuat baik",
+      "excellence"
+    ],
+    "synonyms_ar": [
+      "الإحسان"
+    ],
+    "related_ayat_keys": [
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51"
+    ],
+    "connected_topics": [
+      "syirik",
+      "islam",
+      "rasul"
+    ],
+    "position": {
+      "theta": 0.72,
+      "phi": 1.565,
+      "radius": 39.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "syirik",
+    "label_id": "Syirik",
+    "label_en": "Associating Partners",
+    "category": "akidah",
+    "arabic": "الشرك",
+    "synonyms_id": [
+      "syirik",
+      "syirik",
+      "menyekutukan",
+      "sekutu",
+      "berhala",
+      "polytheism"
+    ],
+    "synonyms_ar": [
+      "الشرك"
+    ],
+    "related_ayat_keys": [
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136",
+      "20:14"
+    ],
+    "connected_topics": [
+      "malaikat",
+      "ihsan",
+      "kitab"
+    ],
+    "position": {
+      "theta": 0.79,
+      "phi": 2.3,
+      "radius": 35.37
+    },
+    "size": 1.2
+  },
+  {
+    "id": "malaikat",
+    "label_id": "Malaikat",
+    "label_en": "Angels",
+    "category": "akidah",
+    "arabic": "الملائكة",
+    "synonyms_id": [
+      "malaikat",
+      "malaikat",
+      "jibril",
+      "mikail",
+      "angel",
+      "makhluk cahaya"
+    ],
+    "synonyms_ar": [
+      "الملائكة"
+    ],
+    "related_ayat_keys": [
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25"
+    ],
+    "connected_topics": [
+      "rasul",
+      "syirik",
+      "wahyu"
+    ],
+    "position": {
+      "theta": 0.489,
+      "phi": 1.04,
+      "radius": 32.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "rasul",
+    "label_id": "Rasul",
+    "label_en": "Messengers",
+    "category": "akidah",
+    "arabic": "الرسل",
+    "synonyms_id": [
+      "rasul",
+      "rasul",
+      "nabi",
+      "utusan",
+      "messenger",
+      "prophet"
+    ],
+    "synonyms_ar": [
+      "الرسل"
+    ],
+    "related_ayat_keys": [
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53"
+    ],
+    "connected_topics": [
+      "kitab",
+      "malaikat",
+      "takdir"
+    ],
+    "position": {
+      "theta": 0.708,
+      "phi": 1.775,
+      "radius": 30.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "kitab",
+    "label_id": "Kitab",
+    "label_en": "Scripture",
+    "category": "akidah",
+    "arabic": "الكتاب",
+    "synonyms_id": [
+      "kitab",
+      "kitab",
+      "alquran",
+      "taurat",
+      "injil",
+      "zabur",
+      "scripture"
+    ],
+    "synonyms_ar": [
+      "الكتاب"
+    ],
+    "related_ayat_keys": [
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136",
+      "20:14",
+      "47:19"
+    ],
+    "connected_topics": [
+      "wahyu",
+      "rasul",
+      "ghaib"
+    ],
+    "position": {
+      "theta": 0.83,
+      "phi": 2.51,
+      "radius": 41.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "wahyu",
+    "label_id": "Wahyu",
+    "label_en": "Revelation",
+    "category": "akidah",
+    "arabic": "الوحي",
+    "synonyms_id": [
+      "wahyu",
+      "wahyu",
+      "revelasi",
+      "diturunkan",
+      "tanzil",
+      "firman"
+    ],
+    "synonyms_ar": [
+      "الوحي"
+    ],
+    "related_ayat_keys": [
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22"
+    ],
+    "connected_topics": [
+      "takdir",
+      "kitab",
+      "asmaul_husna"
+    ],
+    "position": {
+      "theta": 0.907,
+      "phi": 1.25,
+      "radius": 36.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "takdir",
+    "label_id": "Takdir",
+    "label_en": "Divine Decree",
+    "category": "akidah",
+    "arabic": "القدر",
+    "synonyms_id": [
+      "takdir",
+      "takdir",
+      "qadar",
+      "ketetapan",
+      "nasib",
+      "kadar"
+    ],
+    "synonyms_ar": [
+      "القدر"
+    ],
+    "related_ayat_keys": [
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22"
+    ],
+    "connected_topics": [
+      "ghaib",
+      "wahyu",
+      "hidayah"
+    ],
+    "position": {
+      "theta": 1.093,
+      "phi": 1.985,
+      "radius": 31.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "ghaib",
+    "label_id": "Ghaib",
+    "label_en": "The Unseen",
+    "category": "akidah",
+    "arabic": "الغيب",
+    "synonyms_id": [
+      "ghaib",
+      "ghaib",
+      "tak terlihat",
+      "unseen",
+      "rahasia"
+    ],
+    "synonyms_ar": [
+      "الغيب"
+    ],
+    "related_ayat_keys": [
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1"
+    ],
+    "connected_topics": [
+      "asmaul_husna",
+      "takdir",
+      "kufur"
+    ],
+    "position": {
+      "theta": 1.295,
+      "phi": 0.725,
+      "radius": 26.3
+    },
+    "size": 1.34
+  },
+  {
+    "id": "asmaul_husna",
+    "label_id": "Asmaul Husna",
+    "label_en": "Beautiful Names",
+    "category": "akidah",
+    "arabic": "الأسماء الحسنى",
+    "synonyms_id": [
+      "asmaul husna",
+      "asmaul husna",
+      "nama allah",
+      "nama indah",
+      "sifat allah"
+    ],
+    "synonyms_ar": [
+      "الأسماء الحسنى"
+    ],
+    "related_ayat_keys": [
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1"
+    ],
+    "connected_topics": [
+      "hidayah",
+      "ghaib",
+      "nifaq"
+    ],
+    "position": {
+      "theta": 0.935,
+      "phi": 1.46,
+      "radius": 38.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "hidayah",
+    "label_id": "Hidayah",
+    "label_en": "Guidance",
+    "category": "akidah",
+    "arabic": "الهداية",
+    "synonyms_id": [
+      "hidayah",
+      "hidayah",
+      "petunjuk",
+      "guidance",
+      "jalan lurus",
+      "tuntunan"
+    ],
+    "synonyms_ar": [
+      "الهداية"
+    ],
+    "related_ayat_keys": [
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2"
+    ],
+    "connected_topics": [
+      "kufur",
+      "asmaul_husna",
+      "taqwa"
+    ],
+    "position": {
+      "theta": 1.036,
+      "phi": 2.195,
+      "radius": 35.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "kufur",
+    "label_id": "Kufur",
+    "label_en": "Disbelief",
+    "category": "akidah",
+    "arabic": "الكفر",
+    "synonyms_id": [
+      "kufur",
+      "kufur",
+      "ingkar",
+      "tidak beriman",
+      "disbelief",
+      "kafir"
+    ],
+    "synonyms_ar": [
+      "الكفر"
+    ],
+    "related_ayat_keys": [
+      "112:1",
+      "2:3",
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3"
+    ],
+    "connected_topics": [
+      "nifaq",
+      "hidayah",
+      "amal"
+    ],
+    "position": {
+      "theta": 1.248,
+      "phi": 0.935,
+      "radius": 32.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "nifaq",
+    "label_id": "Nifaq",
+    "label_en": "Hypocrisy",
+    "category": "akidah",
+    "arabic": "النفاق",
+    "synonyms_id": [
+      "nifaq",
+      "nifaq",
+      "munafik",
+      "hipokrit",
+      "pura pura iman"
+    ],
+    "synonyms_ar": [
+      "النفاق"
+    ],
+    "related_ayat_keys": [
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255"
+    ],
+    "connected_topics": [
+      "taqwa",
+      "kufur",
+      "ujian"
+    ],
+    "position": {
+      "theta": 1.419,
+      "phi": 1.67,
+      "radius": 28.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "taqwa",
+    "label_id": "Takwa",
+    "label_en": "God-Consciousness",
+    "category": "akidah",
+    "arabic": "التقوى",
+    "synonyms_id": [
+      "taqwa",
+      "takwa",
+      "taqwa",
+      "bertakwa",
+      "saleh",
+      "god conscious"
+    ],
+    "synonyms_ar": [
+      "التقوى"
+    ],
+    "related_ayat_keys": [
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18"
+    ],
+    "connected_topics": [
+      "amal",
+      "nifaq",
+      "fitrah"
+    ],
+    "position": {
+      "theta": 1.491,
+      "phi": 2.405,
+      "radius": 37.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "amal",
+    "label_id": "Amal Saleh",
+    "label_en": "Righteous Deeds",
+    "category": "akidah",
+    "arabic": "العمل الصالح",
+    "synonyms_id": [
+      "amal",
+      "amal saleh",
+      "amal saleh",
+      "perbuatan baik",
+      "righteous deeds"
+    ],
+    "synonyms_ar": [
+      "العمل الصالح"
+    ],
+    "related_ayat_keys": [
+      "2:3",
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136"
+    ],
+    "connected_topics": [
+      "ujian",
+      "taqwa",
+      "quran"
+    ],
+    "position": {
+      "theta": 1.629,
+      "phi": 1.145,
+      "radius": 32.37
+    },
+    "size": 0.99
+  },
+  {
+    "id": "ujian",
+    "label_id": "Ujian",
+    "label_en": "Trials",
+    "category": "akidah",
+    "arabic": "الابتلاء",
+    "synonyms_id": [
+      "ujian",
+      "ujian",
+      "cobaan",
+      "trial",
+      "musibah",
+      "fitnah hidup"
+    ],
+    "synonyms_ar": [
+      "الابتلاء"
+    ],
+    "related_ayat_keys": [
+      "2:255",
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102"
+    ],
+    "connected_topics": [
+      "fitrah",
+      "amal",
+      "ruh"
+    ],
+    "position": {
+      "theta": 1.399,
+      "phi": 1.88,
+      "radius": 28.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "fitrah",
+    "label_id": "Fitrah",
+    "label_en": "Primordial Nature",
+    "category": "akidah",
+    "arabic": "الفطرة",
+    "synonyms_id": [
+      "fitrah",
+      "fitrah",
+      "naluri iman",
+      "asal kejadian",
+      "natural disposition"
+    ],
+    "synonyms_ar": [
+      "الفطرة"
+    ],
+    "related_ayat_keys": [
+      "3:18",
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51"
+    ],
+    "connected_topics": [
+      "quran",
+      "ujian",
+      "arasy"
+    ],
+    "position": {
+      "theta": 1.531,
+      "phi": 0.62,
+      "radius": 41.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "quran",
+    "label_id": "Al-Qur'an",
+    "label_en": "The Quran",
+    "category": "akidah",
+    "arabic": "القرآن",
+    "synonyms_id": [
+      "quran",
+      "al-qur'an",
+      "al quran",
+      "alquran",
+      "kitab suci",
+      "furqan"
+    ],
+    "synonyms_ar": [
+      "القرآن"
+    ],
+    "related_ayat_keys": [
+      "4:136",
+      "20:14",
+      "47:19",
+      "112:1",
+      "2:3",
+      "4:136",
+      "20:14"
+    ],
+    "connected_topics": [
+      "kitab",
+      "wahyu",
+      "tilawah",
+      "hidayah",
+      "ruh",
+      "fitrah",
+      "allah"
+    ],
+    "position": {
+      "theta": 1.605,
+      "phi": 1.355,
+      "radius": 38.55
+    },
+    "size": 1.35
+  },
+  {
+    "id": "ruh",
+    "label_id": "Ruh",
+    "label_en": "Spirit",
+    "category": "akidah",
+    "arabic": "الروح",
+    "synonyms_id": [
+      "ruh",
+      "ruh",
+      "roh",
+      "spirit",
+      "jiwa",
+      "nafs"
+    ],
+    "synonyms_ar": [
+      "الروح"
+    ],
+    "related_ayat_keys": [
+      "6:102",
+      "21:25",
+      "57:22",
+      "1:1",
+      "2:255",
+      "6:102",
+      "21:25"
+    ],
+    "connected_topics": [
+      "arasy",
+      "quran",
+      "tauhid"
+    ],
+    "position": {
+      "theta": 1.78,
+      "phi": 2.09,
+      "radius": 34.42
+    },
+    "size": 0.92
+  },
+  {
+    "id": "arasy",
+    "label_id": "Arasy",
+    "label_en": "Throne",
+    "category": "akidah",
+    "arabic": "العرش",
+    "synonyms_id": [
+      "arasy",
+      "arasy",
+      "singgasana",
+      "throne",
+      "kursi",
+      "arsy"
+    ],
+    "synonyms_ar": [
+      "العرش"
+    ],
+    "related_ayat_keys": [
+      "16:51",
+      "39:53",
+      "59:22",
+      "2:2",
+      "3:18",
+      "16:51",
+      "39:53"
+    ],
+    "connected_topics": [
+      "allah",
+      "langit",
+      "kiamat",
+      "ruh",
+      "iman"
+    ],
+    "position": {
+      "theta": 1.989,
+      "phi": 0.83,
+      "radius": 28.98
+    },
+    "size": 1.27
+  },
+  {
+    "id": "sabar",
+    "label_id": "Sabar",
+    "label_en": "Patience",
+    "category": "akhlak",
+    "arabic": "الصبر",
+    "synonyms_id": [
+      "sabar",
+      "sabar",
+      "kesabaran",
+      "tabah",
+      "patient"
+    ],
+    "synonyms_ar": [
+      "الصبر"
+    ],
+    "related_ayat_keys": [
+      "2:45",
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177"
+    ],
+    "connected_topics": [
+      "ujian",
+      "tawakkal",
+      "taqwa",
+      "surga",
+      "syukur",
+      "rezeki"
+    ],
+    "position": {
+      "theta": 1.152,
+      "phi": 0.635,
+      "radius": 30.0
+    },
+    "size": 1.35
+  },
+  {
+    "id": "syukur",
+    "label_id": "Syukur",
+    "label_en": "Gratitude",
+    "category": "akhlak",
+    "arabic": "الشكر",
+    "synonyms_id": [
+      "syukur",
+      "syukur",
+      "bersyukur",
+      "terima kasih",
+      "gratitude",
+      "nikmat"
+    ],
+    "synonyms_ar": [
+      "الشكر"
+    ],
+    "related_ayat_keys": [
+      "2:153",
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134"
+    ],
+    "connected_topics": [
+      "nikmat",
+      "rezeki",
+      "hujan",
+      "makanan",
+      "ikhlas",
+      "sabar",
+      "tobat"
+    ],
+    "position": {
+      "theta": 1.245,
+      "phi": 1.37,
+      "radius": 42.43
+    },
+    "size": 1.27
+  },
+  {
+    "id": "ikhlas",
+    "label_id": "Ikhlas",
+    "label_en": "Sincerity",
+    "category": "akhlak",
+    "arabic": "الإخلاص",
+    "synonyms_id": [
+      "ikhlas",
+      "ikhlas",
+      "tulus",
+      "murni",
+      "sincerity",
+      "lillahi"
+    ],
+    "synonyms_ar": [
+      "الإخلاص"
+    ],
+    "related_ayat_keys": [
+      "2:177",
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58"
+    ],
+    "connected_topics": [
+      "tawakkal",
+      "syukur",
+      "istighfar"
+    ],
+    "position": {
+      "theta": 1.451,
+      "phi": 2.105,
+      "radius": 38.55
+    },
+    "size": 1.13
+  },
+  {
+    "id": "tawakkal",
+    "label_id": "Tawakkal",
+    "label_en": "Trust in Allah",
+    "category": "akhlak",
+    "arabic": "التوكل",
+    "synonyms_id": [
+      "tawakkal",
+      "tawakkal",
+      "berserah",
+      "percaya allah",
+      "trust",
+      "pasrah"
+    ],
+    "synonyms_ar": [
+      "التوكل"
+    ],
+    "related_ayat_keys": [
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135"
+    ],
+    "connected_topics": [
+      "tobat",
+      "ikhlas",
+      "jujur"
+    ],
+    "position": {
+      "theta": 1.632,
+      "phi": 0.845,
+      "radius": 33.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "tobat",
+    "label_id": "Tobat",
+    "label_en": "Repentance",
+    "category": "akhlak",
+    "arabic": "التوبة",
+    "synonyms_id": [
+      "tobat",
+      "tobat",
+      "taubat",
+      "ampunan",
+      "repent",
+      "kembali"
+    ],
+    "synonyms_ar": [
+      "التوبة"
+    ],
+    "related_ayat_keys": [
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134",
+      "5:8"
+    ],
+    "connected_topics": [
+      "istighfar",
+      "tawakkal",
+      "adil"
+    ],
+    "position": {
+      "theta": 1.707,
+      "phi": 1.58,
+      "radius": 42.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "istighfar",
+    "label_id": "Istighfar",
+    "label_en": "Seeking Forgiveness",
+    "category": "akhlak",
+    "arabic": "الاستغفار",
+    "synonyms_id": [
+      "istighfar",
+      "istighfar",
+      "minta ampun",
+      "ampunan",
+      "forgiveness"
+    ],
+    "synonyms_ar": [
+      "الاستغفار"
+    ],
+    "related_ayat_keys": [
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58",
+      "9:119"
+    ],
+    "connected_topics": [
+      "jujur",
+      "tobat",
+      "dzalim"
+    ],
+    "position": {
+      "theta": 1.834,
+      "phi": 2.315,
+      "radius": 38.37
+    },
+    "size": 1.2
+  },
+  {
+    "id": "jujur",
+    "label_id": "Jujur",
+    "label_en": "Truthfulness",
+    "category": "akhlak",
+    "arabic": "الصدق",
+    "synonyms_id": [
+      "jujur",
+      "jujur",
+      "benar",
+      "truthful",
+      "sidq"
+    ],
+    "synonyms_ar": [
+      "الصدق"
+    ],
+    "related_ayat_keys": [
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135",
+      "14:7"
+    ],
+    "connected_topics": [
+      "adil",
+      "istighfar",
+      "sombong"
+    ],
+    "position": {
+      "theta": 1.604,
+      "phi": 1.055,
+      "radius": 35.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "adil",
+    "label_id": "Adil",
+    "label_en": "Justice",
+    "category": "akhlak",
+    "arabic": "العدل",
+    "synonyms_id": [
+      "adil",
+      "adil",
+      "keadilan",
+      "fair",
+      "justice",
+      "seimbang"
+    ],
+    "synonyms_ar": [
+      "العدل"
+    ],
+    "related_ayat_keys": [
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134",
+      "5:8",
+      "16:90"
+    ],
+    "connected_topics": [
+      "dzalim",
+      "jujur",
+      "dengki"
+    ],
+    "position": {
+      "theta": 1.747,
+      "phi": 1.79,
+      "radius": 33.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "dzalim",
+    "label_id": "Zalim",
+    "label_en": "Wrongdoing",
+    "category": "akhlak",
+    "arabic": "الظلم",
+    "synonyms_id": [
+      "dzalim",
+      "zalim",
+      "zalim",
+      "aniaya",
+      "wrongdoing",
+      "tidak adil"
+    ],
+    "synonyms_ar": [
+      "الظلم"
+    ],
+    "related_ayat_keys": [
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58",
+      "9:119",
+      "24:22"
+    ],
+    "connected_topics": [
+      "sombong",
+      "adil",
+      "rahmat"
+    ],
+    "position": {
+      "theta": 1.818,
+      "phi": 2.525,
+      "radius": 44.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "sombong",
+    "label_id": "Sombong",
+    "label_en": "Arrogance",
+    "category": "akhlak",
+    "arabic": "الكبر",
+    "synonyms_id": [
+      "sombong",
+      "sombong",
+      "takabur",
+      "angkuh",
+      "arrogance",
+      "besar diri"
+    ],
+    "synonyms_ar": [
+      "الكبر"
+    ],
+    "related_ayat_keys": [
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135",
+      "14:7",
+      "31:18"
+    ],
+    "connected_topics": [
+      "dengki",
+      "dzalim",
+      "kasih_sayang"
+    ],
+    "position": {
+      "theta": 1.983,
+      "phi": 1.265,
+      "radius": 39.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "dengki",
+    "label_id": "Dengki",
+    "label_en": "Envy",
+    "category": "akhlak",
+    "arabic": "الحسد",
+    "synonyms_id": [
+      "dengki",
+      "dengki",
+      "hasad",
+      "iri",
+      "envy"
+    ],
+    "synonyms_ar": [
+      "الحسد"
+    ],
+    "related_ayat_keys": [
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53"
+    ],
+    "connected_topics": [
+      "rahmat",
+      "sombong",
+      "maaf"
+    ],
+    "position": {
+      "theta": 2.197,
+      "phi": 2.0,
+      "radius": 34.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "rahmat",
+    "label_id": "Rahmat",
+    "label_en": "Mercy",
+    "category": "akhlak",
+    "arabic": "الرحمة",
+    "synonyms_id": [
+      "rahmat",
+      "rahmat",
+      "kasih allah",
+      "mercy",
+      "belas kasih"
+    ],
+    "synonyms_ar": [
+      "الرحمة"
+    ],
+    "related_ayat_keys": [
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12"
+    ],
+    "connected_topics": [
+      "kasih_sayang",
+      "dengki",
+      "amanah"
+    ],
+    "position": {
+      "theta": 2.304,
+      "phi": 0.74,
+      "radius": 29.3
+    },
+    "size": 1.35
+  },
+  {
+    "id": "kasih_sayang",
+    "label_id": "Kasih Sayang",
+    "label_en": "Compassion",
+    "category": "akhlak",
+    "arabic": "المودة",
+    "synonyms_id": [
+      "kasih sayang",
+      "kasih sayang",
+      "sayang",
+      "cinta",
+      "compassion",
+      "mawaddah"
+    ],
+    "synonyms_ar": [
+      "المودة"
+    ],
+    "related_ayat_keys": [
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13"
+    ],
+    "connected_topics": [
+      "maaf",
+      "rahmat",
+      "rendah_hati"
+    ],
+    "position": {
+      "theta": 1.94,
+      "phi": 1.475,
+      "radius": 41.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "maaf",
+    "label_id": "Maaf",
+    "label_en": "Forgiveness",
+    "category": "akhlak",
+    "arabic": "العفو",
+    "synonyms_id": [
+      "maaf",
+      "maaf",
+      "memaafkan",
+      "forgive",
+      "lapang dada"
+    ],
+    "synonyms_ar": [
+      "العفو"
+    ],
+    "related_ayat_keys": [
+      "49:12",
+      "2:45",
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14"
+    ],
+    "connected_topics": [
+      "amanah",
+      "kasih_sayang",
+      "fitnah"
+    ],
+    "position": {
+      "theta": 2.138,
+      "phi": 2.21,
+      "radius": 38.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "amanah",
+    "label_id": "Amanah",
+    "label_en": "Trustworthiness",
+    "category": "akhlak",
+    "arabic": "الأمانة",
+    "synonyms_id": [
+      "amanah",
+      "amanah",
+      "kepercayaan",
+      "trust",
+      "tanggung jawab"
+    ],
+    "synonyms_ar": [
+      "الأمانة"
+    ],
+    "related_ayat_keys": [
+      "49:13",
+      "2:153",
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45"
+    ],
+    "connected_topics": [
+      "rendah_hati",
+      "maaf",
+      "ghibah"
+    ],
+    "position": {
+      "theta": 2.329,
+      "phi": 0.95,
+      "radius": 35.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "rendah_hati",
+    "label_id": "Rendah Hati",
+    "label_en": "Humility",
+    "category": "akhlak",
+    "arabic": "التواضع",
+    "synonyms_id": [
+      "rendah hati",
+      "rendah hati",
+      "tawadhu",
+      "lembut",
+      "humility"
+    ],
+    "synonyms_ar": [
+      "التواضع"
+    ],
+    "related_ayat_keys": [
+      "64:14",
+      "2:177",
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153"
+    ],
+    "connected_topics": [
+      "fitnah",
+      "amanah",
+      "prasangka"
+    ],
+    "position": {
+      "theta": 2.409,
+      "phi": 1.685,
+      "radius": 31.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "fitnah",
+    "label_id": "Fitnah",
+    "label_en": "Trial and Discord",
+    "category": "akhlak",
+    "arabic": "الفتنة",
+    "synonyms_id": [
+      "fitnah",
+      "fitnah",
+      "ujian sosial",
+      "provokasi",
+      "discord"
+    ],
+    "synonyms_ar": [
+      "الفتنة"
+    ],
+    "related_ayat_keys": [
+      "2:45",
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177"
+    ],
+    "connected_topics": [
+      "ghibah",
+      "rendah_hati",
+      "keluarga"
+    ],
+    "position": {
+      "theta": 2.525,
+      "phi": 2.42,
+      "radius": 40.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "ghibah",
+    "label_id": "Ghibah",
+    "label_en": "Backbiting",
+    "category": "akhlak",
+    "arabic": "الغيبة",
+    "synonyms_id": [
+      "ghibah",
+      "ghibah",
+      "menggunjing",
+      "backbiting",
+      "gosip"
+    ],
+    "synonyms_ar": [
+      "الغيبة"
+    ],
+    "related_ayat_keys": [
+      "2:153",
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134"
+    ],
+    "connected_topics": [
+      "prasangka",
+      "fitnah",
+      "nikmat"
+    ],
+    "position": {
+      "theta": 2.743,
+      "phi": 1.16,
+      "radius": 35.37
+    },
+    "size": 0.99
+  },
+  {
+    "id": "prasangka",
+    "label_id": "Prasangka",
+    "label_en": "Suspicion",
+    "category": "akhlak",
+    "arabic": "الظن",
+    "synonyms_id": [
+      "prasangka",
+      "prasangka",
+      "suudzon",
+      "curiga",
+      "suspicion"
+    ],
+    "synonyms_ar": [
+      "الظن"
+    ],
+    "related_ayat_keys": [
+      "2:177",
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58"
+    ],
+    "connected_topics": [
+      "keluarga",
+      "ghibah",
+      "dosa"
+    ],
+    "position": {
+      "theta": 2.448,
+      "phi": 1.895,
+      "radius": 31.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "keluarga",
+    "label_id": "Keluarga",
+    "label_en": "Family",
+    "category": "akhlak",
+    "arabic": "الأهل",
+    "synonyms_id": [
+      "keluarga",
+      "keluarga",
+      "orang tua",
+      "anak",
+      "family",
+      "rumah tangga"
+    ],
+    "synonyms_ar": [
+      "الأهل"
+    ],
+    "related_ayat_keys": [
+      "3:134",
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135"
+    ],
+    "connected_topics": [
+      "nikmat",
+      "prasangka",
+      "rezeki"
+    ],
+    "position": {
+      "theta": 2.518,
+      "phi": 0.635,
+      "radius": 44.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "nikmat",
+    "label_id": "Nikmat",
+    "label_en": "Blessings",
+    "category": "akhlak",
+    "arabic": "النعمة",
+    "synonyms_id": [
+      "nikmat",
+      "nikmat",
+      "karunia",
+      "blessing",
+      "anugerah"
+    ],
+    "synonyms_ar": [
+      "النعمة"
+    ],
+    "related_ayat_keys": [
+      "4:58",
+      "9:119",
+      "24:22",
+      "49:12",
+      "2:45",
+      "3:134",
+      "5:8"
+    ],
+    "connected_topics": [
+      "dosa",
+      "keluarga",
+      "sabar"
+    ],
+    "position": {
+      "theta": 2.672,
+      "phi": 1.37,
+      "radius": 41.55
+    },
+    "size": 1.06
+  },
+  {
+    "id": "dosa",
+    "label_id": "Dosa",
+    "label_en": "Sin",
+    "category": "akhlak",
+    "arabic": "الذنب",
+    "synonyms_id": [
+      "dosa",
+      "dosa",
+      "kesalahan",
+      "sin",
+      "maksiat"
+    ],
+    "synonyms_ar": [
+      "الذنب"
+    ],
+    "related_ayat_keys": [
+      "4:135",
+      "14:7",
+      "31:18",
+      "49:13",
+      "2:153",
+      "4:58",
+      "9:119"
+    ],
+    "connected_topics": [
+      "rezeki",
+      "nikmat",
+      "syukur"
+    ],
+    "position": {
+      "theta": 2.89,
+      "phi": 2.105,
+      "radius": 37.42
+    },
+    "size": 0.92
+  },
+  {
+    "id": "rezeki",
+    "label_id": "Rezeki",
+    "label_en": "Provision",
+    "category": "akhlak",
+    "arabic": "الرزق",
+    "synonyms_id": [
+      "rezeki",
+      "rezeki",
+      "rizki",
+      "rezki",
+      "provision",
+      "nafkah",
+      "karunia"
+    ],
+    "synonyms_ar": [
+      "الرزق"
+    ],
+    "related_ayat_keys": [
+      "5:8",
+      "16:90",
+      "39:53",
+      "64:14",
+      "2:177",
+      "4:135",
+      "14:7"
+    ],
+    "connected_topics": [
+      "syukur",
+      "infak",
+      "makanan",
+      "tumbuhan",
+      "sabar",
+      "dosa",
+      "ikhlas"
+    ],
+    "position": {
+      "theta": 3.007,
+      "phi": 0.845,
+      "radius": 31.98
+    },
+    "size": 1.35
+  },
+  {
+    "id": "salat",
+    "label_id": "Salat",
+    "label_en": "Prayer",
+    "category": "ibadah",
+    "arabic": "الصلاة",
+    "synonyms_id": [
+      "salat",
+      "salat",
+      "sholat",
+      "shalat",
+      "prayer",
+      "sembahyang"
+    ],
+    "synonyms_ar": [
+      "الصلاة"
+    ],
+    "related_ayat_keys": [
+      "2:43",
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185"
+    ],
+    "connected_topics": [
+      "qiblat",
+      "masjid",
+      "dzikir",
+      "taqwa",
+      "zakat",
+      "ramadan",
+      "haji"
+    ],
+    "position": {
+      "theta": 2.131,
+      "phi": 0.65,
+      "radius": 33.0
+    },
+    "size": 1.35
+  },
+  {
+    "id": "zakat",
+    "label_id": "Zakat",
+    "label_en": "Alms",
+    "category": "ibadah",
+    "arabic": "الزكاة",
+    "synonyms_id": [
+      "zakat",
+      "zakat",
+      "bayar zakat",
+      "alms",
+      "pembersih harta"
+    ],
+    "synonyms_ar": [
+      "الزكاة"
+    ],
+    "related_ayat_keys": [
+      "2:183",
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196"
+    ],
+    "connected_topics": [
+      "puasa",
+      "salat",
+      "doa"
+    ],
+    "position": {
+      "theta": 2.321,
+      "phi": 1.385,
+      "radius": 45.43
+    },
+    "size": 1.27
+  },
+  {
+    "id": "puasa",
+    "label_id": "Puasa",
+    "label_en": "Fasting",
+    "category": "ibadah",
+    "arabic": "الصيام",
+    "synonyms_id": [
+      "puasa",
+      "puasa",
+      "shaum",
+      "ramadan",
+      "fasting",
+      "menahan diri"
+    ],
+    "synonyms_ar": [
+      "الصيام"
+    ],
+    "related_ayat_keys": [
+      "2:185",
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238"
+    ],
+    "connected_topics": [
+      "ramadan",
+      "taqwa",
+      "sabar",
+      "doa",
+      "haji",
+      "zakat",
+      "dzikir"
+    ],
+    "position": {
+      "theta": 2.52,
+      "phi": 2.12,
+      "radius": 41.55
+    },
+    "size": 1.13
+  },
+  {
+    "id": "haji",
+    "label_id": "Haji",
+    "label_en": "Pilgrimage",
+    "category": "ibadah",
+    "arabic": "الحج",
+    "synonyms_id": [
+      "haji",
+      "haji",
+      "umrah",
+      "kabah",
+      "pilgrimage",
+      "baitullah"
+    ],
+    "synonyms_ar": [
+      "الحج"
+    ],
+    "related_ayat_keys": [
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185",
+      "3:97"
+    ],
+    "connected_topics": [
+      "qurban",
+      "qiblat",
+      "ibrahim",
+      "masjid",
+      "doa",
+      "puasa",
+      "sedekah"
+    ],
+    "position": {
+      "theta": 2.606,
+      "phi": 0.86,
+      "radius": 36.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "doa",
+    "label_id": "Doa",
+    "label_en": "Supplication",
+    "category": "ibadah",
+    "arabic": "الدعاء",
+    "synonyms_id": [
+      "doa",
+      "doa",
+      "berdoa",
+      "memohon",
+      "supplication"
+    ],
+    "synonyms_ar": [
+      "الدعاء"
+    ],
+    "related_ayat_keys": [
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196",
+      "9:60"
+    ],
+    "connected_topics": [
+      "dzikir",
+      "haji",
+      "infak"
+    ],
+    "position": {
+      "theta": 2.712,
+      "phi": 1.595,
+      "radius": 45.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "dzikir",
+    "label_id": "Dzikir",
+    "label_en": "Remembrance",
+    "category": "ibadah",
+    "arabic": "الذكر",
+    "synonyms_id": [
+      "dzikir",
+      "dzikir",
+      "zikir",
+      "ingat allah",
+      "remembrance",
+      "tasbih"
+    ],
+    "synonyms_ar": [
+      "الذكر"
+    ],
+    "related_ayat_keys": [
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238",
+      "17:78"
+    ],
+    "connected_topics": [
+      "sedekah",
+      "doa",
+      "jihad"
+    ],
+    "position": {
+      "theta": 2.926,
+      "phi": 2.33,
+      "radius": 41.37
+    },
+    "size": 1.2
+  },
+  {
+    "id": "sedekah",
+    "label_id": "Sedekah",
+    "label_en": "Charity",
+    "category": "ibadah",
+    "arabic": "الصدقة",
+    "synonyms_id": [
+      "sedekah",
+      "sedekah",
+      "charity",
+      "memberi",
+      "sadaqah",
+      "derma"
+    ],
+    "synonyms_ar": [
+      "الصدقة"
+    ],
+    "related_ayat_keys": [
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185",
+      "3:97",
+      "20:14"
+    ],
+    "connected_topics": [
+      "infak",
+      "dzikir",
+      "tilawah"
+    ],
+    "position": {
+      "theta": 2.642,
+      "phi": 1.07,
+      "radius": 38.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "infak",
+    "label_id": "Infak",
+    "label_en": "Spending for Good",
+    "category": "ibadah",
+    "arabic": "الإنفاق",
+    "synonyms_id": [
+      "infak",
+      "infak",
+      "infaq",
+      "nafkah",
+      "spending",
+      "memberi harta"
+    ],
+    "synonyms_ar": [
+      "الإنفاق"
+    ],
+    "related_ayat_keys": [
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196",
+      "9:60",
+      "22:27"
+    ],
+    "connected_topics": [
+      "jihad",
+      "sedekah",
+      "qurban"
+    ],
+    "position": {
+      "theta": 2.713,
+      "phi": 1.805,
+      "radius": 36.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "jihad",
+    "label_id": "Jihad",
+    "label_en": "Striving",
+    "category": "ibadah",
+    "arabic": "الجهاد",
+    "synonyms_id": [
+      "jihad",
+      "jihad",
+      "berjuang",
+      "striving",
+      "perjuangan"
+    ],
+    "synonyms_ar": [
+      "الجهاد"
+    ],
+    "related_ayat_keys": [
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238",
+      "17:78",
+      "29:45"
+    ],
+    "connected_topics": [
+      "tilawah",
+      "infak",
+      "qiblat"
+    ],
+    "position": {
+      "theta": 2.856,
+      "phi": 2.54,
+      "radius": 47.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "tilawah",
+    "label_id": "Tilawah",
+    "label_en": "Recitation",
+    "category": "ibadah",
+    "arabic": "التلاوة",
+    "synonyms_id": [
+      "tilawah",
+      "tilawah",
+      "membaca quran",
+      "recitation",
+      "tadarus"
+    ],
+    "synonyms_ar": [
+      "التلاوة"
+    ],
+    "related_ayat_keys": [
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185",
+      "3:97",
+      "20:14",
+      "33:41"
+    ],
+    "connected_topics": [
+      "qurban",
+      "jihad",
+      "masjid"
+    ],
+    "position": {
+      "theta": 3.076,
+      "phi": 1.28,
+      "radius": 42.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "qurban",
+    "label_id": "Qurban",
+    "label_en": "Sacrifice",
+    "category": "ibadah",
+    "arabic": "القربان",
+    "synonyms_id": [
+      "qurban",
+      "qurban",
+      "kurban",
+      "sacrifice",
+      "sembelihan"
+    ],
+    "synonyms_ar": [
+      "القربان"
+    ],
+    "related_ayat_keys": [
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60"
+    ],
+    "connected_topics": [
+      "qiblat",
+      "tilawah",
+      "halal"
+    ],
+    "position": {
+      "theta": 3.204,
+      "phi": 2.015,
+      "radius": 37.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "qiblat",
+    "label_id": "Kiblat",
+    "label_en": "Qiblah",
+    "category": "ibadah",
+    "arabic": "القبلة",
+    "synonyms_id": [
+      "qiblat",
+      "kiblat",
+      "qiblat",
+      "kabah",
+      "arah salat"
+    ],
+    "synonyms_ar": [
+      "القبلة"
+    ],
+    "related_ayat_keys": [
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18"
+    ],
+    "connected_topics": [
+      "masjid",
+      "qurban",
+      "haram"
+    ],
+    "position": {
+      "theta": 3.278,
+      "phi": 0.755,
+      "radius": 32.3
+    },
+    "size": 1.34
+  },
+  {
+    "id": "masjid",
+    "label_id": "Masjid",
+    "label_en": "Mosque",
+    "category": "ibadah",
+    "arabic": "المسجد",
+    "synonyms_id": [
+      "masjid",
+      "masjid",
+      "mosque",
+      "baitullah",
+      "tempat sujud"
+    ],
+    "synonyms_ar": [
+      "المسجد"
+    ],
+    "related_ayat_keys": [
+      "40:60",
+      "98:5",
+      "2:185",
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4"
+    ],
+    "connected_topics": [
+      "halal",
+      "qiblat",
+      "makanan"
+    ],
+    "position": {
+      "theta": 3.009,
+      "phi": 1.49,
+      "radius": 44.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "halal",
+    "label_id": "Halal",
+    "label_en": "Lawful",
+    "category": "ibadah",
+    "arabic": "الحلال",
+    "synonyms_id": [
+      "halal",
+      "halal",
+      "boleh",
+      "lawful",
+      "makanan halal"
+    ],
+    "synonyms_ar": [
+      "الحلال"
+    ],
+    "related_ayat_keys": [
+      "57:18",
+      "2:43",
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5"
+    ],
+    "connected_topics": [
+      "haram",
+      "masjid",
+      "riba"
+    ],
+    "position": {
+      "theta": 3.215,
+      "phi": 2.225,
+      "radius": 41.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "haram",
+    "label_id": "Haram",
+    "label_en": "Forbidden",
+    "category": "ibadah",
+    "arabic": "الحرام",
+    "synonyms_id": [
+      "haram",
+      "haram",
+      "terlarang",
+      "forbidden",
+      "dilarang"
+    ],
+    "synonyms_ar": [
+      "الحرام"
+    ],
+    "related_ayat_keys": [
+      "73:4",
+      "2:183",
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43"
+    ],
+    "connected_topics": [
+      "makanan",
+      "halal",
+      "perdagangan"
+    ],
+    "position": {
+      "theta": 3.309,
+      "phi": 0.965,
+      "radius": 38.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "makanan",
+    "label_id": "Makanan",
+    "label_en": "Food",
+    "category": "ibadah",
+    "arabic": "الطعام",
+    "synonyms_id": [
+      "makanan",
+      "makanan",
+      "food",
+      "rezeki makanan",
+      "minum"
+    ],
+    "synonyms_ar": [
+      "الطعام"
+    ],
+    "related_ayat_keys": [
+      "98:5",
+      "2:185",
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183"
+    ],
+    "connected_topics": [
+      "riba",
+      "haram",
+      "waris"
+    ],
+    "position": {
+      "theta": 3.406,
+      "phi": 1.7,
+      "radius": 34.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "riba",
+    "label_id": "Riba",
+    "label_en": "Usury",
+    "category": "ibadah",
+    "arabic": "الربا",
+    "synonyms_id": [
+      "riba",
+      "riba",
+      "bunga",
+      "usury",
+      "interest"
+    ],
+    "synonyms_ar": [
+      "الربا"
+    ],
+    "related_ayat_keys": [
+      "2:43",
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185"
+    ],
+    "connected_topics": [
+      "perdagangan",
+      "makanan",
+      "nikah"
+    ],
+    "position": {
+      "theta": 3.614,
+      "phi": 2.435,
+      "radius": 43.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "perdagangan",
+    "label_id": "Perdagangan",
+    "label_en": "Trade",
+    "category": "ibadah",
+    "arabic": "التجارة",
+    "synonyms_id": [
+      "perdagangan",
+      "perdagangan",
+      "jual beli",
+      "trade",
+      "bisnis",
+      "niaga"
+    ],
+    "synonyms_ar": [
+      "التجارة"
+    ],
+    "related_ayat_keys": [
+      "2:183",
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196"
+    ],
+    "connected_topics": [
+      "waris",
+      "riba",
+      "hijrah"
+    ],
+    "position": {
+      "theta": 3.791,
+      "phi": 1.175,
+      "radius": 38.37
+    },
+    "size": 0.99
+  },
+  {
+    "id": "waris",
+    "label_id": "Waris",
+    "label_en": "Inheritance",
+    "category": "ibadah",
+    "arabic": "الميراث",
+    "synonyms_id": [
+      "waris",
+      "waris",
+      "warisan",
+      "inheritance",
+      "faraidh"
+    ],
+    "synonyms_ar": [
+      "الميراث"
+    ],
+    "related_ayat_keys": [
+      "2:185",
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238"
+    ],
+    "connected_topics": [
+      "nikah",
+      "perdagangan",
+      "ramadan"
+    ],
+    "position": {
+      "theta": 3.414,
+      "phi": 1.91,
+      "radius": 34.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "nikah",
+    "label_id": "Nikah",
+    "label_en": "Marriage",
+    "category": "ibadah",
+    "arabic": "النكاح",
+    "synonyms_id": [
+      "nikah",
+      "nikah",
+      "pernikahan",
+      "marriage",
+      "pasangan"
+    ],
+    "synonyms_ar": [
+      "النكاح"
+    ],
+    "related_ayat_keys": [
+      "2:196",
+      "9:60",
+      "22:27",
+      "40:60",
+      "98:5",
+      "2:185",
+      "3:97"
+    ],
+    "connected_topics": [
+      "hijrah",
+      "waris",
+      "salat"
+    ],
+    "position": {
+      "theta": 3.546,
+      "phi": 0.65,
+      "radius": 47.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "hijrah",
+    "label_id": "Hijrah",
+    "label_en": "Migration",
+    "category": "ibadah",
+    "arabic": "الهجرة",
+    "synonyms_id": [
+      "hijrah",
+      "hijrah",
+      "migrasi",
+      "berpindah",
+      "migration"
+    ],
+    "synonyms_ar": [
+      "الهجرة"
+    ],
+    "related_ayat_keys": [
+      "2:238",
+      "17:78",
+      "29:45",
+      "57:18",
+      "2:43",
+      "2:196",
+      "9:60"
+    ],
+    "connected_topics": [
+      "ramadan",
+      "nikah",
+      "zakat"
+    ],
+    "position": {
+      "theta": 3.766,
+      "phi": 1.385,
+      "radius": 44.55
+    },
+    "size": 1.06
+  },
+  {
+    "id": "ramadan",
+    "label_id": "Ramadan",
+    "label_en": "Ramadan",
+    "category": "ibadah",
+    "arabic": "رمضان",
+    "synonyms_id": [
+      "ramadan",
+      "ramadan",
+      "ramadhan",
+      "bulan puasa",
+      "laylatul qadr"
+    ],
+    "synonyms_ar": [
+      "رمضان"
+    ],
+    "related_ayat_keys": [
+      "3:97",
+      "20:14",
+      "33:41",
+      "73:4",
+      "2:183",
+      "2:238",
+      "17:78"
+    ],
+    "connected_topics": [
+      "salat",
+      "hijrah",
+      "puasa"
+    ],
+    "position": {
+      "theta": 3.905,
+      "phi": 2.12,
+      "radius": 40.42
+    },
+    "size": 0.92
+  },
+  {
+    "id": "adam",
+    "label_id": "Adam",
+    "label_en": "Adam",
+    "category": "kisah",
+    "arabic": "آدم",
+    "synonyms_id": [
+      "adam",
+      "adam",
+      "nabi adam",
+      "manusia pertama"
+    ],
+    "synonyms_ar": [
+      "آدم"
+    ],
+    "related_ayat_keys": [
+      "2:30",
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124"
+    ],
+    "connected_topics": [
+      "iblis",
+      "luqman",
+      "ibrahim"
+    ],
+    "position": {
+      "theta": 3.176,
+      "phi": 0.665,
+      "radius": 36.0
+    },
+    "size": 0.92
+  },
+  {
+    "id": "iblis",
+    "label_id": "Iblis",
+    "label_en": "Iblis",
+    "category": "kisah",
+    "arabic": "إبليس",
+    "synonyms_id": [
+      "iblis",
+      "iblis",
+      "setan",
+      "satan",
+      "menolak sujud"
+    ],
+    "synonyms_ar": [
+      "إبليس"
+    ],
+    "related_ayat_keys": [
+      "2:124",
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59"
+    ],
+    "connected_topics": [
+      "nuh",
+      "adam",
+      "ismail"
+    ],
+    "position": {
+      "theta": 3.346,
+      "phi": 1.4,
+      "radius": 48.43
+    },
+    "size": 1.27
+  },
+  {
+    "id": "nuh",
+    "label_id": "Nuh",
+    "label_en": "Noah",
+    "category": "kisah",
+    "arabic": "نوح",
+    "synonyms_id": [
+      "nuh",
+      "nuh",
+      "noah",
+      "nabi nuh",
+      "banjir besar"
+    ],
+    "synonyms_ar": [
+      "نوح"
+    ],
+    "related_ayat_keys": [
+      "7:59",
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103"
+    ],
+    "connected_topics": [
+      "ibrahim",
+      "iblis",
+      "musa"
+    ],
+    "position": {
+      "theta": 3.558,
+      "phi": 2.135,
+      "radius": 44.55
+    },
+    "size": 1.13
+  },
+  {
+    "id": "ibrahim",
+    "label_id": "Ibrahim",
+    "label_en": "Abraham",
+    "category": "kisah",
+    "arabic": "إبراهيم",
+    "synonyms_id": [
+      "ibrahim",
+      "ibrahim",
+      "abraham",
+      "khalilullah"
+    ],
+    "synonyms_ar": [
+      "إبراهيم"
+    ],
+    "related_ayat_keys": [
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71"
+    ],
+    "connected_topics": [
+      "ismail",
+      "qurban",
+      "haji",
+      "tauhid",
+      "nuh",
+      "harun"
+    ],
+    "position": {
+      "theta": 3.661,
+      "phi": 0.875,
+      "radius": 39.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "ismail",
+    "label_id": "Ismail",
+    "label_en": "Ishmael",
+    "category": "kisah",
+    "arabic": "إسماعيل",
+    "synonyms_id": [
+      "ismail",
+      "ismail",
+      "ishmael",
+      "putra ibrahim"
+    ],
+    "synonyms_ar": [
+      "إسماعيل"
+    ],
+    "related_ayat_keys": [
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59",
+      "11:25"
+    ],
+    "connected_topics": [
+      "musa",
+      "ibrahim",
+      "isa"
+    ],
+    "position": {
+      "theta": 3.75,
+      "phi": 1.61,
+      "radius": 48.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "musa",
+    "label_id": "Musa",
+    "label_en": "Moses",
+    "category": "kisah",
+    "arabic": "موسى",
+    "synonyms_id": [
+      "musa",
+      "musa",
+      "moses",
+      "tongkat musa"
+    ],
+    "synonyms_ar": [
+      "موسى"
+    ],
+    "related_ayat_keys": [
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103",
+      "12:4"
+    ],
+    "connected_topics": [
+      "firaun",
+      "bani_israil",
+      "harun",
+      "rasul",
+      "ismail",
+      "muhammad"
+    ],
+    "position": {
+      "theta": 3.952,
+      "phi": 2.345,
+      "radius": 44.37
+    },
+    "size": 1.35
+  },
+  {
+    "id": "harun",
+    "label_id": "Harun",
+    "label_en": "Aaron",
+    "category": "kisah",
+    "arabic": "هارون",
+    "synonyms_id": [
+      "harun",
+      "harun",
+      "aaron",
+      "saudara musa"
+    ],
+    "synonyms_ar": [
+      "هارون"
+    ],
+    "related_ayat_keys": [
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71",
+      "19:16"
+    ],
+    "connected_topics": [
+      "isa",
+      "musa",
+      "yusuf"
+    ],
+    "position": {
+      "theta": 3.688,
+      "phi": 1.085,
+      "radius": 41.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "isa",
+    "label_id": "Isa",
+    "label_en": "Jesus",
+    "category": "kisah",
+    "arabic": "عيسى",
+    "synonyms_id": [
+      "isa",
+      "isa",
+      "yesus",
+      "jesus",
+      "al masih"
+    ],
+    "synonyms_ar": [
+      "عيسى"
+    ],
+    "related_ayat_keys": [
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59",
+      "11:25",
+      "20:9"
+    ],
+    "connected_topics": [
+      "maryam",
+      "rasul",
+      "bani_israil",
+      "muhammad",
+      "harun"
+    ],
+    "position": {
+      "theta": 3.766,
+      "phi": 1.82,
+      "radius": 39.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "muhammad",
+    "label_id": "Muhammad",
+    "label_en": "Muhammad",
+    "category": "kisah",
+    "arabic": "محمد",
+    "synonyms_id": [
+      "muhammad",
+      "muhammad",
+      "rasulullah",
+      "ahmad",
+      "prophet muhammad"
+    ],
+    "synonyms_ar": [
+      "محمد"
+    ],
+    "related_ayat_keys": [
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103",
+      "12:4",
+      "21:51"
+    ],
+    "connected_topics": [
+      "quran",
+      "rahmat",
+      "hijrah",
+      "rasul",
+      "yusuf",
+      "isa",
+      "bani_israil"
+    ],
+    "position": {
+      "theta": 3.887,
+      "phi": 2.555,
+      "radius": 50.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "yusuf",
+    "label_id": "Yusuf",
+    "label_en": "Joseph",
+    "category": "kisah",
+    "arabic": "يوسف",
+    "synonyms_id": [
+      "yusuf",
+      "yusuf",
+      "joseph",
+      "surah yusuf"
+    ],
+    "synonyms_ar": [
+      "يوسف"
+    ],
+    "related_ayat_keys": [
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71",
+      "19:16",
+      "21:83"
+    ],
+    "connected_topics": [
+      "maryam",
+      "muhammad",
+      "firaun"
+    ],
+    "position": {
+      "theta": 4.105,
+      "phi": 1.295,
+      "radius": 45.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "maryam",
+    "label_id": "Maryam",
+    "label_en": "Mary",
+    "category": "kisah",
+    "arabic": "مريم",
+    "synonyms_id": [
+      "maryam",
+      "maryam",
+      "mary",
+      "ibunda isa"
+    ],
+    "synonyms_ar": [
+      "مريم"
+    ],
+    "related_ayat_keys": [
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59",
+      "11:25",
+      "20:9",
+      "26:10"
+    ],
+    "connected_topics": [
+      "bani_israil",
+      "yusuf",
+      "dawud"
+    ],
+    "position": {
+      "theta": 4.255,
+      "phi": 2.03,
+      "radius": 40.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "bani_israil",
+    "label_id": "Bani Israil",
+    "label_en": "Children of Israel",
+    "category": "kisah",
+    "arabic": "بنو إسرائيل",
+    "synonyms_id": [
+      "bani israil",
+      "bani israil",
+      "israelites",
+      "children of israel"
+    ],
+    "synonyms_ar": [
+      "بنو إسرائيل"
+    ],
+    "related_ayat_keys": [
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15"
+    ],
+    "connected_topics": [
+      "firaun",
+      "maryam",
+      "sulaiman"
+    ],
+    "position": {
+      "theta": 4.325,
+      "phi": 0.77,
+      "radius": 35.3
+    },
+    "size": 1.34
+  },
+  {
+    "id": "firaun",
+    "label_id": "Fir'aun",
+    "label_en": "Pharaoh",
+    "category": "kisah",
+    "arabic": "فرعون",
+    "synonyms_id": [
+      "firaun",
+      "fir'aun",
+      "pharaoh",
+      "raja mesir"
+    ],
+    "synonyms_ar": [
+      "فرعون"
+    ],
+    "related_ayat_keys": [
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3"
+    ],
+    "connected_topics": [
+      "dawud",
+      "bani_israil",
+      "yunus"
+    ],
+    "position": {
+      "theta": 4.035,
+      "phi": 1.505,
+      "radius": 47.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "dawud",
+    "label_id": "Dawud",
+    "label_en": "David",
+    "category": "kisah",
+    "arabic": "داود",
+    "synonyms_id": [
+      "dawud",
+      "dawud",
+      "david",
+      "zabur"
+    ],
+    "synonyms_ar": [
+      "داود"
+    ],
+    "related_ayat_keys": [
+      "28:3",
+      "61:6",
+      "7:59",
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40"
+    ],
+    "connected_topics": [
+      "sulaiman",
+      "firaun",
+      "lut"
+    ],
+    "position": {
+      "theta": 4.251,
+      "phi": 2.24,
+      "radius": 44.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "sulaiman",
+    "label_id": "Sulaiman",
+    "label_en": "Solomon",
+    "category": "kisah",
+    "arabic": "سليمان",
+    "synonyms_id": [
+      "sulaiman",
+      "sulaiman",
+      "solomon",
+      "kerajaan sulaiman"
+    ],
+    "synonyms_ar": [
+      "سليمان"
+    ],
+    "related_ayat_keys": [
+      "33:40",
+      "2:30",
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102"
+    ],
+    "connected_topics": [
+      "semut",
+      "burung",
+      "angin",
+      "dawud",
+      "yunus",
+      "shalih"
+    ],
+    "position": {
+      "theta": 4.363,
+      "phi": 0.98,
+      "radius": 41.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "yunus",
+    "label_id": "Yunus",
+    "label_en": "Jonah",
+    "category": "kisah",
+    "arabic": "يونس",
+    "synonyms_id": [
+      "yunus",
+      "yunus",
+      "jonah",
+      "dzun nun"
+    ],
+    "synonyms_ar": [
+      "يونس"
+    ],
+    "related_ayat_keys": [
+      "37:102",
+      "2:124",
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6"
+    ],
+    "connected_topics": [
+      "lut",
+      "sulaiman",
+      "hud"
+    ],
+    "position": {
+      "theta": 4.446,
+      "phi": 1.715,
+      "radius": 37.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "lut",
+    "label_id": "Lut",
+    "label_en": "Lot",
+    "category": "kisah",
+    "arabic": "لوط",
+    "synonyms_id": [
+      "lut",
+      "lut",
+      "lot",
+      "kaum lut"
+    ],
+    "synonyms_ar": [
+      "لوط"
+    ],
+    "related_ayat_keys": [
+      "61:6",
+      "7:59",
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30"
+    ],
+    "connected_topics": [
+      "shalih",
+      "yunus",
+      "ayyub"
+    ],
+    "position": {
+      "theta": 4.639,
+      "phi": 2.45,
+      "radius": 46.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "shalih",
+    "label_id": "Shalih",
+    "label_en": "Salih",
+    "category": "kisah",
+    "arabic": "صالح",
+    "synonyms_id": [
+      "shalih",
+      "shalih",
+      "saleh",
+      "tsamud"
+    ],
+    "synonyms_ar": [
+      "صالح"
+    ],
+    "related_ayat_keys": [
+      "2:30",
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124"
+    ],
+    "connected_topics": [
+      "hud",
+      "lut",
+      "zakariya"
+    ],
+    "position": {
+      "theta": 4.835,
+      "phi": 1.19,
+      "radius": 41.37
+    },
+    "size": 0.99
+  },
+  {
+    "id": "hud",
+    "label_id": "Hud",
+    "label_en": "Hud",
+    "category": "kisah",
+    "arabic": "هود",
+    "synonyms_id": [
+      "hud",
+      "hud",
+      "kaum ad",
+      "ad"
+    ],
+    "synonyms_ar": [
+      "هود"
+    ],
+    "related_ayat_keys": [
+      "2:124",
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59"
+    ],
+    "connected_topics": [
+      "ayyub",
+      "shalih",
+      "yahya"
+    ],
+    "position": {
+      "theta": 4.468,
+      "phi": 1.925,
+      "radius": 37.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "ayyub",
+    "label_id": "Ayyub",
+    "label_en": "Job",
+    "category": "kisah",
+    "arabic": "أيوب",
+    "synonyms_id": [
+      "ayyub",
+      "ayyub",
+      "job",
+      "sakit ayyub"
+    ],
+    "synonyms_ar": [
+      "أيوب"
+    ],
+    "related_ayat_keys": [
+      "7:59",
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103"
+    ],
+    "connected_topics": [
+      "zakariya",
+      "hud",
+      "ashab_kahfi"
+    ],
+    "position": {
+      "theta": 4.578,
+      "phi": 0.665,
+      "radius": 50.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "zakariya",
+    "label_id": "Zakariya",
+    "label_en": "Zechariah",
+    "category": "kisah",
+    "arabic": "زكريا",
+    "synonyms_id": [
+      "zakariya",
+      "zakariya",
+      "zachariah",
+      "ayah yahya"
+    ],
+    "synonyms_ar": [
+      "زكريا"
+    ],
+    "related_ayat_keys": [
+      "7:103",
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71"
+    ],
+    "connected_topics": [
+      "yahya",
+      "ayyub",
+      "luqman"
+    ],
+    "position": {
+      "theta": 4.794,
+      "phi": 1.4,
+      "radius": 47.55
+    },
+    "size": 1.06
+  },
+  {
+    "id": "yahya",
+    "label_id": "Yahya",
+    "label_en": "John",
+    "category": "kisah",
+    "arabic": "يحيى",
+    "synonyms_id": [
+      "yahya",
+      "yahya",
+      "john",
+      "putra zakariya"
+    ],
+    "synonyms_ar": [
+      "يحيى"
+    ],
+    "related_ayat_keys": [
+      "10:71",
+      "19:16",
+      "21:83",
+      "28:3",
+      "61:6",
+      "7:59",
+      "11:25"
+    ],
+    "connected_topics": [
+      "ashab_kahfi",
+      "zakariya",
+      "adam"
+    ],
+    "position": {
+      "theta": 4.955,
+      "phi": 2.135,
+      "radius": 43.42
+    },
+    "size": 0.92
+  },
+  {
+    "id": "ashab_kahfi",
+    "label_id": "Ashab Kahfi",
+    "label_en": "People of the Cave",
+    "category": "kisah",
+    "arabic": "أصحاب الكهف",
+    "synonyms_id": [
+      "ashab kahfi",
+      "ashab kahfi",
+      "pemuda gua",
+      "people of cave",
+      "kahfi"
+    ],
+    "synonyms_ar": [
+      "أصحاب الكهف"
+    ],
+    "related_ayat_keys": [
+      "11:25",
+      "20:9",
+      "26:10",
+      "33:40",
+      "2:30",
+      "7:103",
+      "12:4"
+    ],
+    "connected_topics": [
+      "luqman",
+      "yahya",
+      "iblis"
+    ],
+    "position": {
+      "theta": 5.025,
+      "phi": 0.875,
+      "radius": 37.98
+    },
+    "size": 1.27
+  },
+  {
+    "id": "luqman",
+    "label_id": "Luqman",
+    "label_en": "Luqman",
+    "category": "kisah",
+    "arabic": "لقمان",
+    "synonyms_id": [
+      "luqman",
+      "luqman",
+      "nasihat luqman",
+      "hikmah luqman"
+    ],
+    "synonyms_ar": [
+      "لقمان"
+    ],
+    "related_ayat_keys": [
+      "12:4",
+      "21:51",
+      "27:15",
+      "37:102",
+      "2:124",
+      "10:71",
+      "19:16"
+    ],
+    "connected_topics": [
+      "adam",
+      "ashab_kahfi",
+      "nuh"
+    ],
+    "position": {
+      "theta": 5.174,
+      "phi": 1.61,
+      "radius": 47.56
+    },
+    "size": 1.13
+  },
+  {
+    "id": "langit",
+    "label_id": "Langit",
+    "label_en": "The Heavens",
+    "category": "kosmos",
+    "arabic": "السماء",
+    "synonyms_id": [
+      "langit",
+      "langit",
+      "samawat",
+      "samaa",
+      "tujuh lapis",
+      "angkasa",
+      "heavens"
+    ],
+    "synonyms_ar": [
+      "السماء"
+    ],
+    "related_ayat_keys": [
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97"
+    ],
+    "connected_topics": [
+      "bumi",
+      "bintang",
+      "matahari",
+      "arasy",
+      "penciptaan",
+      "kapal"
+    ],
+    "position": {
+      "theta": 4.293,
+      "phi": 0.68,
+      "radius": 32.0
+    },
+    "size": 1.35
+  },
+  {
+    "id": "bumi",
+    "label_id": "Bumi",
+    "label_en": "Earth",
+    "category": "kosmos",
+    "arabic": "الأرض",
+    "synonyms_id": [
+      "bumi",
+      "bumi",
+      "earth",
+      "ardh",
+      "daratan"
+    ],
+    "synonyms_ar": [
+      "الأرض"
+    ],
+    "related_ayat_keys": [
+      "2:29",
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5"
+    ],
+    "connected_topics": [
+      "langit",
+      "gunung",
+      "lautan",
+      "tanah",
+      "bintang",
+      "bulan"
+    ],
+    "position": {
+      "theta": 4.415,
+      "phi": 1.415,
+      "radius": 44.43
+    },
+    "size": 1.35
+  },
+  {
+    "id": "bintang",
+    "label_id": "Bintang",
+    "label_en": "Stars",
+    "category": "kosmos",
+    "arabic": "النجوم",
+    "synonyms_id": [
+      "bintang",
+      "bintang",
+      "stars",
+      "najm",
+      "planet",
+      "cahaya malam"
+    ],
+    "synonyms_ar": [
+      "النجوم"
+    ],
+    "related_ayat_keys": [
+      "6:97",
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2"
+    ],
+    "connected_topics": [
+      "matahari",
+      "bumi",
+      "gunung"
+    ],
+    "position": {
+      "theta": 4.492,
+      "phi": 2.15,
+      "radius": 40.55
+    },
+    "size": 1.13
+  },
+  {
+    "id": "matahari",
+    "label_id": "Matahari",
+    "label_en": "Sun",
+    "category": "kosmos",
+    "arabic": "الشمس",
+    "synonyms_id": [
+      "matahari",
+      "matahari",
+      "sun",
+      "syams",
+      "surya"
+    ],
+    "synonyms_ar": [
+      "الشمس"
+    ],
+    "related_ayat_keys": [
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10"
+    ],
+    "connected_topics": [
+      "bulan",
+      "bintang",
+      "lautan"
+    ],
+    "position": {
+      "theta": 4.677,
+      "phi": 0.89,
+      "radius": 35.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "bulan",
+    "label_id": "Bulan",
+    "label_en": "Moon",
+    "category": "kosmos",
+    "arabic": "القمر",
+    "synonyms_id": [
+      "bulan",
+      "bulan",
+      "moon",
+      "qamar",
+      "hilal"
+    ],
+    "synonyms_ar": [
+      "القمر"
+    ],
+    "related_ayat_keys": [
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30"
+    ],
+    "connected_topics": [
+      "gunung",
+      "matahari",
+      "hujan"
+    ],
+    "position": {
+      "theta": 4.88,
+      "phi": 1.625,
+      "radius": 44.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "gunung",
+    "label_id": "Gunung",
+    "label_en": "Mountains",
+    "category": "kosmos",
+    "arabic": "الجبال",
+    "synonyms_id": [
+      "gunung",
+      "gunung",
+      "mountain",
+      "jabal",
+      "pasak bumi"
+    ],
+    "synonyms_ar": [
+      "الجبال"
+    ],
+    "related_ayat_keys": [
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2",
+      "21:32"
+    ],
+    "connected_topics": [
+      "lautan",
+      "bulan",
+      "malam"
+    ],
+    "position": {
+      "theta": 4.97,
+      "phi": 2.36,
+      "radius": 40.37
+    },
+    "size": 1.2
+  },
+  {
+    "id": "lautan",
+    "label_id": "Lautan",
+    "label_en": "Seas",
+    "category": "kosmos",
+    "arabic": "البحر",
+    "synonyms_id": [
+      "lautan",
+      "lautan",
+      "laut",
+      "sea",
+      "samudra"
+    ],
+    "synonyms_ar": [
+      "البحر"
+    ],
+    "related_ayat_keys": [
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10",
+      "24:43"
+    ],
+    "connected_topics": [
+      "hujan",
+      "gunung",
+      "siang"
+    ],
+    "position": {
+      "theta": 4.621,
+      "phi": 1.1,
+      "radius": 37.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "hujan",
+    "label_id": "Hujan",
+    "label_en": "Rain",
+    "category": "kosmos",
+    "arabic": "المطر",
+    "synonyms_id": [
+      "hujan",
+      "hujan",
+      "rain",
+      "air turun",
+      "mendung"
+    ],
+    "synonyms_ar": [
+      "المطر"
+    ],
+    "related_ayat_keys": [
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48"
+    ],
+    "connected_topics": [
+      "awan",
+      "air",
+      "tumbuhan",
+      "rahmat",
+      "malam",
+      "lautan",
+      "angin"
+    ],
+    "position": {
+      "theta": 4.832,
+      "phi": 1.835,
+      "radius": 35.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "malam",
+    "label_id": "Malam",
+    "label_en": "Night",
+    "category": "kosmos",
+    "arabic": "الليل",
+    "synonyms_id": [
+      "malam",
+      "malam",
+      "night",
+      "lail",
+      "gelap"
+    ],
+    "synonyms_ar": [
+      "الليل"
+    ],
+    "related_ayat_keys": [
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2",
+      "21:32",
+      "31:10"
+    ],
+    "connected_topics": [
+      "siang",
+      "hujan",
+      "awan"
+    ],
+    "position": {
+      "theta": 5.004,
+      "phi": 2.57,
+      "radius": 46.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "siang",
+    "label_id": "Siang",
+    "label_en": "Day",
+    "category": "kosmos",
+    "arabic": "النهار",
+    "synonyms_id": [
+      "siang",
+      "siang",
+      "day",
+      "nahar",
+      "terang"
+    ],
+    "synonyms_ar": [
+      "النهار"
+    ],
+    "related_ayat_keys": [
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10",
+      "24:43",
+      "36:38"
+    ],
+    "connected_topics": [
+      "angin",
+      "malam",
+      "tumbuhan"
+    ],
+    "position": {
+      "theta": 5.076,
+      "phi": 1.31,
+      "radius": 41.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "angin",
+    "label_id": "Angin",
+    "label_en": "Wind",
+    "category": "kosmos",
+    "arabic": "الرياح",
+    "synonyms_id": [
+      "angin",
+      "angin",
+      "wind",
+      "rih",
+      "hembusan"
+    ],
+    "synonyms_ar": [
+      "الرياح"
+    ],
+    "related_ayat_keys": [
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19"
+    ],
+    "connected_topics": [
+      "awan",
+      "siang",
+      "hewan"
+    ],
+    "position": {
+      "theta": 5.213,
+      "phi": 2.045,
+      "radius": 36.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "awan",
+    "label_id": "Awan",
+    "label_en": "Clouds",
+    "category": "kosmos",
+    "arabic": "السحاب",
+    "synonyms_id": [
+      "awan",
+      "awan",
+      "clouds",
+      "sahab",
+      "mendung"
+    ],
+    "synonyms_ar": [
+      "السحاب"
+    ],
+    "related_ayat_keys": [
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3"
+    ],
+    "connected_topics": [
+      "tumbuhan",
+      "angin",
+      "lebah"
+    ],
+    "position": {
+      "theta": 5.433,
+      "phi": 0.785,
+      "radius": 31.3
+    },
+    "size": 1.34
+  },
+  {
+    "id": "tumbuhan",
+    "label_id": "Tumbuhan",
+    "label_en": "Plants",
+    "category": "kosmos",
+    "arabic": "النبات",
+    "synonyms_id": [
+      "tumbuhan",
+      "tumbuhan",
+      "plants",
+      "pohon",
+      "tanaman"
+    ],
+    "synonyms_ar": [
+      "النبات"
+    ],
+    "related_ayat_keys": [
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12"
+    ],
+    "connected_topics": [
+      "hewan",
+      "awan",
+      "semut"
+    ],
+    "position": {
+      "theta": 5.117,
+      "phi": 1.52,
+      "radius": 43.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "hewan",
+    "label_id": "Hewan",
+    "label_en": "Animals",
+    "category": "kosmos",
+    "arabic": "الأنعام",
+    "synonyms_id": [
+      "hewan",
+      "hewan",
+      "binatang",
+      "animals",
+      "ternak"
+    ],
+    "synonyms_ar": [
+      "الأنعام"
+    ],
+    "related_ayat_keys": [
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24"
+    ],
+    "connected_topics": [
+      "lebah",
+      "tumbuhan",
+      "burung"
+    ],
+    "position": {
+      "theta": 5.19,
+      "phi": 2.255,
+      "radius": 40.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "lebah",
+    "label_id": "Lebah",
+    "label_en": "Bee",
+    "category": "kosmos",
+    "arabic": "النحل",
+    "synonyms_id": [
+      "lebah",
+      "lebah",
+      "bee",
+      "madu",
+      "honey"
+    ],
+    "synonyms_ar": [
+      "النحل"
+    ],
+    "related_ayat_keys": [
+      "78:12",
+      "2:29",
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22"
+    ],
+    "connected_topics": [
+      "semut",
+      "hewan",
+      "manusia"
+    ],
+    "position": {
+      "theta": 5.365,
+      "phi": 0.995,
+      "radius": 37.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "semut",
+    "label_id": "Semut",
+    "label_en": "Ant",
+    "category": "kosmos",
+    "arabic": "النمل",
+    "synonyms_id": [
+      "semut",
+      "semut",
+      "ant",
+      "naml"
+    ],
+    "synonyms_ar": [
+      "النمل"
+    ],
+    "related_ayat_keys": [
+      "80:24",
+      "6:97",
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29"
+    ],
+    "connected_topics": [
+      "burung",
+      "lebah",
+      "penciptaan"
+    ],
+    "position": {
+      "theta": 5.574,
+      "phi": 1.73,
+      "radius": 33.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "burung",
+    "label_id": "Burung",
+    "label_en": "Birds",
+    "category": "kosmos",
+    "arabic": "الطير",
+    "synonyms_id": [
+      "burung",
+      "burung",
+      "birds",
+      "terbang"
+    ],
+    "synonyms_ar": [
+      "الطير"
+    ],
+    "related_ayat_keys": [
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97"
+    ],
+    "connected_topics": [
+      "manusia",
+      "semut",
+      "air"
+    ],
+    "position": {
+      "theta": 5.673,
+      "phi": 2.465,
+      "radius": 42.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "manusia",
+    "label_id": "Manusia",
+    "label_en": "Humanity",
+    "category": "kosmos",
+    "arabic": "الإنسان",
+    "synonyms_id": [
+      "manusia",
+      "manusia",
+      "insan",
+      "human",
+      "bani adam"
+    ],
+    "synonyms_ar": [
+      "الإنسان"
+    ],
+    "related_ayat_keys": [
+      "2:29",
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5"
+    ],
+    "connected_topics": [
+      "penciptaan",
+      "burung",
+      "api"
+    ],
+    "position": {
+      "theta": 5.765,
+      "phi": 1.205,
+      "radius": 37.37
+    },
+    "size": 1.35
+  },
+  {
+    "id": "penciptaan",
+    "label_id": "Penciptaan",
+    "label_en": "Creation",
+    "category": "kosmos",
+    "arabic": "الخلق",
+    "synonyms_id": [
+      "penciptaan",
+      "penciptaan",
+      "creation",
+      "mencipta",
+      "ciptaan"
+    ],
+    "synonyms_ar": [
+      "الخلق"
+    ],
+    "related_ayat_keys": [
+      "6:97",
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2"
+    ],
+    "connected_topics": [
+      "air",
+      "manusia",
+      "tanah"
+    ],
+    "position": {
+      "theta": 5.52,
+      "phi": 1.94,
+      "radius": 33.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "air",
+    "label_id": "Air",
+    "label_en": "Water",
+    "category": "kosmos",
+    "arabic": "الماء",
+    "synonyms_id": [
+      "air",
+      "air",
+      "water",
+      "sumber hidup"
+    ],
+    "synonyms_ar": [
+      "الماء"
+    ],
+    "related_ayat_keys": [
+      "10:5",
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10"
+    ],
+    "connected_topics": [
+      "hujan",
+      "lautan",
+      "tumbuhan",
+      "manusia",
+      "api",
+      "penciptaan",
+      "waktu"
+    ],
+    "position": {
+      "theta": 5.702,
+      "phi": 0.68,
+      "radius": 46.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "api",
+    "label_id": "Api",
+    "label_en": "Fire",
+    "category": "kosmos",
+    "arabic": "النار",
+    "synonyms_id": [
+      "api",
+      "api",
+      "fire",
+      "nar",
+      "nyala"
+    ],
+    "synonyms_ar": [
+      "النار"
+    ],
+    "related_ayat_keys": [
+      "13:2",
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30"
+    ],
+    "connected_topics": [
+      "neraka",
+      "ibrahim",
+      "penciptaan",
+      "tanah",
+      "air",
+      "kapal"
+    ],
+    "position": {
+      "theta": 5.778,
+      "phi": 1.415,
+      "radius": 43.55
+    },
+    "size": 1.06
+  },
+  {
+    "id": "tanah",
+    "label_id": "Tanah",
+    "label_en": "Clay and Soil",
+    "category": "kosmos",
+    "arabic": "الطين",
+    "synonyms_id": [
+      "tanah",
+      "tanah",
+      "clay",
+      "soil",
+      "thin",
+      "lempung"
+    ],
+    "synonyms_ar": [
+      "الطين"
+    ],
+    "related_ayat_keys": [
+      "16:10",
+      "24:43",
+      "36:38",
+      "78:12",
+      "2:29",
+      "13:2",
+      "21:32"
+    ],
+    "connected_topics": [
+      "waktu",
+      "api",
+      "langit"
+    ],
+    "position": {
+      "theta": 5.904,
+      "phi": 2.15,
+      "radius": 39.42
+    },
+    "size": 0.92
+  },
+  {
+    "id": "waktu",
+    "label_id": "Waktu",
+    "label_en": "Time",
+    "category": "kosmos",
+    "arabic": "الوقت",
+    "synonyms_id": [
+      "waktu",
+      "waktu",
+      "masa",
+      "time",
+      "ashr",
+      "zaman"
+    ],
+    "synonyms_ar": [
+      "الوقت"
+    ],
+    "related_ayat_keys": [
+      "21:30",
+      "30:48",
+      "55:19",
+      "80:24",
+      "6:97",
+      "16:10",
+      "24:43"
+    ],
+    "connected_topics": [
+      "kapal",
+      "tanah",
+      "bumi"
+    ],
+    "position": {
+      "theta": 6.123,
+      "phi": 0.89,
+      "radius": 33.98
+    },
+    "size": 1.27
+  },
+  {
+    "id": "kapal",
+    "label_id": "Kapal",
+    "label_en": "Ships",
+    "category": "kosmos",
+    "arabic": "الفلك",
+    "synonyms_id": [
+      "kapal",
+      "kapal",
+      "ship",
+      "bahtera",
+      "perahu"
+    ],
+    "synonyms_ar": [
+      "الفلك"
+    ],
+    "related_ayat_keys": [
+      "21:32",
+      "31:10",
+      "67:3",
+      "2:22",
+      "10:5",
+      "21:30",
+      "30:48"
+    ],
+    "connected_topics": [
+      "langit",
+      "waktu",
+      "bintang"
+    ],
+    "position": {
+      "theta": 6.268,
+      "phi": 1.625,
+      "radius": 43.56
+    },
+    "size": 1.13
+  },
+  {
+    "id": "surga",
+    "label_id": "Surga",
+    "label_en": "Paradise",
+    "category": "akhirat",
+    "arabic": "الجنة",
+    "synonyms_id": [
+      "surga",
+      "surga",
+      "jannah",
+      "paradise",
+      "firdaus"
+    ],
+    "synonyms_ar": [
+      "الجنة"
+    ],
+    "related_ayat_keys": [
+      "1:4",
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25"
+    ],
+    "connected_topics": [
+      "pahala",
+      "amal",
+      "taqwa",
+      "rahmat",
+      "neraka",
+      "penyesalan",
+      "kebangkitan"
+    ],
+    "position": {
+      "theta": 5.238,
+      "phi": 0.695,
+      "radius": 29.0
+    },
+    "size": 1.35
+  },
+  {
+    "id": "neraka",
+    "label_id": "Neraka",
+    "label_en": "Hellfire",
+    "category": "akhirat",
+    "arabic": "النار",
+    "synonyms_id": [
+      "neraka",
+      "neraka",
+      "jahannam",
+      "hellfire",
+      "saqar"
+    ],
+    "synonyms_ar": [
+      "النار"
+    ],
+    "related_ayat_keys": [
+      "2:24",
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185"
+    ],
+    "connected_topics": [
+      "dosa",
+      "siksa",
+      "kufur",
+      "api",
+      "kiamat",
+      "surga",
+      "hisab"
+    ],
+    "position": {
+      "theta": 5.403,
+      "phi": 1.43,
+      "radius": 41.43
+    },
+    "size": 1.35
+  },
+  {
+    "id": "kiamat",
+    "label_id": "Kiamat",
+    "label_en": "Last Hour",
+    "category": "akhirat",
+    "arabic": "القيامة",
+    "synonyms_id": [
+      "kiamat",
+      "kiamat",
+      "qiyamah",
+      "hari kiamat",
+      "last hour"
+    ],
+    "synonyms_ar": [
+      "القيامة"
+    ],
+    "related_ayat_keys": [
+      "2:25",
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8"
+    ],
+    "connected_topics": [
+      "kebangkitan",
+      "hisab",
+      "langit",
+      "bumi",
+      "neraka",
+      "mizan"
+    ],
+    "position": {
+      "theta": 5.617,
+      "phi": 2.165,
+      "radius": 37.55
+    },
+    "size": 1.35
+  },
+  {
+    "id": "kebangkitan",
+    "label_id": "Kebangkitan",
+    "label_en": "Resurrection",
+    "category": "akhirat",
+    "arabic": "البعث",
+    "synonyms_id": [
+      "kebangkitan",
+      "kebangkitan",
+      "dibangkitkan",
+      "resurrection",
+      "bats"
+    ],
+    "synonyms_ar": [
+      "البعث"
+    ],
+    "related_ayat_keys": [
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25",
+      "18:49"
+    ],
+    "connected_topics": [
+      "hisab",
+      "kiamat",
+      "shirath"
+    ],
+    "position": {
+      "theta": 5.725,
+      "phi": 0.905,
+      "radius": 32.24
+    },
+    "size": 0.99
+  },
+  {
+    "id": "hisab",
+    "label_id": "Hisab",
+    "label_en": "Reckoning",
+    "category": "akhirat",
+    "arabic": "الحساب",
+    "synonyms_id": [
+      "hisab",
+      "hisab",
+      "perhitungan",
+      "reckoning",
+      "accounting"
+    ],
+    "synonyms_ar": [
+      "الحساب"
+    ],
+    "related_ayat_keys": [
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185",
+      "21:47"
+    ],
+    "connected_topics": [
+      "mizan",
+      "amal",
+      "kitab_catatan",
+      "kiamat",
+      "kebangkitan",
+      "syafaat"
+    ],
+    "position": {
+      "theta": 5.81,
+      "phi": 1.64,
+      "radius": 41.71
+    },
+    "size": 1.34
+  },
+  {
+    "id": "mizan",
+    "label_id": "Mizan",
+    "label_en": "Scales",
+    "category": "akhirat",
+    "arabic": "الميزان",
+    "synonyms_id": [
+      "mizan",
+      "mizan",
+      "timbangan",
+      "scales",
+      "neraca"
+    ],
+    "synonyms_ar": [
+      "الميزان"
+    ],
+    "related_ayat_keys": [
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8",
+      "22:7"
+    ],
+    "connected_topics": [
+      "shirath",
+      "hisab",
+      "kematian"
+    ],
+    "position": {
+      "theta": 6.008,
+      "phi": 2.375,
+      "radius": 37.37
+    },
+    "size": 1.2
+  },
+  {
+    "id": "shirath",
+    "label_id": "Shirath",
+    "label_en": "Straight Path",
+    "category": "akhirat",
+    "arabic": "الصراط",
+    "synonyms_id": [
+      "shirath",
+      "shirath",
+      "sirat",
+      "jalan lurus",
+      "straight path"
+    ],
+    "synonyms_ar": [
+      "الصراط"
+    ],
+    "related_ayat_keys": [
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25",
+      "18:49",
+      "36:51"
+    ],
+    "connected_topics": [
+      "syafaat",
+      "mizan",
+      "barzakh"
+    ],
+    "position": {
+      "theta": 5.749,
+      "phi": 1.115,
+      "radius": 34.52
+    },
+    "size": 1.06
+  },
+  {
+    "id": "syafaat",
+    "label_id": "Syafaat",
+    "label_en": "Intercession",
+    "category": "akhirat",
+    "arabic": "الشفاعة",
+    "synonyms_id": [
+      "syafaat",
+      "syafaat",
+      "intercession",
+      "pertolongan akhirat"
+    ],
+    "synonyms_ar": [
+      "الشفاعة"
+    ],
+    "related_ayat_keys": [
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185",
+      "21:47",
+      "39:69"
+    ],
+    "connected_topics": [
+      "kematian",
+      "shirath",
+      "malaikat_maut"
+    ],
+    "position": {
+      "theta": 5.83,
+      "phi": 1.85,
+      "radius": 32.12
+    },
+    "size": 0.92
+  },
+  {
+    "id": "kematian",
+    "label_id": "Kematian",
+    "label_en": "Death",
+    "category": "akhirat",
+    "arabic": "الموت",
+    "synonyms_id": [
+      "kematian",
+      "kematian",
+      "mati",
+      "death",
+      "ajal",
+      "maut"
+    ],
+    "synonyms_ar": [
+      "الموت"
+    ],
+    "related_ayat_keys": [
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8",
+      "22:7",
+      "56:12"
+    ],
+    "connected_topics": [
+      "barzakh",
+      "kebangkitan",
+      "malaikat_maut",
+      "amal",
+      "syafaat",
+      "mahsyar"
+    ],
+    "position": {
+      "theta": 5.945,
+      "phi": 2.585,
+      "radius": 43.68
+    },
+    "size": 1.27
+  },
+  {
+    "id": "barzakh",
+    "label_id": "Barzakh",
+    "label_en": "Barrier Realm",
+    "category": "akhirat",
+    "arabic": "البرزخ",
+    "synonyms_id": [
+      "barzakh",
+      "barzakh",
+      "alam kubur",
+      "barrier"
+    ],
+    "synonyms_ar": [
+      "البرزخ"
+    ],
+    "related_ayat_keys": [
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25",
+      "18:49",
+      "36:51",
+      "67:6"
+    ],
+    "connected_topics": [
+      "malaikat_maut",
+      "kematian",
+      "kitab_catatan"
+    ],
+    "position": {
+      "theta": 6.162,
+      "phi": 1.325,
+      "radius": 38.7
+    },
+    "size": 1.13
+  },
+  {
+    "id": "malaikat_maut",
+    "label_id": "Malaikat Maut",
+    "label_en": "Angel of Death",
+    "category": "akhirat",
+    "arabic": "ملك الموت",
+    "synonyms_id": [
+      "malaikat maut",
+      "malaikat maut",
+      "angel of death",
+      "pencabut nyawa"
+    ],
+    "synonyms_ar": [
+      "ملك الموت"
+    ],
+    "related_ayat_keys": [
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19"
+    ],
+    "connected_topics": [
+      "mahsyar",
+      "barzakh",
+      "yaumul_din"
+    ],
+    "position": {
+      "theta": 6.318,
+      "phi": 2.06,
+      "radius": 33.08
+    },
+    "size": 0.99
+  },
+  {
+    "id": "mahsyar",
+    "label_id": "Mahsyar",
+    "label_en": "Gathering",
+    "category": "akhirat",
+    "arabic": "المحشر",
+    "synonyms_id": [
+      "mahsyar",
+      "mahsyar",
+      "dikumpulkan",
+      "gathering",
+      "padang mahsyar"
+    ],
+    "synonyms_ar": [
+      "المحشر"
+    ],
+    "related_ayat_keys": [
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22"
+    ],
+    "connected_topics": [
+      "kitab_catatan",
+      "malaikat_maut",
+      "pahala"
+    ],
+    "position": {
+      "theta": 6.388,
+      "phi": 0.8,
+      "radius": 28.3
+    },
+    "size": 1.34
+  },
+  {
+    "id": "kitab_catatan",
+    "label_id": "Kitab Catatan",
+    "label_en": "Record Book",
+    "category": "akhirat",
+    "arabic": "كتاب الأعمال",
+    "synonyms_id": [
+      "kitab catatan",
+      "kitab catatan",
+      "catatan amal",
+      "record book",
+      "buku amal"
+    ],
+    "synonyms_ar": [
+      "كتاب الأعمال"
+    ],
+    "related_ayat_keys": [
+      "69:19",
+      "99:7",
+      "2:25",
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7"
+    ],
+    "connected_topics": [
+      "yaumul_din",
+      "mahsyar",
+      "siksa"
+    ],
+    "position": {
+      "theta": 6.091,
+      "phi": 1.535,
+      "radius": 40.09
+    },
+    "size": 1.2
+  },
+  {
+    "id": "yaumul_din",
+    "label_id": "Yaumuddin",
+    "label_en": "Day of Recompense",
+    "category": "akhirat",
+    "arabic": "يوم الدين",
+    "synonyms_id": [
+      "yaumul din",
+      "yaumuddin",
+      "hari pembalasan",
+      "day of judgment"
+    ],
+    "synonyms_ar": [
+      "يوم الدين"
+    ],
+    "related_ayat_keys": [
+      "75:22",
+      "1:4",
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7"
+    ],
+    "connected_topics": [
+      "pahala",
+      "kitab_catatan",
+      "amal_buruk"
+    ],
+    "position": {
+      "theta": 6.309,
+      "phi": 2.27,
+      "radius": 37.71
+    },
+    "size": 1.06
+  },
+  {
+    "id": "pahala",
+    "label_id": "Pahala",
+    "label_en": "Reward",
+    "category": "akhirat",
+    "arabic": "الأجر",
+    "synonyms_id": [
+      "pahala",
+      "pahala",
+      "reward",
+      "ganjaran",
+      "balasan baik"
+    ],
+    "synonyms_ar": [
+      "الأجر"
+    ],
+    "related_ayat_keys": [
+      "84:7",
+      "2:24",
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4"
+    ],
+    "connected_topics": [
+      "siksa",
+      "yaumul_din",
+      "wajah_berseri"
+    ],
+    "position": {
+      "theta": 6.427,
+      "phi": 1.01,
+      "radius": 34.68
+    },
+    "size": 0.92
+  },
+  {
+    "id": "siksa",
+    "label_id": "Siksa",
+    "label_en": "Punishment",
+    "category": "akhirat",
+    "arabic": "العذاب",
+    "synonyms_id": [
+      "siksa",
+      "siksa",
+      "azab",
+      "punishment",
+      "hukuman"
+    ],
+    "synonyms_ar": [
+      "العذاب"
+    ],
+    "related_ayat_keys": [
+      "99:7",
+      "2:25",
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24"
+    ],
+    "connected_topics": [
+      "amal_buruk",
+      "pahala",
+      "wajah_kelam"
+    ],
+    "position": {
+      "theta": 6.506,
+      "phi": 1.745,
+      "radius": 30.11
+    },
+    "size": 1.27
+  },
+  {
+    "id": "amal_buruk",
+    "label_id": "Amal Buruk",
+    "label_en": "Evil Deeds",
+    "category": "akhirat",
+    "arabic": "السيئات",
+    "synonyms_id": [
+      "amal buruk",
+      "amal buruk",
+      "kejahatan",
+      "evil deeds",
+      "sayyiat"
+    ],
+    "synonyms_ar": [
+      "السيئات"
+    ],
+    "related_ayat_keys": [
+      "1:4",
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25"
+    ],
+    "connected_topics": [
+      "wajah_berseri",
+      "siksa",
+      "kekal"
+    ],
+    "position": {
+      "theta": 6.695,
+      "phi": 2.48,
+      "radius": 39.51
+    },
+    "size": 1.13
+  },
+  {
+    "id": "wajah_berseri",
+    "label_id": "Wajah Berseri",
+    "label_en": "Radiant Faces",
+    "category": "akhirat",
+    "arabic": "وجوه ناضرة",
+    "synonyms_id": [
+      "wajah berseri",
+      "wajah berseri",
+      "radiant faces",
+      "muka bercahaya"
+    ],
+    "synonyms_ar": [
+      "وجوه ناضرة"
+    ],
+    "related_ayat_keys": [
+      "2:24",
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185"
+    ],
+    "connected_topics": [
+      "wajah_kelam",
+      "amal_buruk",
+      "naungan"
+    ],
+    "position": {
+      "theta": 6.895,
+      "phi": 1.22,
+      "radius": 34.37
+    },
+    "size": 0.99
+  },
+  {
+    "id": "wajah_kelam",
+    "label_id": "Wajah Kelam",
+    "label_en": "Darkened Faces",
+    "category": "akhirat",
+    "arabic": "وجوه باسرة",
+    "synonyms_id": [
+      "wajah kelam",
+      "wajah kelam",
+      "dark faces",
+      "muka hitam"
+    ],
+    "synonyms_ar": [
+      "وجوه باسرة"
+    ],
+    "related_ayat_keys": [
+      "2:25",
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8"
+    ],
+    "connected_topics": [
+      "kekal",
+      "wajah_berseri",
+      "penyesalan"
+    ],
+    "position": {
+      "theta": 6.532,
+      "phi": 1.955,
+      "radius": 30.72
+    },
+    "size": 1.34
+  },
+  {
+    "id": "kekal",
+    "label_id": "Kekal",
+    "label_en": "Eternity",
+    "category": "akhirat",
+    "arabic": "الخلود",
+    "synonyms_id": [
+      "kekal",
+      "kekal",
+      "abadi",
+      "eternity",
+      "selamanya"
+    ],
+    "synonyms_ar": [
+      "الخلود"
+    ],
+    "related_ayat_keys": [
+      "3:185",
+      "21:47",
+      "39:69",
+      "69:19",
+      "99:7",
+      "2:25",
+      "18:49"
+    ],
+    "connected_topics": [
+      "naungan",
+      "wajah_kelam",
+      "surga"
+    ],
+    "position": {
+      "theta": 6.637,
+      "phi": 0.695,
+      "radius": 43.25
+    },
+    "size": 1.2
+  },
+  {
+    "id": "naungan",
+    "label_id": "Naungan",
+    "label_en": "Shade",
+    "category": "akhirat",
+    "arabic": "الظل",
+    "synonyms_id": [
+      "naungan",
+      "naungan",
+      "shade",
+      "teduh",
+      "bayangan surga"
+    ],
+    "synonyms_ar": [
+      "الظل"
+    ],
+    "related_ayat_keys": [
+      "7:8",
+      "22:7",
+      "56:12",
+      "75:22",
+      "1:4",
+      "3:185",
+      "21:47"
+    ],
+    "connected_topics": [
+      "penyesalan",
+      "kekal",
+      "neraka"
+    ],
+    "position": {
+      "theta": 6.85,
+      "phi": 1.43,
+      "radius": 40.55
+    },
+    "size": 1.06
+  },
+  {
+    "id": "penyesalan",
+    "label_id": "Penyesalan",
+    "label_en": "Regret",
+    "category": "akhirat",
+    "arabic": "الحسرة",
+    "synonyms_id": [
+      "penyesalan",
+      "penyesalan",
+      "regret",
+      "sesal",
+      "andai saja"
+    ],
+    "synonyms_ar": [
+      "الحسرة"
+    ],
+    "related_ayat_keys": [
+      "18:49",
+      "36:51",
+      "67:6",
+      "84:7",
+      "2:24",
+      "7:8",
+      "22:7"
+    ],
+    "connected_topics": [
+      "surga",
+      "naungan",
+      "kiamat"
+    ],
+    "position": {
+      "theta": 7.018,
+      "phi": 2.165,
+      "radius": 36.42
+    },
+    "size": 0.92
+  }
+]
