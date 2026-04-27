@@ -140,6 +140,10 @@ async function boot(): Promise<void> {
   }
 
   buildRail()
+  if (window.innerWidth <= 768) {
+    d.rail.classList.add('collapsed')
+    d.railToggle.classList.remove('on')
+  }
   updateHUD(store, topics.length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
   renderAch()
   doCheckBadges()
@@ -409,6 +413,13 @@ function bind(): void {
   d.ach.onclick = () => d.achOverlay.classList.contains('open') ? closeAch() : openAch()
   d.closeach.onclick = closeAch
   d.closereader.onclick = closeReader
+
+  d.readerBody.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.reader-play')
+    if (!btn) return
+    const v = lookup.get(btn.dataset.key!)
+    if (v) playVerseAudio(v, btn, store.muted, () => { store.audioPlayedCount++; save(); doCheckBadges() }, toast)
+  })
   d.mind.onclick = toggleMind
   d.mute.onclick = toggleMute
   d.theme.onclick = toggleTheme

@@ -465,8 +465,8 @@ button { font: inherit; cursor: pointer; color: inherit; background: none; borde
 
 /* Surah reader */
 .reader-card {
-  max-width: 680px; width: min(680px, 100%);
-  max-height: min(88vh, 800px);
+  max-width: 900px; width: min(900px, 100%);
+  max-height: 95vh;
   overflow: hidden;
   display: flex; flex-direction: column;
   padding: 0;
@@ -478,11 +478,20 @@ button { font: inherit; cursor: pointer; color: inherit; background: none; borde
 }
 .reader-body {
   overflow-y: auto; flex: 1;
-  padding: 0 28px 28px;
+  padding: 0 28px 32px;
   scroll-behavior: smooth;
 }
+.reader-bismillah {
+  font-family: Amiri, serif; font-size: 30px; line-height: 2;
+  text-align: center; direction: rtl;
+  padding: 20px 0 12px;
+  color: var(--gold-soft);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+  text-shadow: 0 0 30px rgba(231,201,139,.18);
+}
 .reader-verse {
-  padding: 18px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
   position: relative;
 }
@@ -490,45 +499,127 @@ button { font: inherit; cursor: pointer; color: inherit; background: none; borde
 .reader-verse.focus {
   background: rgba(231,201,139,.07);
   border-radius: 12px;
-  padding: 18px 14px;
-  margin: 0 -14px;
+  padding: 20px 16px;
+  margin: 0 -16px;
   border-bottom: none;
 }
 .reader-verse.focus::before {
   content: '';
-  position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px;
+  position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px;
   background: var(--gold); border-radius: 0 2px 2px 0;
+}
+.reader-vhead {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
 }
 .reader-num {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; border-radius: 50%;
+  width: 28px; height: 28px; border-radius: 50%;
   background: rgba(231,201,139,.11);
   color: var(--gold-soft);
   font-family: "JetBrains Mono", monospace; font-size: 11px;
+  flex-shrink: 0;
+}
+.reader-play {
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,.03);
+  display: grid; place-items: center; transition: .12s; color: var(--muted);
+  font-size: 11px; font-family: "JetBrains Mono", monospace;
+}
+.reader-play:hover { border-color: var(--teal); color: var(--teal); background: rgba(127,217,196,.08) }
+.reader-play svg { width: 13px; height: 13px }
+.reader-ar {
+  font-family: Amiri, serif; font-size: 26px; line-height: 2.1;
+  direction: rtl; text-align: right; color: var(--ink);
   margin-bottom: 10px;
 }
-.reader-ar {
-  font-family: Amiri, serif; font-size: 22px; line-height: 2.1;
-  direction: rtl; text-align: right; color: var(--ink);
-  margin-bottom: 8px;
-}
-.reader-tr { font-size: 13.5px; line-height: 1.75; color: var(--muted); margin: 0 }
+.reader-tr { font-size: 14px; line-height: 1.75; color: var(--muted); margin: 0 }
 .vc-ref { text-decoration: none; transition: color .13s }
 .vc-ref:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px }
 
-/* Mobile */
-@media (max-width: 980px) {
-  :root { --rail-w: 100%; --panel-w: 100% }
-  .topbar { grid-template-columns: 1fr }
+/* ── Mobile-first ── */
+@media (max-width: 768px) {
+  :root { --panel-w: 100%; --rail-w: 100%; --hud-h: 60px }
+
+  /* Topbar: flush to top edge, compact */
+  .topbar {
+    top: 0; left: 0; right: 0; padding: 0 12px;
+    grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+    height: 56px;
+    background: rgba(7,10,20,.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line); border-radius: 0;
+  }
   .brand { display: none }
-  .actions { position: fixed; right: 12px; bottom: calc(var(--hud-h) + 84px); flex-direction: column; z-index: 30 }
-  .rail { left: 12px; right: 12px; bottom: calc(var(--hud-h) + 28px); top: auto; max-height: 38vh }
-  .panel { width: 100%; min-width: 0 }
-  .hud { grid-template-columns: 1fr auto; left: 12px; right: 12px; bottom: 12px }
+  .search-wrap { min-width: 0 }
+  .search { padding: 7px 8px 7px 12px }
+  .kbd { display: none }
+  .search .go { padding: 6px 10px; font-size: 11.5px }
+  .actions { gap: 6px }
+  .icon-btn { width: 38px; height: 38px; border-radius: 10px }
+
+  /* Offset scene below topbar */
+  #scene, #map2d { top: 56px; height: calc(100% - 56px) }
+
+  /* Rail: bottom sheet sliding up from above HUD */
+  .rail {
+    top: auto; left: 0; right: 0; bottom: var(--hud-h);
+    width: 100%; border-radius: 20px 20px 0 0;
+    max-height: 54vh;
+    border-left: none; border-right: none; border-bottom: none;
+    transform: translateY(0); opacity: 1; pointer-events: auto;
+  }
+  .rail.collapsed { transform: translateY(calc(100% + 2px)); opacity: 0; pointer-events: none }
+
+  /* Panel: full-screen bottom sheet */
+  .panel {
+    top: auto; bottom: 0; left: 0; right: 0; width: 100%; min-width: 0; height: 88vh;
+    transform: translateY(102%);
+    border-left: none; border-top: 1px solid var(--line-2);
+    border-radius: 20px 20px 0 0;
+  }
+  .panel.open { transform: translateY(0) }
+  .panel-title { font-size: 26px }
+  .panel-head { padding: 18px 18px 0 }
+  .panel-body { padding: 16px 18px 32px }
+
+  /* HUD: slim bottom bar */
+  .hud {
+    left: 0; right: 0; bottom: 0; height: var(--hud-h);
+    border-radius: 0; border-left: none; border-right: none; border-bottom: none;
+    grid-template-columns: 1fr auto; padding: 0 14px; gap: 10px;
+  }
   .hud-mid { display: none }
-  .badges { grid-template-columns: repeat(2, 1fr) }
+  .hud-mark { width: 28px; height: 28px; border-radius: 7px }
+  .hud-mark::after { inset: 7px }
+  .hud-topic { font-size: 15px }
+  .hud-cat { font-size: 10px; letter-spacing: .08em }
+  .mode-btn { padding: 7px 10px; font-size: 11.5px; gap: 5px }
+  .mode-btn svg { width: 13px; height: 13px }
+
+  /* Overlays: full-screen bottom sheet */
+  .overlay { padding: 0; align-items: flex-end }
+  .overlay-card {
+    width: 100%; max-height: 90vh;
+    border-radius: 20px 20px 0 0;
+    border-left: none; border-right: none; border-bottom: none;
+    padding: 24px 18px 32px;
+  }
+  .reader-card { max-height: 94vh; border-radius: 20px 20px 0 0 }
+  .reader-card .overlay-head { padding: 18px 18px 14px }
+  .reader-body { padding: 0 18px 32px }
+  .reader-ar { font-size: 22px }
+  .reader-bismillah { font-size: 24px }
+
+  /* Achievements */
   .ach-grid { grid-template-columns: 1fr }
+  .badges { grid-template-columns: repeat(2, 1fr) }
+  .br-card { font-size: 12px }
+  .overlay-title { font-size: 22px }
+
+  /* Verse cards in panel */
+  .v-arabic { font-size: 24px }
+  .verse-card { padding: 16px 14px }
 }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .05ms !important }
 }
