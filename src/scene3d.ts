@@ -4,6 +4,7 @@ import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRe
 import { CATEGORIES } from './constants'
 import type { Topic, EdgeData, FlightState, CategoryKey, QuizState } from './types'
 import { createInstancedNodes, type InstancedNodes } from './nodes'
+import { STAR_LAYERS, type TierConfig } from './perf'
 
 export interface Scene3DCallbacks {
   onNodeClick: (id: string) => void
@@ -40,6 +41,8 @@ interface Scene3DState {
   isMind: boolean
   topics: Topic[]
   byId: Map<string, Topic>
+  cfg: TierConfig
+  stars: THREE.Points[]
 }
 
 let ctx: Scene3DState | null = null
@@ -48,6 +51,7 @@ export function init3d(
   container: HTMLElement,
   topics: Topic[],
   callbacks: Scene3DCallbacks,
+  cfg: TierConfig,
 ): void {
   const w = innerWidth, h = innerHeight
   const scene = new THREE.Scene()
@@ -58,8 +62,8 @@ export function init3d(
   const ocam = new THREE.OrthographicCamera(w / -22, w / 22, h / 22, h / -22, 0.1, 1500)
   ocam.position.set(0, 0, 120)
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' })
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2))
+  const renderer = new THREE.WebGLRenderer({ antialias: cfg.antialias, alpha: true, powerPreference: 'high-performance' })
+  renderer.setPixelRatio(cfg.pixelRatio)
   renderer.setSize(w, h)
   ;(renderer as any).outputEncoding = THREE.sRGBEncoding
   container.appendChild(renderer.domElement)
@@ -91,7 +95,7 @@ export function init3d(
     nodesI: null, labelMap: new Map(), originalPos: [], flatPositions: [],
     edgesState: null, edgeGroup, nodeGroup, center,
     flight: null, lastInteraction: Date.now(), isMind: false,
-    topics, byId,
+    topics, byId, cfg, stars: [],
   }
 
   renderer.domElement.onpointermove = (ev: PointerEvent) => {
@@ -189,11 +193,7 @@ function buildSky(): void {
 
 function buildStars(): void {
   if (!ctx) return
-  ;[
-    { c: 2600, s: 0.12, o: 0.85, r: 440 },
-    { c: 1700, s: 0.20, o: 0.68, r: 390 },
-    { c: 900,  s: 0.34, o: 0.45, r: 330 },
-  ].forEach((L) => {
+  STAR_LAYERS.slice(0, ctx.cfg.starLayerCount).forEach((L) => {
     const p = new Float32Array(L.c * 3)
     const col = new Float32Array(L.c * 3)
     for (let i = 0; i < L.c; i++) {
@@ -211,7 +211,9 @@ function buildStars(): void {
     const geo = new THREE.BufferGeometry()
     geo.setAttribute('position', new THREE.BufferAttribute(p, 3))
     geo.setAttribute('color', new THREE.BufferAttribute(col, 3))
-    ctx!.scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ size: L.s, transparent: true, opacity: L.o, vertexColors: true, depthWrite: false })))
+    const points = new THREE.Points(geo, new THREE.PointsMaterial({ size: L.s, transparent: true, opacity: L.o, vertexColors: true, depthWrite: false }))
+    ctx!.scene.add(points)
+    ctx!.stars.push(points)
   })
 }
 
@@ -257,7 +259,7 @@ function buildCenterOrb(): void {
 
 function buildTopicNodes(): void {
   if (!ctx) return
-  ctx.nodesI = createInstancedNodes(ctx.topics, true, ctx.nodeGroup)
+  ctx.nodesI = createInstancedNodes(ctx.topics, ctx.cfg.glow, ctx.nodeGroup)
   ctx.originalPos = []
   ctx.flatPositions = []
   const v = new THREE.Vector3()
@@ -349,7 +351,7 @@ export function rebuildEdges(): void {
 
   let particles: THREE.Points | null = null
   let particleAttr: THREE.BufferAttribute | null = null
-  if (list.length) {
+  if (ctx.cfg.edgeParticles && list.length) {
     const ppos = new Float32Array(list.length * 3)
     const pcol = new Float32Array(list.length * 3)
     list.forEach((e, k) => {
@@ -410,7 +412,7 @@ function updateLabelLod(selectedId: string | null, hoverId: string | null, el: n
   const ranked = ctx.nodesI.ids
     .map((id, i) => ({ id, d: ctx!.nodesI!.getPosition(i, _v).distanceToSquared(camPos) }))
     .sort((a, b) => a.d - b.d)
-  const visible = new Set(ranked.slice(0, 28).map((r) => r.id))
+  const visible = new Set(ranked.slice(0, ctx.cfg.maxLabels).map((r) => r.id))
   if (selectedId) visible.add(selectedId)
   if (hoverId) visible.add(hoverId)
   ctx.labelMap.forEach(({ el: labelEl }, id) => {
@@ -424,6 +426,15 @@ let frameCallback: ((now: number) => void) | null = null
 
 export function setFrameCallback(cb: ((now: number) => void) | null): void {
   frameCallback = cb
+}
+
+export function applyTier(cfg: TierConfig): void {
+  if (!ctx) return
+  ctx.cfg = cfg
+  ctx.renderer.setPixelRatio(cfg.pixelRatio)
+  ctx.stars.forEach((p, i) => { p.visible = i < cfg.starLayerCount })
+  if (!cfg.glow) ctx.nodesI?.disposeGlow()
+  if (!cfg.edgeParticles) disposeEdgeParticles()
 }
 
 export function startAnimate(): void {
@@ -445,7 +456,7 @@ function loop(): void {
   const el = ctx.clock.elapsedTime
   const { selectedId, hoverId, quizActive, quizCandidates, reducedMotion } = animState
 
-  if (ctx.scene.userData.sky) ctx.scene.userData.sky.uniforms.t.value = el
+  if (ctx.cfg.animatedSky && ctx.scene.userData.sky) ctx.scene.userData.sky.uniforms.t.value = el
 
   if (ctx.center.userData.orb) {
     ctx.center.userData.orb.rotation.y += dt * 0.12
@@ -480,7 +491,7 @@ function loop(): void {
 
   if (ctx.flight) flyStep()
 
-  ctx.controls.autoRotate = !reducedMotion && !ctx.isMind && !quizActive && Date.now() - ctx.lastInteraction > 10000
+  ctx.controls.autoRotate = ctx.cfg.autoRotate && !reducedMotion && !ctx.isMind && !quizActive && Date.now() - ctx.lastInteraction > 10000
   ctx.controls.autoRotateSpeed = 0.22
   ctx.controls.update()
   updateLabelLod(selectedId, hoverId, el)

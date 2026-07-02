@@ -5,6 +5,7 @@ import {
   init3d, buildScene, setVisibleTopics3d, animState, startAnimate, flyTo, resetCamera, highlightEdges,
   setHover3d, toggleMind3d, quizVisuals3d, burst3d,
   saveCamera, restoreCamera, resize3d, checkWebGL, getIsMind,
+  setFrameCallback, applyTier,
 } from './scene3d'
 import { initCanvas, setTopics2d, resizeCanvas, draw2d, pick2d } from './scene2d'
 import { togglePanel, topicVerses, renderPanelBody, esc } from './panel'
@@ -18,7 +19,7 @@ import {
 } from './ui'
 import { CATEGORIES } from './constants'
 import type { Topic, AyatItem, AppStore, QuizState, CategoryKey } from './types'
-import { resolveTier, getTierConfig, type Tier, type TierConfig } from './perf'
+import { resolveTier, getTierConfig, createFpsMonitor, createPerfOverlay, persistTier, type Tier, type TierConfig } from './perf'
 import {
   createTopicHierarchy, getDefaultVisibleTopics, getVisibleTopics, isCluster, parentClusterIdFor,
   type TopicHierarchy,
@@ -156,7 +157,7 @@ async function boot(): Promise<void> {
         syncAnimState()
         setHover3d(id, prev)
       },
-    })
+    }, tierCfg)
   }
 
   bar(20, 'Mengambil mushaf dari CDN...')
@@ -187,6 +188,20 @@ async function boot(): Promise<void> {
     }
     syncAnimState()
     startAnimate()
+
+    const overlay = location.search.includes('perf') ? createPerfOverlay(() => tier) : null
+    const monitor = (store.quality ?? 'auto') === 'auto'
+      ? createFpsMonitor(() => {
+          if (tier === 'low') return
+          tier = tier === 'high' ? 'medium' : 'low'
+          persistTier(tier)
+          tierCfg = getTierConfig(tier)
+          applyTier(tierCfg)
+        })
+      : null
+    if (overlay || monitor) {
+      setFrameCallback((now) => { monitor?.frame(now); overlay?.frame(now) })
+    }
   }
 
   buildRail()
@@ -496,6 +511,7 @@ function bind(): void {
   d.quality.onchange = () => {
     store.quality = d.quality.value as AppStore['quality']
     save()
+    if (d.quality.value === 'auto') lsSet('auto_tier', '')
     toast('Kualitas grafis diperbarui — memuat ulang…')
     setTimeout(() => location.reload(), 450)
   }
