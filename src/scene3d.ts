@@ -96,15 +96,30 @@ export function init3d(
     renderer.domElement.style.cursor = hit ? 'pointer' : 'default'
   }
 
-  renderer.domElement.onclick = (ev: MouseEvent) => {
+  let _pdx = 0, _pdy = 0
+  renderer.domElement.addEventListener('pointerdown', (ev: PointerEvent) => { _pdx = ev.clientX; _pdy = ev.clientY })
+  renderer.domElement.addEventListener('pointerup', (ev: PointerEvent) => {
     if (!ctx) return
+    if (Math.hypot(ev.clientX - _pdx, ev.clientY - _pdy) > 10) return
     const r = renderer.domElement.getBoundingClientRect()
     ctx.mouse.x = (ev.clientX - r.left) / r.width * 2 - 1
     ctx.mouse.y = -(ev.clientY - r.top) / r.height * 2 + 1
     ctx.ray.setFromCamera(ctx.mouse, ctx.camera)
     const hit = ctx.ray.intersectObjects([...ctx.nodes.values()].map((n) => n.mesh), false)[0]
-    if (hit) callbacks.onNodeClick(hit.object.userData.id as string)
-  }
+    if (hit) { callbacks.onNodeClick(hit.object.userData.id as string); return }
+    if (ev.pointerType === 'touch') {
+      const proj = new THREE.Vector3()
+      let bestId: string | null = null, bestDist = 48
+      ctx.nodes.forEach((n, id) => {
+        proj.copy(n.mesh.position).project(ctx!.camera)
+        const sx = (proj.x * 0.5 + 0.5) * r.width + r.left
+        const sy = (-proj.y * 0.5 + 0.5) * r.height + r.top
+        const d = Math.hypot(ev.clientX - sx, ev.clientY - sy)
+        if (d < bestDist) { bestDist = d; bestId = id }
+      })
+      if (bestId) callbacks.onNodeClick(bestId)
+    }
+  })
 
   renderer.domElement.onpointerleave = () => callbacks.onNodeHover(null)
 }
@@ -115,6 +130,36 @@ export function buildScene(): void {
   buildStars()
   buildLights()
   buildCenterOrb()
+  buildTopicNodes()
+  rebuildEdges()
+}
+
+function disposeObject(obj: THREE.Object3D): void {
+  const cssObject = obj as THREE.Object3D & { element?: HTMLElement }
+  cssObject.element?.remove()
+  const mesh = obj as THREE.Mesh
+  if (mesh.geometry) mesh.geometry.dispose()
+  const material = mesh.material as THREE.Material | THREE.Material[] | undefined
+  if (Array.isArray(material)) material.forEach((m) => m.dispose())
+  else material?.dispose()
+  obj.children.forEach(disposeObject)
+}
+
+function clearTopicNodes(): void {
+  if (!ctx) return
+  while (ctx.nodeGroup.children.length) {
+    const child = ctx.nodeGroup.children[0]
+    ctx.nodeGroup.remove(child)
+    disposeObject(child)
+  }
+  ctx.nodes.clear()
+}
+
+export function setVisibleTopics3d(topics: Topic[]): void {
+  if (!ctx) return
+  ctx.topics = topics
+  ctx.byId = new Map(topics.map((t) => [t.id, t]))
+  clearTopicNodes()
   buildTopicNodes()
   rebuildEdges()
 }
@@ -245,13 +290,19 @@ function buildTopicNodes(): void {
 
 export function rebuildEdges(): void {
   if (!ctx) return
-  while (ctx.edgeGroup.children.length) ctx.edgeGroup.remove(ctx.edgeGroup.children[0])
+  while (ctx.edgeGroup.children.length) {
+    const child = ctx.edgeGroup.children[0]
+    ctx.edgeGroup.remove(child)
+    disposeObject(child)
+  }
   ctx.edges = []
   const seen = new Set<string>()
+  const visibleIds = new Set(ctx.topics.map((topic) => topic.id))
   const pg = new THREE.SphereGeometry(0.08, 10, 8)
   ctx.topics.forEach((a) => {
     a.connected_topics.forEach((bid) => {
       const b = ctx!.byId.get(bid)
+      if (!visibleIds.has(a.id) || !visibleIds.has(bid)) return
       const na = ctx!.nodes.get(a.id)
       const nb = ctx!.nodes.get(bid)
       if (!b || !na || !nb) return
@@ -281,6 +332,20 @@ export const animState = {
   quizActive: false,
   quizCandidates: new Set<string>(),
   reducedMotion: false,
+}
+
+function updateLabelLod(selectedId: string | null, hoverId: string | null): void {
+  if (!ctx?.labels) return
+  const cameraPosition = ctx.camera.position
+  const ranked = [...ctx.nodes.entries()]
+    .map(([id, node]) => ({ id, node, distance: node.mesh.position.distanceTo(cameraPosition) }))
+    .sort((a, b) => a.distance - b.distance)
+  const visible = new Set(ranked.slice(0, 28).map((item) => item.id))
+  if (selectedId) visible.add(selectedId)
+  if (hoverId) visible.add(hoverId)
+  ctx.nodes.forEach((node, id) => {
+    if (node.label) node.label.style.display = visible.has(id) ? '' : 'none'
+  })
 }
 
 export function startAnimate(): void {
@@ -319,6 +384,7 @@ export function startAnimate(): void {
   ctx.controls.autoRotate = !reducedMotion && !ctx.isMind && !quizActive && Date.now() - ctx.lastInteraction > 10000
   ctx.controls.autoRotateSpeed = 0.22
   ctx.controls.update()
+  updateLabelLod(selectedId, hoverId)
   ctx.renderer.render(ctx.scene, ctx.camera)
   if (ctx.labels) ctx.labels.render(ctx.scene, ctx.camera)
 }
@@ -363,6 +429,7 @@ export function animate(
   ctx.controls.autoRotate = !store.reducedMotion && !ctx.isMind && !quiz.active && Date.now() - ctx.lastInteraction > 10000
   ctx.controls.autoRotateSpeed = 0.22
   ctx.controls.update()
+  updateLabelLod(selectedId, hoverId)
   ctx.renderer.render(ctx.scene, ctx.camera)
   if (ctx.labels) ctx.labels.render(ctx.scene, ctx.camera)
 }

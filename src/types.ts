@@ -23,6 +23,9 @@ export interface Topic {
   connected_topics: string[]
   position: TopicPosition
   size: number
+  kind?: 'cluster' | 'topic'
+  parent_id?: string
+  child_topic_ids?: string[]
 }
 
 export interface AyatItem {

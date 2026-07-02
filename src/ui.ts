@@ -3,6 +3,7 @@ import { esc } from './panel'
 import type { Topic, SearchResult, CategoryKey, AppStore } from './types'
 
 export function showToast(message: string, kind: 'ok' | 'bad' | 'gold' | undefined, toastsEl: HTMLElement): void {
+  toastsEl.querySelectorAll('.toast').forEach((toast) => toast.remove())
   const t = document.createElement('div')
   t.className = `toast${kind ? ` ${kind}` : ''}`
   t.textContent = message

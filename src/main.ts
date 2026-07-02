@@ -2,11 +2,11 @@ import { loadStore, saveStore, dailyStreak, trackTimeBadges, lsGet, lsSet } from
 import { loadQuran, normalizeQuran } from './quran'
 import { buildSearchIndex, search as doSearch, bestMatch } from './search'
 import {
-  init3d, buildScene, animState, startAnimate, flyTo, resetCamera, highlightEdges,
+  init3d, buildScene, setVisibleTopics3d, animState, startAnimate, flyTo, resetCamera, highlightEdges,
   setHover3d, toggleMind3d, quizVisuals3d, burst3d,
   saveCamera, restoreCamera, resize3d, checkWebGL, getIsMind,
 } from './scene3d'
-import { initCanvas, resizeCanvas, draw2d, pick2d } from './scene2d'
+import { initCanvas, setTopics2d, resizeCanvas, draw2d, pick2d } from './scene2d'
 import { togglePanel, topicVerses, renderPanelBody, esc } from './panel'
 import { openSurahReader } from './reader'
 import { playVerseAudio, stopCurrentAudio, whoosh, chime } from './audio'
@@ -18,6 +18,10 @@ import {
 } from './ui'
 import { CATEGORIES } from './constants'
 import type { Topic, AyatItem, AppStore, QuizState, CategoryKey } from './types'
+import {
+  createTopicHierarchy, getDefaultVisibleTopics, getVisibleTopics, isCluster, parentClusterIdFor,
+  type TopicHierarchy,
+} from './hierarchy'
 
 // ── DOM refs ──────────────────────────────────────────────────────────────
 const $ = (id: string) => document.getElementById(id) as HTMLElement
@@ -49,6 +53,9 @@ const d = {
 let store: AppStore
 let topics: Topic[] = []
 let byId: Map<string, Topic> = new Map()
+let hierarchy: TopicHierarchy | null = null
+let visibleTopics: Topic[] = []
+let expandedClusterId: string | null = null
 let lookup: Map<string, AyatItem> = new Map()
 let ayat: AyatItem[] = []
 let selectedId: string | null = null
@@ -66,6 +73,36 @@ const bar = (p: number, msg: string) => setProgress(p, msg, d.progress as HTMLEl
 const save = () => saveStore()
 const chimeFn = (k: 'ok' | 'bad' | 'ach') => chime(k, store.muted)
 const whooshFn = () => whoosh(store.muted, store.reducedMotion)
+
+function leafTopics(): Topic[] {
+  return hierarchy?.leafTopics ?? topics
+}
+
+function refreshVisibleTopics(): void {
+  visibleTopics = hierarchy ? getVisibleTopics(hierarchy, expandedClusterId) : topics
+  if (fallback) {
+    setTopics2d(visibleTopics)
+    draw2d(selectedId, quizState)
+  } else {
+    setVisibleTopics3d(visibleTopics)
+    syncAnimState()
+    highlightEdges(selectedId)
+  }
+}
+
+function ensureTopicVisible(id: string): boolean {
+  if (!hierarchy) return false
+  if (visibleTopics.some((topic) => topic.id === id)) return false
+  const parentId = parentClusterIdFor(hierarchy, id)
+  if (!parentId) return false
+  expandedClusterId = parentId
+  refreshVisibleTopics()
+  return true
+}
+
+function visibleLeafTopics(): Topic[] {
+  return visibleTopics.filter((topic) => !isCluster(topic))
+}
 
 // ── Sync animState ────────────────────────────────────────────────────────
 function syncAnimState(): void {
@@ -92,6 +129,8 @@ async function boot(): Promise<void> {
     if (!res.ok) throw new Error('topics fetch failed')
     topics = await res.json() as Topic[]
     byId = new Map(topics.map((t) => [t.id, t]))
+    hierarchy = createTopicHierarchy(topics)
+    visibleTopics = getDefaultVisibleTopics(hierarchy)
   } catch (e) {
     console.error(e)
     return fatal('Data topik gagal dimuat.', true)
@@ -101,9 +140,9 @@ async function boot(): Promise<void> {
   if (fallback) {
     d.scene.style.display = 'none'
     d.map2d.style.display = 'block'
-    initCanvas(d.map2d, topics)
+    initCanvas(d.map2d, visibleTopics)
   } else {
-    init3d(d.scene, topics, {
+    init3d(d.scene, visibleTopics, {
       onNodeClick: (id) => { quizState.active ? handleAnswer(id) : selectTopic(id, true) },
       onNodeHover: (id) => {
         const prev = hoverId
@@ -125,7 +164,7 @@ async function boot(): Promise<void> {
     return fatal('Data Quran belum bisa dimuat dari CDN utama maupun fallback.', true)
   }
 
-  buildSearchIndex(topics)
+  buildSearchIndex(leafTopics())
 
   if (fallback) {
     draw2d(selectedId, quizState)
@@ -133,7 +172,12 @@ async function boot(): Promise<void> {
     buildScene()
     const savedCam = lsGet('last_camera')
     if (savedCam) {
-      try { restoreCamera(JSON.parse(savedCam)) } catch { /* ignore */ }
+      try {
+        const cameraState = JSON.parse(savedCam) as { mind?: boolean }
+        if (!cameraState.mind) restoreCamera(cameraState as { position: number[]; target: number[]; mind: boolean })
+      } catch { /* ignore */ }
+      isMind = getIsMind()
+      d.mind.classList.toggle('active', isMind)
     }
     syncAnimState()
     startAnimate()
@@ -144,7 +188,7 @@ async function boot(): Promise<void> {
     d.rail.classList.add('collapsed')
     d.railToggle.classList.remove('on')
   }
-  updateHUD(store, topics.length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
+  updateHUD(store, leafTopics().length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
   renderAch()
   doCheckBadges()
   bar(100, 'Siap menjelajah.')
@@ -153,7 +197,7 @@ async function boot(): Promise<void> {
 
 // ── Rail ──────────────────────────────────────────────────────────────────
 function buildRail(): void {
-  d.railCount.textContent = `${topics.length} topik · ${Object.keys(CATEGORIES).length} kategori`
+  d.railCount.textContent = `${visibleTopics.length} tampil · ${leafTopics().length} topik`
 
   const cats: Array<'all' | CategoryKey> = ['all', ...Object.keys(CATEGORIES) as CategoryKey[]]
   d.cats.innerHTML = cats.map((c) => {
@@ -170,7 +214,7 @@ function buildRail(): void {
     }
   })
 
-  const list = (currentCat === 'all' ? topics : topics.filter((t) => t.category === currentCat))
+  const list = (currentCat === 'all' ? visibleTopics : visibleTopics.filter((t) => t.category === currentCat))
     .slice()
     .sort((a, b) => a.label_id.localeCompare(b.label_id, 'id'))
 
@@ -198,6 +242,22 @@ function updateRailActive(): void {
 function selectTopic(id: string, openPanelFlag: boolean): void {
   const t = byId.get(id)
   if (!t) return
+
+  if (hierarchy && isCluster(t) && !quizState.active) {
+    expandedClusterId = expandedClusterId === id ? null : id
+    selectedId = id
+    refreshVisibleTopics()
+    buildRail()
+    const cat = CATEGORIES[t.category as CategoryKey]
+    d.htopic.textContent = expandedClusterId === id ? `${t.label_id}: pilih topik` : 'Galaksi Makna'
+    d.hcat.style.color = expandedClusterId === id ? cat.color : 'var(--gold-soft)'
+    const hcatText = d.hcat.querySelector<HTMLElement>('span:last-child')
+    if (hcatText) hcatText.textContent = expandedClusterId === id ? cat.label : 'Eksplorasi terbuka'
+    toast(expandedClusterId === id ? `${t.label_id} dibuka.` : `${t.label_id} ditutup.`)
+    return
+  }
+
+  if (ensureTopicVisible(id)) buildRail()
   selectedId = id
   store.exploredTopics = uniq([...store.exploredTopics, id])
   save()
@@ -228,15 +288,18 @@ function selectTopic(id: string, openPanelFlag: boolean): void {
     togglePanel(true, d.panel)
   }
 
-  updateHUD(store, topics.length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
+  updateHUD(store, leafTopics().length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
   updateRailActive()
   doCheckBadges()
 }
 
 function resetView(): void {
   selectedId = null
+  expandedClusterId = null
   syncAnimState()
   togglePanel(false, d.panel)
+  refreshVisibleTopics()
+  buildRail()
   highlightEdges(null)
   if (fallback) { draw2d(null, quizState); return }
   resetCamera(store)
@@ -267,7 +330,7 @@ function closeQuiz(): void {
 
 function startQuiz(): void {
   const diff = (document.querySelector('.diff-btn.active') as HTMLButtonElement | null)?.dataset.diff as 'easy' | 'medium' | 'hard' ?? 'easy'
-  const questions = makeQuestions(topics, lookup, ayat)
+  const questions = makeQuestions(leafTopics(), lookup, ayat)
   if (!questions.length) { toast('Data ayat belum siap untuk quiz.', 'bad'); return }
   quizState = { ...createInitialQuizState(), active: true, diff, questions, start: Date.now() }
   syncAnimState()
@@ -277,7 +340,8 @@ function startQuiz(): void {
 function advanceQuiz(): void {
   if (quizState.i >= quizState.questions.length) { finishQuiz(); return }
   const current = quizState.questions[quizState.i]
-  const candidates = getCandidates(current.topic.id, quizState.diff, topics)
+  if (ensureTopicVisible(current.topic.id)) buildRail()
+  const candidates = getCandidates(current.topic.id, quizState.diff, visibleLeafTopics())
   quizState = { ...quizState, current, answering: false, candidates }
   syncAnimState()
   d.question.textContent = current.verse.translation
@@ -340,11 +404,11 @@ function qHud(): void {
 
 // ── Achievements ──────────────────────────────────────────────────────────
 function renderAch(): void {
-  renderAchievements(store, topics, { stats: d.stats, breakdown: d.breakdown, badges: d.badges })
+  renderAchievements(store, leafTopics(), { stats: d.stats, breakdown: d.breakdown, badges: d.badges })
 }
 
 function doCheckBadges(): void {
-  checkBadges(store, topics, sessionLinks, save, renderAch, toast, chimeFn)
+  checkBadges(store, leafTopics(), sessionLinks, save, renderAch, toast, chimeFn)
 }
 
 // ── Mind Map ──────────────────────────────────────────────────────────────
@@ -491,7 +555,7 @@ function bind(): void {
       if (svg) svg.setAttribute('fill', !alreadyMarked ? 'currentColor' : 'none')
       save()
       toast(alreadyMarked ? 'Penanda dihapus.' : `Ayat ${key} ditandai.`, alreadyMarked ? undefined : 'ok')
-      updateHUD(store, topics.length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
+      updateHUD(store, leafTopics().length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
       doCheckBadges()
       return
     }
@@ -570,7 +634,7 @@ function bind(): void {
       hideSuggestions(d.suggest)
     } else if (!typing && ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(e.key)) {
       e.preventDefault()
-      const ids = topics.map((t) => t.id)
+      const ids = visibleTopics.map((t) => t.id)
       const i = Math.max(0, ids.indexOf(selectedId ?? ids[0]))
       const n = (i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + ids.length) % ids.length
       selectTopic(ids[n], true)

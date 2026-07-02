@@ -1,5 +1,6 @@
 import type { Topic, AyatItem, QuizState, QuizQuestion } from './types'
 import { topicVerses } from './panel'
+import { isLeafTopic } from './hierarchy'
 
 export function createInitialQuizState(): QuizState {
   return {
@@ -14,6 +15,7 @@ export function makeQuestions(
   ayat: AyatItem[],
 ): QuizQuestion[] {
   const pool: QuizQuestion[] = topics
+    .filter(isLeafTopic)
     .map((t) => {
       const vs = topicVerses(t, lookup, ayat, 5).filter((v: AyatItem) => v.translation.length > 24)
       return vs.length ? { topic: t, verse: vs[Math.floor(Math.random() * vs.length)] } : null
@@ -24,10 +26,11 @@ export function makeQuestions(
 }
 
 export function getCandidates(answerId: string, diff: 'easy' | 'medium' | 'hard', topics: Topic[]): Set<string> {
-  const ids = topics.map((t) => t.id)
+  const answerableTopics = topics.filter(isLeafTopic)
+  const ids = answerableTopics.map((t) => t.id)
   const n = diff === 'easy' ? 4 : diff === 'medium' ? 10 : ids.length
   const set = new Set<string>([answerId])
-  const byId = new Map(topics.map((t) => [t.id, t]))
+  const byId = new Map(answerableTopics.map((t) => [t.id, t]))
   const cat = byId.get(answerId)?.category
   const same = ids.filter((id) => byId.get(id)?.category === cat && id !== answerId)
   shuffle(same)

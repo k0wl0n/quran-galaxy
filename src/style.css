@@ -618,6 +618,7 @@ button { font: inherit; cursor: pointer; color: inherit; background: none; borde
   /* Verse cards in panel */
   .v-arabic { font-size: 24px }
   .verse-card { padding: 16px 14px }
+  .label { font-size: 14px; padding: 5px 12px }
 }
 
 @media (prefers-reduced-motion: reduce) {
