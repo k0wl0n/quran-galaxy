@@ -46,6 +46,7 @@ export const STORE_DEFAULTS: AppStore = {
   muted: false,
   theme: 'dark',
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
+  quality: 'auto',
   notes: {},
 }
 

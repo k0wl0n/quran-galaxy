@@ -54,6 +54,7 @@ export interface AppStore {
   muted: boolean
   theme: 'dark' | 'light'
   reducedMotion: boolean
+  quality: 'auto' | 'high' | 'medium' | 'low'
   notes: Record<string, string>
 }
 

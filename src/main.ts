@@ -18,6 +18,7 @@ import {
 } from './ui'
 import { CATEGORIES } from './constants'
 import type { Topic, AyatItem, AppStore, QuizState, CategoryKey } from './types'
+import { resolveTier, getTierConfig, type Tier, type TierConfig } from './perf'
 import {
   createTopicHierarchy, getDefaultVisibleTopics, getVisibleTopics, isCluster, parentClusterIdFor,
   type TopicHierarchy,
@@ -30,6 +31,7 @@ const d = {
   scene: $('scene'), map2d: $('map2d') as HTMLCanvasElement,
   searchform: $('searchform'), search: $('search') as HTMLInputElement,
   suggest: $('suggest'),
+  quality: $('quality') as HTMLSelectElement,
   theme: $('theme'), mute: $('mute'), reset: $('reset'),
   rail: $('rail'), railToggle: $('rail-toggle'), railCount: $('rail-count'),
   cats: $('cats'), topicList: $('topic-list'),
@@ -51,6 +53,8 @@ const d = {
 
 // ── App state ─────────────────────────────────────────────────────────────
 let store: AppStore
+let tier: Tier = 'high'
+let tierCfg: TierConfig = getTierConfig('high')
 let topics: Topic[] = []
 let byId: Map<string, Topic> = new Map()
 let hierarchy: TopicHierarchy | null = null
@@ -118,6 +122,8 @@ document.addEventListener('DOMContentLoaded', boot)
 
 async function boot(): Promise<void> {
   store = loadStore()
+  tier = resolveTier(store.quality ?? 'auto')
+  tierCfg = getTierConfig(tier)
   bind()
   dailyStreak()
   trackTimeBadges()
@@ -486,6 +492,13 @@ function bind(): void {
   })
   d.mind.onclick = toggleMind
   d.mute.onclick = toggleMute
+  d.quality.value = store.quality ?? 'auto'
+  d.quality.onchange = () => {
+    store.quality = d.quality.value as AppStore['quality']
+    save()
+    toast('Kualitas grafis diperbarui — memuat ulang…')
+    setTimeout(() => location.reload(), 450)
+  }
   d.theme.onclick = toggleTheme
 
   document.querySelectorAll('.diff-btn').forEach((b) => {
