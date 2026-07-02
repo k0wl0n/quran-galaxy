@@ -132,9 +132,11 @@ export interface FlightState {
 export interface EdgeData {
   a: string
   b: string
-  line: any
-  part: any
   curve: any
+  baseColor: any
+  vertStart: number
+  vertCount: number
   t: number
   speed: number
+  on: boolean
 }

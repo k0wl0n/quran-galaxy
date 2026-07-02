@@ -25,7 +25,13 @@ interface Scene3DState {
   labelMap: Map<string, { el: HTMLElement; obj: CSS2DObject }>
   originalPos: THREE.Vector3[]
   flatPositions: THREE.Vector3[]
-  edges: EdgeData[]
+  edgesState: {
+    lines: THREE.LineSegments
+    colorAttr: THREE.BufferAttribute
+    particles: THREE.Points | null
+    particleAttr: THREE.BufferAttribute | null
+    list: EdgeData[]
+  } | null
   edgeGroup: THREE.Group
   nodeGroup: THREE.Group
   center: THREE.Group
@@ -83,7 +89,7 @@ export function init3d(
     ray: new THREE.Raycaster(), mouse: new THREE.Vector2(),
     clock: new THREE.Clock(),
     nodesI: null, labelMap: new Map(), originalPos: [], flatPositions: [],
-    edges: [], edgeGroup, nodeGroup, center,
+    edgesState: null, edgeGroup, nodeGroup, center,
     flight: null, lastInteraction: Date.now(), isMind: false,
     topics, byId,
   }
@@ -142,17 +148,6 @@ export function buildScene(): void {
   buildCenterOrb()
   buildTopicNodes()
   rebuildEdges()
-}
-
-function disposeObject(obj: THREE.Object3D): void {
-  const cssObject = obj as THREE.Object3D & { element?: HTMLElement }
-  cssObject.element?.remove()
-  const mesh = obj as THREE.Mesh
-  if (mesh.geometry) mesh.geometry.dispose()
-  const material = mesh.material as THREE.Material | THREE.Material[] | undefined
-  if (Array.isArray(material)) material.forEach((m) => m.dispose())
-  else material?.dispose()
-  obj.children.forEach(disposeObject)
 }
 
 function clearTopicNodes(): void {
@@ -283,25 +278,29 @@ function buildTopicNodes(): void {
   })
 }
 
+const EDGE_POINTS = 24
+
 export function rebuildEdges(): void {
-  if (!ctx) return
-  if (!ctx.nodesI) return
-  while (ctx.edgeGroup.children.length) {
-    const child = ctx.edgeGroup.children[0]
-    ctx.edgeGroup.remove(child)
-    disposeObject(child)
+  if (!ctx?.nodesI) return
+  if (ctx.edgesState) {
+    ctx.edgeGroup.remove(ctx.edgesState.lines)
+    ctx.edgesState.lines.geometry.dispose()
+    ;(ctx.edgesState.lines.material as THREE.Material).dispose()
+    disposeEdgeParticles()
+    ctx.edgesState = null
   }
-  ctx.edges = []
+
+  const list: EdgeData[] = []
+  const curves: THREE.QuadraticBezierCurve3[] = []
   const seen = new Set<string>()
   const visibleIds = new Set(ctx.topics.map((topic) => topic.id))
-  const pg = new THREE.SphereGeometry(0.08, 10, 8)
   ctx.topics.forEach((a) => {
     a.connected_topics.forEach((bid) => {
       const b = ctx!.byId.get(bid)
-      if (!visibleIds.has(a.id) || !visibleIds.has(bid)) return
+      if (!b || !visibleIds.has(a.id) || !visibleIds.has(bid)) return
       const ia = ctx!.nodesI!.indexOf(a.id)
       const ib = ctx!.nodesI!.indexOf(bid)
-      if (!b || ia < 0 || ib < 0) return
+      if (ia < 0 || ib < 0) return
       const k = [a.id, bid].sort().join('--')
       if (seen.has(k)) return
       seen.add(k)
@@ -310,19 +309,85 @@ export function rebuildEdges(): void {
         ctx!.nodesI!.getPosition(ib, new THREE.Vector3()),
         ctx!.isMind,
       )
-      const pts = curve.getPoints(34)
       const col = new THREE.Color(CATEGORIES[a.category as CategoryKey].color)
         .lerp(new THREE.Color(CATEGORIES[b.category as CategoryKey].color), 0.5)
-      const mat = new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false })
-      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat)
-      const pm = new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.72, blending: THREE.AdditiveBlending, depthWrite: false })
-      const part = new THREE.Mesh(pg, pm)
-      part.position.copy(curve.getPoint(Math.random()))
-      ctx!.edgeGroup.add(line, part)
-      ctx!.edges.push({ a: a.id, b: bid, line, part, curve, t: Math.random(), speed: 0.045 + Math.random() * 0.075 })
+      curves.push(curve)
+      list.push({
+        a: a.id, b: bid, curve, baseColor: col,
+        vertStart: 0, vertCount: 0,
+        t: Math.random(), speed: 0.045 + Math.random() * 0.075, on: true,
+      })
     })
   })
+
+  const segsPerEdge = EDGE_POINTS - 1
+  const vertsPerEdge = segsPerEdge * 2
+  const positions = new Float32Array(list.length * vertsPerEdge * 3)
+  const colors = new Float32Array(list.length * vertsPerEdge * 3)
+  list.forEach((e, k) => {
+    e.vertStart = k * vertsPerEdge
+    e.vertCount = vertsPerEdge
+    const pts = curves[k].getPoints(EDGE_POINTS - 1)
+    for (let j = 0; j < segsPerEdge; j++) {
+      for (const [slot, pt] of [[0, pts[j]], [1, pts[j + 1]]] as [number, THREE.Vector3][]) {
+        const v = (e.vertStart + j * 2 + slot) * 3
+        positions[v] = pt.x; positions[v + 1] = pt.y; positions[v + 2] = pt.z
+      }
+    }
+  })
+
+  const geo = new THREE.BufferGeometry()
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+  const colorAttr = new THREE.BufferAttribute(colors, 3)
+  geo.setAttribute('color', colorAttr)
+  const lines = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({
+    vertexColors: true, transparent: true, opacity: 1,
+    blending: THREE.AdditiveBlending, depthWrite: false,
+  }))
+  lines.frustumCulled = false
+  ctx.edgeGroup.add(lines)
+
+  let particles: THREE.Points | null = null
+  let particleAttr: THREE.BufferAttribute | null = null
+  if (list.length) {
+    const ppos = new Float32Array(list.length * 3)
+    const pcol = new Float32Array(list.length * 3)
+    list.forEach((e, k) => {
+      const p = e.curve.getPoint(e.t) as THREE.Vector3
+      ppos[k * 3] = p.x; ppos[k * 3 + 1] = p.y; ppos[k * 3 + 2] = p.z
+      pcol[k * 3] = e.baseColor.r; pcol[k * 3 + 1] = e.baseColor.g; pcol[k * 3 + 2] = e.baseColor.b
+    })
+    const pgeo = new THREE.BufferGeometry()
+    particleAttr = new THREE.BufferAttribute(ppos, 3)
+    pgeo.setAttribute('position', particleAttr)
+    pgeo.setAttribute('color', new THREE.BufferAttribute(pcol, 3))
+    particles = new THREE.Points(pgeo, new THREE.PointsMaterial({
+      size: 0.32, vertexColors: true, transparent: true, opacity: 0.85,
+      blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true,
+    }))
+    particles.frustumCulled = false
+    ctx.edgeGroup.add(particles)
+  }
+
+  ctx.edgesState = { lines, colorAttr, particles, particleAttr, list }
   highlightEdges(null)
+}
+
+function disposeEdgeParticles(): void {
+  if (!ctx?.edgesState?.particles) return
+  ctx.edgeGroup.remove(ctx.edgesState.particles)
+  ctx.edgesState.particles.geometry.dispose()
+  ;(ctx.edgesState.particles.material as THREE.Material).dispose()
+  ctx.edgesState.particles = null
+  ctx.edgesState.particleAttr = null
+}
+
+function paintEdge(e: EdgeData, factor: number): void {
+  if (!ctx?.edgesState) return
+  const attr = ctx.edgesState.colorAttr
+  for (let v = e.vertStart; v < e.vertStart + e.vertCount; v++) {
+    attr.setXYZ(v, e.baseColor.r * factor, e.baseColor.g * factor, e.baseColor.b * factor)
+  }
 }
 
 // ── Module-level animation state (updated by main.ts) ─────────────────────
@@ -402,10 +467,16 @@ function loop(): void {
     nodesI.update()
   }
 
-  ctx.edges.forEach((e) => {
-    e.t = (e.t + dt * e.speed) % 1
-    e.part.position.copy(e.curve.getPoint(e.t))
-  })
+  const es = ctx.edgesState
+  if (es?.particles && es.particleAttr) {
+    es.list.forEach((e, i) => {
+      if (!e.on) { es.particleAttr!.setXYZ(i, 0, 99999, 0); return }
+      e.t = (e.t + dt * e.speed) % 1
+      e.curve.getPoint(e.t, _v)
+      es.particleAttr!.setXYZ(i, _v.x, _v.y, _v.z)
+    })
+    es.particleAttr.needsUpdate = true
+  }
 
   if (ctx.flight) flyStep()
 
@@ -450,12 +521,14 @@ export function highlightEdges(selectedId: string | null): void {
   if (!ctx) return
   const t = selectedId ? ctx.byId.get(selectedId) : null
   const rel = new Set(t ? [...t.connected_topics, t.id] : [])
-  ctx.edges.forEach((e) => {
-    const on = !t || (rel.has(e.a) && rel.has(e.b))
-    ;(e.line.material as THREE.LineBasicMaterial).opacity = on ? (t ? 0.56 : 0.22) : 0.045
-    ;(e.part.material as THREE.MeshBasicMaterial).opacity = on ? 0.78 : 0.08
-    e.part.visible = on || !t
-  })
+  if (ctx.edgesState) {
+    ctx.edgesState.list.forEach((e) => {
+      const on = !t || (rel.has(e.a) && rel.has(e.b))
+      paintEdge(e, on ? (t ? 0.56 : 0.22) : 0.045)
+      e.on = on || !t
+    })
+    ctx.edgesState.colorAttr.needsUpdate = true
+  }
   ctx.nodesI?.ids.forEach((id, i) => {
     const dim = !!t && id !== t.id && !rel.has(id)
     ctx!.labelMap.get(id)?.el.classList.toggle('dim', dim)
@@ -490,11 +563,14 @@ export function quizVisuals3d(candidates: Set<string>): void {
     ctx!.nodesI!.setBrightness(i, c ? 1 : 0.22)
     ctx!.labelMap.get(id)?.el.classList.toggle('dim', !c)
   })
-  ctx.edges.forEach((e) => {
-    const on = candidates.has(e.a) && candidates.has(e.b)
-    ;(e.line.material as THREE.LineBasicMaterial).opacity = on ? 0.32 : 0.025
-    e.part.visible = on
-  })
+  if (ctx.edgesState) {
+    ctx.edgesState.list.forEach((e) => {
+      const on = candidates.has(e.a) && candidates.has(e.b)
+      paintEdge(e, on ? 0.32 : 0.02)
+      e.on = on
+    })
+    ctx.edgesState.colorAttr.needsUpdate = true
+  }
 }
 
 export function burst3d(id: string, color: string): void {
