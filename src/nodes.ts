@@ -121,6 +121,7 @@ export function createInstancedNodes(
       parent.remove(glow)
       glow.geometry.dispose()
       ;(glow.material as THREE.Material).dispose()
+      glow.dispose()
       glow = null
     },
     dispose(): void {
@@ -128,6 +129,7 @@ export function createInstancedNodes(
       parent.remove(mesh)
       mesh.geometry.dispose()
       ;(mesh.material as THREE.Material).dispose()
+      mesh.dispose()
     },
   }
 }
