@@ -415,8 +415,8 @@ function updateLabelLod(selectedId: string | null, hoverId: string | null, el: n
   const visible = new Set(ranked.slice(0, ctx.cfg.maxLabels).map((r) => r.id))
   if (selectedId) visible.add(selectedId)
   if (hoverId) visible.add(hoverId)
-  ctx.labelMap.forEach(({ el: labelEl }, id) => {
-    labelEl.style.display = visible.has(id) ? '' : 'none'
+  ctx.labelMap.forEach((entry, id) => {
+    entry.obj.visible = visible.has(id)
   })
 }
 
