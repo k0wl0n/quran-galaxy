@@ -129,14 +129,6 @@ export interface FlightState {
   tt: any
 }
 
-export interface NodeData {
-  mesh: any
-  mat: any
-  glow: any
-  label: HTMLElement | null
-  topic: Topic
-}
-
 export interface EdgeData {
   a: string
   b: string

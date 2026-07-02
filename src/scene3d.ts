@@ -2,7 +2,8 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer'
 import { CATEGORIES } from './constants'
-import type { Topic, NodeData, EdgeData, FlightState, CategoryKey, QuizState } from './types'
+import type { Topic, EdgeData, FlightState, CategoryKey, QuizState } from './types'
+import { createInstancedNodes, type InstancedNodes } from './nodes'
 
 export interface Scene3DCallbacks {
   onNodeClick: (id: string) => void
@@ -20,7 +21,10 @@ interface Scene3DState {
   ray: THREE.Raycaster
   mouse: THREE.Vector2
   clock: THREE.Clock
-  nodes: Map<string, NodeData>
+  nodesI: InstancedNodes | null
+  labelMap: Map<string, { el: HTMLElement; obj: CSS2DObject }>
+  originalPos: THREE.Vector3[]
+  flatPositions: THREE.Vector3[]
   edges: EdgeData[]
   edgeGroup: THREE.Group
   nodeGroup: THREE.Group
@@ -33,7 +37,6 @@ interface Scene3DState {
 }
 
 let ctx: Scene3DState | null = null
-const _scaleTarget = new THREE.Vector3()
 
 export function init3d(
   container: HTMLElement,
@@ -79,7 +82,8 @@ export function init3d(
     scene, pcam, ocam, camera: pcam, renderer, labels, controls,
     ray: new THREE.Raycaster(), mouse: new THREE.Vector2(),
     clock: new THREE.Clock(),
-    nodes: new Map(), edges: [], edgeGroup, nodeGroup, center,
+    nodesI: null, labelMap: new Map(), originalPos: [], flatPositions: [],
+    edges: [], edgeGroup, nodeGroup, center,
     flight: null, lastInteraction: Date.now(), isMind: false,
     topics, byId,
   }
@@ -91,8 +95,8 @@ export function init3d(
     ctx.mouse.x = (ev.clientX - r.left) / r.width * 2 - 1
     ctx.mouse.y = -(ev.clientY - r.top) / r.height * 2 + 1
     ctx.ray.setFromCamera(ctx.mouse, ctx.camera)
-    const hit = ctx.ray.intersectObjects([...ctx.nodes.values()].map((n) => n.mesh), false)[0]
-    const id = (hit?.object.userData.id as string) ?? null
+    const hit = ctx.nodesI ? ctx.ray.intersectObject(ctx.nodesI.mesh, false)[0] : undefined
+    const id = hit?.instanceId !== undefined ? ctx.nodesI!.ids[hit.instanceId] : null
     callbacks.onNodeHover(id)
     renderer.domElement.style.cursor = hit ? 'pointer' : 'default'
   }
@@ -106,18 +110,18 @@ export function init3d(
     ctx.mouse.x = (ev.clientX - r.left) / r.width * 2 - 1
     ctx.mouse.y = -(ev.clientY - r.top) / r.height * 2 + 1
     ctx.ray.setFromCamera(ctx.mouse, ctx.camera)
-    const hit = ctx.ray.intersectObjects([...ctx.nodes.values()].map((n) => n.mesh), false)[0]
-    if (hit) { callbacks.onNodeClick(hit.object.userData.id as string); return }
-    if (ev.pointerType === 'touch') {
+    const hit = ctx.nodesI ? ctx.ray.intersectObject(ctx.nodesI.mesh, false)[0] : undefined
+    if (hit && hit.instanceId !== undefined) { callbacks.onNodeClick(ctx.nodesI!.ids[hit.instanceId]); return }
+    if (ev.pointerType === 'touch' && ctx.nodesI) {
       const proj = new THREE.Vector3()
       let bestId: string | null = null, bestDist = 48
-      ctx.nodes.forEach((n, id) => {
-        proj.copy(n.mesh.position).project(ctx!.camera)
+      for (let i = 0; i < ctx.nodesI.count; i++) {
+        ctx.nodesI.getPosition(i, proj).project(ctx.camera)
         const sx = (proj.x * 0.5 + 0.5) * r.width + r.left
         const sy = (-proj.y * 0.5 + 0.5) * r.height + r.top
         const d = Math.hypot(ev.clientX - sx, ev.clientY - sy)
-        if (d < bestDist) { bestDist = d; bestId = id }
-      })
+        if (d < bestDist) { bestDist = d; bestId = ctx.nodesI.ids[i] }
+      }
       if (bestId) callbacks.onNodeClick(bestId)
     }
   })
@@ -153,12 +157,12 @@ function disposeObject(obj: THREE.Object3D): void {
 
 function clearTopicNodes(): void {
   if (!ctx) return
-  while (ctx.nodeGroup.children.length) {
-    const child = ctx.nodeGroup.children[0]
-    ctx.nodeGroup.remove(child)
-    disposeObject(child)
-  }
-  ctx.nodes.clear()
+  ctx.nodesI?.dispose()
+  ctx.nodesI = null
+  ctx.labelMap.forEach(({ el, obj }) => { ctx!.nodeGroup.remove(obj); el.remove() })
+  ctx.labelMap.clear()
+  ctx.originalPos = []
+  ctx.flatPositions = []
 }
 
 export function setVisibleTopics3d(topics: Topic[]): void {
@@ -258,44 +262,30 @@ function buildCenterOrb(): void {
 
 function buildTopicNodes(): void {
   if (!ctx) return
-  const geo = new THREE.SphereGeometry(1, 32, 24)
-  ctx.topics.forEach((t) => {
-    const col = CATEGORIES[t.category as CategoryKey].color
-    const pos = sphericalPos(t.position)
-    const mat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(col), emissive: new THREE.Color(col),
-      emissiveIntensity: 0.58, roughness: 0.42, metalness: 0.08, transparent: true, opacity: 0.96,
-    })
-    const mesh = new THREE.Mesh(geo, mat)
-    mesh.position.copy(pos)
-    mesh.scale.setScalar(t.size)
-    mesh.userData = { id: t.id, base: t.size, original: pos.clone(), flat: flatPos(t, ctx!.topics), pulse: Math.random() * 6.28 }
-
-    const glow = new THREE.Mesh(
-      new THREE.SphereGeometry(1.34, 24, 16),
-      new THREE.MeshBasicMaterial({ color: new THREE.Color(col), transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false }),
-    )
-    mesh.add(glow)
-
-    let label: HTMLElement | null = null
+  ctx.nodesI = createInstancedNodes(ctx.topics, true, ctx.nodeGroup)
+  ctx.originalPos = []
+  ctx.flatPositions = []
+  const v = new THREE.Vector3()
+  ctx.topics.forEach((t, i) => {
+    ctx!.nodesI!.getPosition(i, v)
+    ctx!.originalPos.push(v.clone())
+    ctx!.flatPositions.push(flatPos(t, ctx!.topics))
     if (ctx!.labels) {
       const el = document.createElement('div')
       el.className = 'label'
       el.textContent = t.label_id
-      el.style.borderColor = hexToRgba(col, 0.28)
+      el.style.borderColor = hexToRgba(CATEGORIES[t.category as CategoryKey].color, 0.28)
       const lo = new CSS2DObject(el)
-      lo.position.set(0, t.size + 1.35, 0)
-      mesh.add(lo)
-      label = el
+      lo.position.set(v.x, v.y + t.size + 1.35, v.z)
+      ctx!.nodeGroup.add(lo)
+      ctx!.labelMap.set(t.id, { el, obj: lo })
     }
-
-    ctx!.nodeGroup.add(mesh)
-    ctx!.nodes.set(t.id, { mesh, mat, glow, label, topic: t })
   })
 }
 
 export function rebuildEdges(): void {
   if (!ctx) return
+  if (!ctx.nodesI) return
   while (ctx.edgeGroup.children.length) {
     const child = ctx.edgeGroup.children[0]
     ctx.edgeGroup.remove(child)
@@ -309,13 +299,17 @@ export function rebuildEdges(): void {
     a.connected_topics.forEach((bid) => {
       const b = ctx!.byId.get(bid)
       if (!visibleIds.has(a.id) || !visibleIds.has(bid)) return
-      const na = ctx!.nodes.get(a.id)
-      const nb = ctx!.nodes.get(bid)
-      if (!b || !na || !nb) return
+      const ia = ctx!.nodesI!.indexOf(a.id)
+      const ib = ctx!.nodesI!.indexOf(bid)
+      if (!b || ia < 0 || ib < 0) return
       const k = [a.id, bid].sort().join('--')
       if (seen.has(k)) return
       seen.add(k)
-      const curve = edgeCurve(na.mesh.position, nb.mesh.position, ctx!.isMind)
+      const curve = edgeCurve(
+        ctx!.nodesI!.getPosition(ia, new THREE.Vector3()),
+        ctx!.nodesI!.getPosition(ib, new THREE.Vector3()),
+        ctx!.isMind,
+      )
       const pts = curve.getPoints(34)
       const col = new THREE.Color(CATEGORIES[a.category as CategoryKey].color)
         .lerp(new THREE.Color(CATEGORIES[b.category as CategoryKey].color), 0.5)
@@ -340,17 +334,22 @@ export const animState = {
   reducedMotion: false,
 }
 
-function updateLabelLod(selectedId: string | null, hoverId: string | null): void {
-  if (!ctx?.labels) return
-  const cameraPosition = ctx.camera.position
-  const ranked = [...ctx.nodes.entries()]
-    .map(([id, node]) => ({ id, node, distance: node.mesh.position.distanceTo(cameraPosition) }))
-    .sort((a, b) => a.distance - b.distance)
-  const visible = new Set(ranked.slice(0, 28).map((item) => item.id))
+let lastLod = 0
+const _v = new THREE.Vector3()
+
+function updateLabelLod(selectedId: string | null, hoverId: string | null, el: number): void {
+  if (!ctx?.labels || !ctx.nodesI) return
+  if (el - lastLod < 0.25) return
+  lastLod = el
+  const camPos = ctx.camera.position
+  const ranked = ctx.nodesI.ids
+    .map((id, i) => ({ id, d: ctx!.nodesI!.getPosition(i, _v).distanceToSquared(camPos) }))
+    .sort((a, b) => a.d - b.d)
+  const visible = new Set(ranked.slice(0, 28).map((r) => r.id))
   if (selectedId) visible.add(selectedId)
   if (hoverId) visible.add(hoverId)
-  ctx.nodes.forEach((node, id) => {
-    if (node.label) node.label.style.display = visible.has(id) ? '' : 'none'
+  ctx.labelMap.forEach(({ el: labelEl }, id) => {
+    labelEl.style.display = visible.has(id) ? '' : 'none'
   })
 }
 
@@ -389,16 +388,19 @@ function loop(): void {
     ctx.center.userData.ring.rotation.z += dt * 0.06
   }
 
-  ctx.nodes.forEach((n, id) => {
-    const base = n.mesh.userData.base as number
-    let target = base
-    if (id === hoverId) target = base * 1.3
-    if (id === selectedId) target = base * (1.18 + Math.sin(el * 4) * 0.04)
-    if (quizActive && quizCandidates.size && !quizCandidates.has(id)) target = base * 0.74
-    n.mesh.scale.lerp(_scaleTarget.set(target, target, target), 0.12)
-    n.glow.material.opacity = id === selectedId ? 0.32 : id === hoverId ? 0.26 : 0.14 + Math.sin(el * 1.8 + (n.mesh.userData.pulse as number)) * 0.025
-    ;(n.mat as THREE.MeshStandardMaterial).emissiveIntensity = id === selectedId ? 1.05 : id === hoverId ? 0.9 : 0.52
-  })
+  const nodesI = ctx.nodesI
+  if (nodesI) {
+    for (let i = 0; i < nodesI.count; i++) {
+      const id = nodesI.ids[i]
+      const base = nodesI.baseSize(i)
+      let t = base
+      if (id === hoverId) t = base * 1.3
+      if (id === selectedId) t = base * (1.18 + Math.sin(el * 4) * 0.04)
+      if (quizActive && quizCandidates.size && !quizCandidates.has(id)) t = base * 0.74
+      nodesI.setScaleTarget(i, t)
+    }
+    nodesI.update()
+  }
 
   ctx.edges.forEach((e) => {
     e.t = (e.t + dt * e.speed) % 1
@@ -410,31 +412,25 @@ function loop(): void {
   ctx.controls.autoRotate = !reducedMotion && !ctx.isMind && !quizActive && Date.now() - ctx.lastInteraction > 10000
   ctx.controls.autoRotateSpeed = 0.22
   ctx.controls.update()
-  updateLabelLod(selectedId, hoverId)
+  updateLabelLod(selectedId, hoverId, el)
   ctx.renderer.render(ctx.scene, ctx.camera)
   if (ctx.labels) ctx.labels.render(ctx.scene, ctx.camera)
   if (frameCallback) frameCallback(performance.now())
 }
 
 export function flyTo(id: string, store: { reducedMotion: boolean }, whooshFn: () => void): void {
-  if (!ctx) return
-  const n = ctx.nodes.get(id)
-  if (!n) return
-  const target = n.mesh.position.clone()
+  if (!ctx?.nodesI) return
+  const i = ctx.nodesI.indexOf(id)
+  if (i < 0) return
+  const target = ctx.nodesI.getPosition(i, new THREE.Vector3())
+  const size = ctx.nodesI.baseSize(i)
   const dir = target.clone().normalize()
   if (dir.lengthSq() < 0.001) dir.set(0, 0.4, 1).normalize()
   const dest = target.clone().add(
-    dir.multiplyScalar(ctx.isMind ? 58 : 14 + n.topic.size * 9)
+    dir.multiplyScalar(ctx.isMind ? 58 : 14 + size * 9)
       .add(new THREE.Vector3(0, ctx.isMind ? 0 : 5, ctx.isMind ? 70 : 0)),
   )
-  ctx.flight = {
-    start: performance.now(),
-    dur: store.reducedMotion ? 240 : 1500,
-    fp: ctx.camera.position.clone(),
-    ft: ctx.controls.target.clone(),
-    tp: dest,
-    tt: target,
-  }
+  ctx.flight = { start: performance.now(), dur: store.reducedMotion ? 240 : 1500, fp: ctx.camera.position.clone(), ft: ctx.controls.target.clone(), tp: dest, tt: target }
   whooshFn()
 }
 
@@ -460,17 +456,17 @@ export function highlightEdges(selectedId: string | null): void {
     ;(e.part.material as THREE.MeshBasicMaterial).opacity = on ? 0.78 : 0.08
     e.part.visible = on || !t
   })
-  ctx.nodes.forEach((n, id) => {
+  ctx.nodesI?.ids.forEach((id, i) => {
     const dim = !!t && id !== t.id && !rel.has(id)
-    if (n.label) n.label.classList.toggle('dim', dim)
-    ;(n.mat as THREE.MeshStandardMaterial).opacity = dim ? 0.42 : 0.96
+    ctx!.labelMap.get(id)?.el.classList.toggle('dim', dim)
+    ctx!.nodesI!.setBrightness(i, dim ? 0.35 : 1)
   })
 }
 
 export function setHover3d(hoverId: string | null, prevHoverId: string | null): void {
   if (!ctx) return
-  if (prevHoverId) ctx.nodes.get(prevHoverId)?.label?.classList.remove('hot')
-  if (hoverId) ctx.nodes.get(hoverId)?.label?.classList.add('hot')
+  if (prevHoverId) ctx.labelMap.get(prevHoverId)?.el.classList.remove('hot')
+  if (hoverId) ctx.labelMap.get(hoverId)?.el.classList.add('hot')
 }
 
 export function toggleMind3d(store: { reducedMotion: boolean }): void {
@@ -489,10 +485,10 @@ export function toggleMind3d(store: { reducedMotion: boolean }): void {
 
 export function quizVisuals3d(candidates: Set<string>): void {
   if (!ctx) return
-  ctx.nodes.forEach((n, id) => {
+  ctx.nodesI?.ids.forEach((id, i) => {
     const c = candidates.has(id)
-    ;(n.mat as THREE.MeshStandardMaterial).opacity = c ? 1 : 0.24
-    if (n.label) n.label.classList.toggle('dim', !c)
+    ctx!.nodesI!.setBrightness(i, c ? 1 : 0.22)
+    ctx!.labelMap.get(id)?.el.classList.toggle('dim', !c)
   })
   ctx.edges.forEach((e) => {
     const on = candidates.has(e.a) && candidates.has(e.b)
@@ -503,13 +499,14 @@ export function quizVisuals3d(candidates: Set<string>): void {
 
 export function burst3d(id: string, color: string): void {
   if (!ctx) return
-  const n = ctx.nodes.get(id)
-  if (!n) return
+  const i = ctx.nodesI?.indexOf(id) ?? -1
+  if (i < 0 || !ctx.nodesI) return
+  const origin = ctx.nodesI.getPosition(i, new THREE.Vector3())
   const g = new THREE.Group()
   const geo = new THREE.SphereGeometry(0.08, 8, 6)
   for (let i = 0; i < 36; i++) {
     const p = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending }))
-    p.position.copy(n.mesh.position)
+    p.position.copy(origin)
     p.userData.v = new THREE.Vector3((Math.random() - 0.5) * 0.7, (Math.random() - 0.5) * 0.7, (Math.random() - 0.5) * 0.7)
     g.add(p)
   }
@@ -575,31 +572,26 @@ function flyStep(): void {
 }
 
 function layoutAnim(flat: boolean, store: { reducedMotion: boolean }): void {
-  if (!ctx) return
-  const starts = new Map<string, THREE.Vector3>()
-  ctx.nodes.forEach((n, id) => starts.set(id, n.mesh.position.clone()))
+  if (!ctx?.nodesI) return
+  const nodesI = ctx.nodesI
+  const starts: THREE.Vector3[] = []
+  for (let i = 0; i < nodesI.count; i++) starts.push(nodesI.getPosition(i, new THREE.Vector3()).clone())
   const st = performance.now()
   const dur = store.reducedMotion ? 80 : 980
   const step = (): void => {
-    if (!ctx) return
+    if (!ctx?.nodesI) return
     const t = Math.min(1, (performance.now() - st) / dur)
     const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-    ctx.nodes.forEach((n, id) => {
-      const target = flat ? (n.mesh.userData.flat as THREE.Vector3) : (n.mesh.userData.original as THREE.Vector3)
-      n.mesh.position.lerpVectors(starts.get(id)!, target, e)
-    })
+    for (let i = 0; i < nodesI.count; i++) {
+      _v.lerpVectors(starts[i], flat ? ctx.flatPositions[i] : ctx.originalPos[i], e)
+      nodesI.setPosition(i, _v)
+      const entry = ctx.labelMap.get(nodesI.ids[i])
+      if (entry) entry.obj.position.set(_v.x, _v.y + nodesI.baseSize(i) + 1.35, _v.z)
+    }
     if (t < 1) requestAnimationFrame(step)
     else { rebuildEdges(); highlightEdges(null) }
   }
   step()
-}
-
-function sphericalPos(p: { theta: number; phi: number; radius: number }): THREE.Vector3 {
-  return new THREE.Vector3(
-    p.radius * Math.sin(p.phi) * Math.cos(p.theta),
-    p.radius * Math.cos(p.phi),
-    p.radius * Math.sin(p.phi) * Math.sin(p.theta),
-  )
 }
 
 function flatPos(t: Topic, topics: Topic[]): THREE.Vector3 {
