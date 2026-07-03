@@ -1,9 +1,185 @@
 [
   {
+    "id": "cluster_akidah",
+    "label_id": "Akidah",
+    "label_en": "Creed",
+    "category": "akidah",
+    "arabic": "العقيدة",
+    "synonyms_id": [
+      "akidah",
+      "iman",
+      "tauhid",
+      "kepercayaan"
+    ],
+    "synonyms_ar": [
+      "العقيدة"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_akhlak",
+      "cluster_ibadah",
+      "cluster_akhirat"
+    ],
+    "position": {
+      "theta": 0.15,
+      "phi": 0.9,
+      "radius": 31
+    },
+    "size": 1.75,
+    "kind": "cluster"
+  },
+  {
+    "id": "cluster_akhlak",
+    "label_id": "Akhlak",
+    "label_en": "Character",
+    "category": "akhlak",
+    "arabic": "الأخلاق",
+    "synonyms_id": [
+      "akhlak",
+      "adab",
+      "karakter",
+      "moral"
+    ],
+    "synonyms_ar": [
+      "الأخلاق"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_akidah",
+      "cluster_ibadah",
+      "cluster_kisah"
+    ],
+    "position": {
+      "theta": 1.2,
+      "phi": 1.05,
+      "radius": 32
+    },
+    "size": 1.68,
+    "kind": "cluster"
+  },
+  {
+    "id": "cluster_ibadah",
+    "label_id": "Ibadah",
+    "label_en": "Worship",
+    "category": "ibadah",
+    "arabic": "العبادة",
+    "synonyms_id": [
+      "ibadah",
+      "shalat",
+      "zakat",
+      "puasa",
+      "haji"
+    ],
+    "synonyms_ar": [
+      "العبادة"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_akidah",
+      "cluster_akhlak",
+      "cluster_akhirat"
+    ],
+    "position": {
+      "theta": 2.2,
+      "phi": 1,
+      "radius": 33
+    },
+    "size": 1.7,
+    "kind": "cluster"
+  },
+  {
+    "id": "cluster_kisah",
+    "label_id": "Kisah",
+    "label_en": "Stories",
+    "category": "kisah",
+    "arabic": "القصص",
+    "synonyms_id": [
+      "kisah",
+      "nabi",
+      "umat",
+      "sejarah"
+    ],
+    "synonyms_ar": [
+      "القصص"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_akhlak",
+      "cluster_kosmos"
+    ],
+    "position": {
+      "theta": 3.25,
+      "phi": 1.08,
+      "radius": 34
+    },
+    "size": 1.64,
+    "kind": "cluster"
+  },
+  {
+    "id": "cluster_kosmos",
+    "label_id": "Kosmos",
+    "label_en": "Cosmos",
+    "category": "kosmos",
+    "arabic": "الكون",
+    "synonyms_id": [
+      "kosmos",
+      "alam",
+      "penciptaan",
+      "langit",
+      "bumi"
+    ],
+    "synonyms_ar": [
+      "الكون"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_kisah",
+      "cluster_akhirat"
+    ],
+    "position": {
+      "theta": 4.3,
+      "phi": 0.95,
+      "radius": 33
+    },
+    "size": 1.66,
+    "kind": "cluster"
+  },
+  {
+    "id": "cluster_akhirat",
+    "label_id": "Akhirat",
+    "label_en": "Hereafter",
+    "category": "akhirat",
+    "arabic": "الآخرة",
+    "synonyms_id": [
+      "akhirat",
+      "surga",
+      "neraka",
+      "kiamat",
+      "hisab"
+    ],
+    "synonyms_ar": [
+      "الآخرة"
+    ],
+    "related_ayat_keys": [],
+    "connected_topics": [
+      "cluster_akidah",
+      "cluster_ibadah",
+      "cluster_kosmos"
+    ],
+    "position": {
+      "theta": 5.35,
+      "phi": 1.02,
+      "radius": 32
+    },
+    "size": 1.72,
+    "kind": "cluster"
+  },
+  {
     "id": "allah",
     "label_id": "Allah",
     "label_en": "Allah",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الله",
     "synonyms_id": [
       "allah",
@@ -38,7 +214,7 @@
     "position": {
       "theta": 0.15,
       "phi": 0.62,
-      "radius": 27.0
+      "radius": 27
     },
     "size": 1.35
   },
@@ -47,6 +223,7 @@
     "label_id": "Tauhid",
     "label_en": "Oneness",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "التوحيد",
     "synonyms_id": [
       "tauhid",
@@ -88,6 +265,7 @@
     "label_id": "Iman",
     "label_en": "Faith",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الإيمان",
     "synonyms_id": [
       "iman",
@@ -130,6 +308,7 @@
     "label_id": "Islam",
     "label_en": "Submission",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الإسلام",
     "synonyms_id": [
       "islam",
@@ -168,6 +347,7 @@
     "label_id": "Ihsan",
     "label_en": "Excellence",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الإحسان",
     "synonyms_id": [
       "ihsan",
@@ -205,6 +385,7 @@
     "label_id": "Syirik",
     "label_en": "Associating Partners",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الشرك",
     "synonyms_id": [
       "syirik",
@@ -243,6 +424,7 @@
     "label_id": "Malaikat",
     "label_en": "Angels",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الملائكة",
     "synonyms_id": [
       "malaikat",
@@ -281,6 +463,7 @@
     "label_id": "Rasul",
     "label_en": "Messengers",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الرسل",
     "synonyms_id": [
       "rasul",
@@ -319,6 +502,7 @@
     "label_id": "Kitab",
     "label_en": "Scripture",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الكتاب",
     "synonyms_id": [
       "kitab",
@@ -358,6 +542,7 @@
     "label_id": "Wahyu",
     "label_en": "Revelation",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الوحي",
     "synonyms_id": [
       "wahyu",
@@ -396,6 +581,7 @@
     "label_id": "Takdir",
     "label_en": "Divine Decree",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "القدر",
     "synonyms_id": [
       "takdir",
@@ -434,6 +620,7 @@
     "label_id": "Ghaib",
     "label_en": "The Unseen",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الغيب",
     "synonyms_id": [
       "ghaib",
@@ -471,6 +658,7 @@
     "label_id": "Asmaul Husna",
     "label_en": "Beautiful Names",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الأسماء الحسنى",
     "synonyms_id": [
       "asmaul husna",
@@ -508,6 +696,7 @@
     "label_id": "Hidayah",
     "label_en": "Guidance",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الهداية",
     "synonyms_id": [
       "hidayah",
@@ -546,6 +735,7 @@
     "label_id": "Kufur",
     "label_en": "Disbelief",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الكفر",
     "synonyms_id": [
       "kufur",
@@ -584,6 +774,7 @@
     "label_id": "Nifaq",
     "label_en": "Hypocrisy",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "النفاق",
     "synonyms_id": [
       "nifaq",
@@ -621,6 +812,7 @@
     "label_id": "Takwa",
     "label_en": "God-Consciousness",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "التقوى",
     "synonyms_id": [
       "taqwa",
@@ -659,6 +851,7 @@
     "label_id": "Amal Saleh",
     "label_en": "Righteous Deeds",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "العمل الصالح",
     "synonyms_id": [
       "amal",
@@ -696,6 +889,7 @@
     "label_id": "Ujian",
     "label_en": "Trials",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الابتلاء",
     "synonyms_id": [
       "ujian",
@@ -734,6 +928,7 @@
     "label_id": "Fitrah",
     "label_en": "Primordial Nature",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الفطرة",
     "synonyms_id": [
       "fitrah",
@@ -771,6 +966,7 @@
     "label_id": "Al-Qur'an",
     "label_en": "The Quran",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "القرآن",
     "synonyms_id": [
       "quran",
@@ -813,6 +1009,7 @@
     "label_id": "Ruh",
     "label_en": "Spirit",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "الروح",
     "synonyms_id": [
       "ruh",
@@ -851,6 +1048,7 @@
     "label_id": "Arasy",
     "label_en": "Throne",
     "category": "akidah",
+    "parent_id": "cluster_akidah",
     "arabic": "العرش",
     "synonyms_id": [
       "arasy",
@@ -891,6 +1089,7 @@
     "label_id": "Sabar",
     "label_en": "Patience",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الصبر",
     "synonyms_id": [
       "sabar",
@@ -922,7 +1121,7 @@
     "position": {
       "theta": 1.152,
       "phi": 0.635,
-      "radius": 30.0
+      "radius": 30
     },
     "size": 1.35
   },
@@ -931,6 +1130,7 @@
     "label_id": "Syukur",
     "label_en": "Gratitude",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الشكر",
     "synonyms_id": [
       "syukur",
@@ -973,6 +1173,7 @@
     "label_id": "Ikhlas",
     "label_en": "Sincerity",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الإخلاص",
     "synonyms_id": [
       "ikhlas",
@@ -1011,6 +1212,7 @@
     "label_id": "Tawakkal",
     "label_en": "Trust in Allah",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "التوكل",
     "synonyms_id": [
       "tawakkal",
@@ -1049,6 +1251,7 @@
     "label_id": "Tobat",
     "label_en": "Repentance",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "التوبة",
     "synonyms_id": [
       "tobat",
@@ -1087,6 +1290,7 @@
     "label_id": "Istighfar",
     "label_en": "Seeking Forgiveness",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الاستغفار",
     "synonyms_id": [
       "istighfar",
@@ -1124,6 +1328,7 @@
     "label_id": "Jujur",
     "label_en": "Truthfulness",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الصدق",
     "synonyms_id": [
       "jujur",
@@ -1161,6 +1366,7 @@
     "label_id": "Adil",
     "label_en": "Justice",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "العدل",
     "synonyms_id": [
       "adil",
@@ -1199,6 +1405,7 @@
     "label_id": "Zalim",
     "label_en": "Wrongdoing",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الظلم",
     "synonyms_id": [
       "dzalim",
@@ -1237,6 +1444,7 @@
     "label_id": "Sombong",
     "label_en": "Arrogance",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الكبر",
     "synonyms_id": [
       "sombong",
@@ -1275,6 +1483,7 @@
     "label_id": "Dengki",
     "label_en": "Envy",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الحسد",
     "synonyms_id": [
       "dengki",
@@ -1302,7 +1511,7 @@
     ],
     "position": {
       "theta": 2.197,
-      "phi": 2.0,
+      "phi": 2,
       "radius": 34.08
     },
     "size": 0.99
@@ -1312,6 +1521,7 @@
     "label_id": "Rahmat",
     "label_en": "Mercy",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الرحمة",
     "synonyms_id": [
       "rahmat",
@@ -1349,6 +1559,7 @@
     "label_id": "Kasih Sayang",
     "label_en": "Compassion",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "المودة",
     "synonyms_id": [
       "kasih sayang",
@@ -1387,6 +1598,7 @@
     "label_id": "Maaf",
     "label_en": "Forgiveness",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "العفو",
     "synonyms_id": [
       "maaf",
@@ -1424,6 +1636,7 @@
     "label_id": "Amanah",
     "label_en": "Trustworthiness",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الأمانة",
     "synonyms_id": [
       "amanah",
@@ -1461,6 +1674,7 @@
     "label_id": "Rendah Hati",
     "label_en": "Humility",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "التواضع",
     "synonyms_id": [
       "rendah hati",
@@ -1498,6 +1712,7 @@
     "label_id": "Fitnah",
     "label_en": "Trial and Discord",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الفتنة",
     "synonyms_id": [
       "fitnah",
@@ -1535,6 +1750,7 @@
     "label_id": "Ghibah",
     "label_en": "Backbiting",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الغيبة",
     "synonyms_id": [
       "ghibah",
@@ -1572,6 +1788,7 @@
     "label_id": "Prasangka",
     "label_en": "Suspicion",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الظن",
     "synonyms_id": [
       "prasangka",
@@ -1609,6 +1826,7 @@
     "label_id": "Keluarga",
     "label_en": "Family",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الأهل",
     "synonyms_id": [
       "keluarga",
@@ -1647,6 +1865,7 @@
     "label_id": "Nikmat",
     "label_en": "Blessings",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "النعمة",
     "synonyms_id": [
       "nikmat",
@@ -1684,6 +1903,7 @@
     "label_id": "Dosa",
     "label_en": "Sin",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الذنب",
     "synonyms_id": [
       "dosa",
@@ -1721,6 +1941,7 @@
     "label_id": "Rezeki",
     "label_en": "Provision",
     "category": "akhlak",
+    "parent_id": "cluster_akhlak",
     "arabic": "الرزق",
     "synonyms_id": [
       "rezeki",
@@ -1764,6 +1985,7 @@
     "label_id": "Salat",
     "label_en": "Prayer",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الصلاة",
     "synonyms_id": [
       "salat",
@@ -1797,7 +2019,7 @@
     "position": {
       "theta": 2.131,
       "phi": 0.65,
-      "radius": 33.0
+      "radius": 33
     },
     "size": 1.35
   },
@@ -1806,6 +2028,7 @@
     "label_id": "Zakat",
     "label_en": "Alms",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الزكاة",
     "synonyms_id": [
       "zakat",
@@ -1843,6 +2066,7 @@
     "label_id": "Puasa",
     "label_en": "Fasting",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الصيام",
     "synonyms_id": [
       "puasa",
@@ -1885,6 +2109,7 @@
     "label_id": "Haji",
     "label_en": "Pilgrimage",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الحج",
     "synonyms_id": [
       "haji",
@@ -1927,6 +2152,7 @@
     "label_id": "Doa",
     "label_en": "Supplication",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الدعاء",
     "synonyms_id": [
       "doa",
@@ -1964,6 +2190,7 @@
     "label_id": "Dzikir",
     "label_en": "Remembrance",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الذكر",
     "synonyms_id": [
       "dzikir",
@@ -2002,6 +2229,7 @@
     "label_id": "Sedekah",
     "label_en": "Charity",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الصدقة",
     "synonyms_id": [
       "sedekah",
@@ -2040,6 +2268,7 @@
     "label_id": "Infak",
     "label_en": "Spending for Good",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الإنفاق",
     "synonyms_id": [
       "infak",
@@ -2078,6 +2307,7 @@
     "label_id": "Jihad",
     "label_en": "Striving",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الجهاد",
     "synonyms_id": [
       "jihad",
@@ -2115,6 +2345,7 @@
     "label_id": "Tilawah",
     "label_en": "Recitation",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "التلاوة",
     "synonyms_id": [
       "tilawah",
@@ -2152,6 +2383,7 @@
     "label_id": "Qurban",
     "label_en": "Sacrifice",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "القربان",
     "synonyms_id": [
       "qurban",
@@ -2189,6 +2421,7 @@
     "label_id": "Kiblat",
     "label_en": "Qiblah",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "القبلة",
     "synonyms_id": [
       "qiblat",
@@ -2226,6 +2459,7 @@
     "label_id": "Masjid",
     "label_en": "Mosque",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "المسجد",
     "synonyms_id": [
       "masjid",
@@ -2263,6 +2497,7 @@
     "label_id": "Halal",
     "label_en": "Lawful",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الحلال",
     "synonyms_id": [
       "halal",
@@ -2300,6 +2535,7 @@
     "label_id": "Haram",
     "label_en": "Forbidden",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الحرام",
     "synonyms_id": [
       "haram",
@@ -2337,6 +2573,7 @@
     "label_id": "Makanan",
     "label_en": "Food",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الطعام",
     "synonyms_id": [
       "makanan",
@@ -2374,6 +2611,7 @@
     "label_id": "Riba",
     "label_en": "Usury",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الربا",
     "synonyms_id": [
       "riba",
@@ -2411,6 +2649,7 @@
     "label_id": "Perdagangan",
     "label_en": "Trade",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "التجارة",
     "synonyms_id": [
       "perdagangan",
@@ -2449,6 +2688,7 @@
     "label_id": "Waris",
     "label_en": "Inheritance",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الميراث",
     "synonyms_id": [
       "waris",
@@ -2486,6 +2726,7 @@
     "label_id": "Nikah",
     "label_en": "Marriage",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "النكاح",
     "synonyms_id": [
       "nikah",
@@ -2523,6 +2764,7 @@
     "label_id": "Hijrah",
     "label_en": "Migration",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "الهجرة",
     "synonyms_id": [
       "hijrah",
@@ -2560,6 +2802,7 @@
     "label_id": "Ramadan",
     "label_en": "Ramadan",
     "category": "ibadah",
+    "parent_id": "cluster_ibadah",
     "arabic": "رمضان",
     "synonyms_id": [
       "ramadan",
@@ -2597,6 +2840,7 @@
     "label_id": "Adam",
     "label_en": "Adam",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "آدم",
     "synonyms_id": [
       "adam",
@@ -2624,7 +2868,7 @@
     "position": {
       "theta": 3.176,
       "phi": 0.665,
-      "radius": 36.0
+      "radius": 36
     },
     "size": 0.92
   },
@@ -2633,6 +2877,7 @@
     "label_id": "Iblis",
     "label_en": "Iblis",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "إبليس",
     "synonyms_id": [
       "iblis",
@@ -2670,6 +2915,7 @@
     "label_id": "Nuh",
     "label_en": "Noah",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "نوح",
     "synonyms_id": [
       "nuh",
@@ -2707,6 +2953,7 @@
     "label_id": "Ibrahim",
     "label_en": "Abraham",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "إبراهيم",
     "synonyms_id": [
       "ibrahim",
@@ -2746,6 +2993,7 @@
     "label_id": "Ismail",
     "label_en": "Ishmael",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "إسماعيل",
     "synonyms_id": [
       "ismail",
@@ -2782,6 +3030,7 @@
     "label_id": "Musa",
     "label_en": "Moses",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "موسى",
     "synonyms_id": [
       "musa",
@@ -2821,6 +3070,7 @@
     "label_id": "Harun",
     "label_en": "Aaron",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "هارون",
     "synonyms_id": [
       "harun",
@@ -2857,6 +3107,7 @@
     "label_id": "Isa",
     "label_en": "Jesus",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "عيسى",
     "synonyms_id": [
       "isa",
@@ -2896,6 +3147,7 @@
     "label_id": "Muhammad",
     "label_en": "Muhammad",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "محمد",
     "synonyms_id": [
       "muhammad",
@@ -2937,6 +3189,7 @@
     "label_id": "Yusuf",
     "label_en": "Joseph",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "يوسف",
     "synonyms_id": [
       "yusuf",
@@ -2973,6 +3226,7 @@
     "label_id": "Maryam",
     "label_en": "Mary",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "مريم",
     "synonyms_id": [
       "maryam",
@@ -3009,6 +3263,7 @@
     "label_id": "Bani Israil",
     "label_en": "Children of Israel",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "بنو إسرائيل",
     "synonyms_id": [
       "bani israil",
@@ -3045,6 +3300,7 @@
     "label_id": "Fir'aun",
     "label_en": "Pharaoh",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "فرعون",
     "synonyms_id": [
       "firaun",
@@ -3081,6 +3337,7 @@
     "label_id": "Dawud",
     "label_en": "David",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "داود",
     "synonyms_id": [
       "dawud",
@@ -3117,6 +3374,7 @@
     "label_id": "Sulaiman",
     "label_en": "Solomon",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "سليمان",
     "synonyms_id": [
       "sulaiman",
@@ -3156,6 +3414,7 @@
     "label_id": "Yunus",
     "label_en": "Jonah",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "يونس",
     "synonyms_id": [
       "yunus",
@@ -3192,6 +3451,7 @@
     "label_id": "Lut",
     "label_en": "Lot",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "لوط",
     "synonyms_id": [
       "lut",
@@ -3228,6 +3488,7 @@
     "label_id": "Shalih",
     "label_en": "Salih",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "صالح",
     "synonyms_id": [
       "shalih",
@@ -3264,6 +3525,7 @@
     "label_id": "Hud",
     "label_en": "Hud",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "هود",
     "synonyms_id": [
       "hud",
@@ -3300,6 +3562,7 @@
     "label_id": "Ayyub",
     "label_en": "Job",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "أيوب",
     "synonyms_id": [
       "ayyub",
@@ -3336,6 +3599,7 @@
     "label_id": "Zakariya",
     "label_en": "Zechariah",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "زكريا",
     "synonyms_id": [
       "zakariya",
@@ -3372,6 +3636,7 @@
     "label_id": "Yahya",
     "label_en": "John",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "يحيى",
     "synonyms_id": [
       "yahya",
@@ -3408,6 +3673,7 @@
     "label_id": "Ashab Kahfi",
     "label_en": "People of the Cave",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "أصحاب الكهف",
     "synonyms_id": [
       "ashab kahfi",
@@ -3445,6 +3711,7 @@
     "label_id": "Luqman",
     "label_en": "Luqman",
     "category": "kisah",
+    "parent_id": "cluster_kisah",
     "arabic": "لقمان",
     "synonyms_id": [
       "luqman",
@@ -3481,6 +3748,7 @@
     "label_id": "Langit",
     "label_en": "The Heavens",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "السماء",
     "synonyms_id": [
       "langit",
@@ -3514,7 +3782,7 @@
     "position": {
       "theta": 4.293,
       "phi": 0.68,
-      "radius": 32.0
+      "radius": 32
     },
     "size": 1.35
   },
@@ -3523,6 +3791,7 @@
     "label_id": "Bumi",
     "label_en": "Earth",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الأرض",
     "synonyms_id": [
       "bumi",
@@ -3563,6 +3832,7 @@
     "label_id": "Bintang",
     "label_en": "Stars",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النجوم",
     "synonyms_id": [
       "bintang",
@@ -3601,6 +3871,7 @@
     "label_id": "Matahari",
     "label_en": "Sun",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الشمس",
     "synonyms_id": [
       "matahari",
@@ -3638,6 +3909,7 @@
     "label_id": "Bulan",
     "label_en": "Moon",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "القمر",
     "synonyms_id": [
       "bulan",
@@ -3675,6 +3947,7 @@
     "label_id": "Gunung",
     "label_en": "Mountains",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الجبال",
     "synonyms_id": [
       "gunung",
@@ -3712,6 +3985,7 @@
     "label_id": "Lautan",
     "label_en": "Seas",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "البحر",
     "synonyms_id": [
       "lautan",
@@ -3749,6 +4023,7 @@
     "label_id": "Hujan",
     "label_en": "Rain",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "المطر",
     "synonyms_id": [
       "hujan",
@@ -3790,6 +4065,7 @@
     "label_id": "Malam",
     "label_en": "Night",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الليل",
     "synonyms_id": [
       "malam",
@@ -3827,6 +4103,7 @@
     "label_id": "Siang",
     "label_en": "Day",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النهار",
     "synonyms_id": [
       "siang",
@@ -3864,6 +4141,7 @@
     "label_id": "Angin",
     "label_en": "Wind",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الرياح",
     "synonyms_id": [
       "angin",
@@ -3901,6 +4179,7 @@
     "label_id": "Awan",
     "label_en": "Clouds",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "السحاب",
     "synonyms_id": [
       "awan",
@@ -3938,6 +4217,7 @@
     "label_id": "Tumbuhan",
     "label_en": "Plants",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النبات",
     "synonyms_id": [
       "tumbuhan",
@@ -3975,6 +4255,7 @@
     "label_id": "Hewan",
     "label_en": "Animals",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الأنعام",
     "synonyms_id": [
       "hewan",
@@ -4012,6 +4293,7 @@
     "label_id": "Lebah",
     "label_en": "Bee",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النحل",
     "synonyms_id": [
       "lebah",
@@ -4049,6 +4331,7 @@
     "label_id": "Semut",
     "label_en": "Ant",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النمل",
     "synonyms_id": [
       "semut",
@@ -4085,6 +4368,7 @@
     "label_id": "Burung",
     "label_en": "Birds",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الطير",
     "synonyms_id": [
       "burung",
@@ -4121,6 +4405,7 @@
     "label_id": "Manusia",
     "label_en": "Humanity",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الإنسان",
     "synonyms_id": [
       "manusia",
@@ -4158,6 +4443,7 @@
     "label_id": "Penciptaan",
     "label_en": "Creation",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الخلق",
     "synonyms_id": [
       "penciptaan",
@@ -4195,6 +4481,7 @@
     "label_id": "Air",
     "label_en": "Water",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الماء",
     "synonyms_id": [
       "air",
@@ -4235,6 +4522,7 @@
     "label_id": "Api",
     "label_en": "Fire",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "النار",
     "synonyms_id": [
       "api",
@@ -4275,6 +4563,7 @@
     "label_id": "Tanah",
     "label_en": "Clay and Soil",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الطين",
     "synonyms_id": [
       "tanah",
@@ -4313,6 +4602,7 @@
     "label_id": "Waktu",
     "label_en": "Time",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الوقت",
     "synonyms_id": [
       "waktu",
@@ -4351,6 +4641,7 @@
     "label_id": "Kapal",
     "label_en": "Ships",
     "category": "kosmos",
+    "parent_id": "cluster_kosmos",
     "arabic": "الفلك",
     "synonyms_id": [
       "kapal",
@@ -4388,6 +4679,7 @@
     "label_id": "Surga",
     "label_en": "Paradise",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الجنة",
     "synonyms_id": [
       "surga",
@@ -4420,7 +4712,7 @@
     "position": {
       "theta": 5.238,
       "phi": 0.695,
-      "radius": 29.0
+      "radius": 29
     },
     "size": 1.35
   },
@@ -4429,6 +4721,7 @@
     "label_id": "Neraka",
     "label_en": "Hellfire",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "النار",
     "synonyms_id": [
       "neraka",
@@ -4470,6 +4763,7 @@
     "label_id": "Kiamat",
     "label_en": "Last Hour",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "القيامة",
     "synonyms_id": [
       "kiamat",
@@ -4510,6 +4804,7 @@
     "label_id": "Kebangkitan",
     "label_en": "Resurrection",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "البعث",
     "synonyms_id": [
       "kebangkitan",
@@ -4547,6 +4842,7 @@
     "label_id": "Hisab",
     "label_en": "Reckoning",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الحساب",
     "synonyms_id": [
       "hisab",
@@ -4587,6 +4883,7 @@
     "label_id": "Mizan",
     "label_en": "Scales",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الميزان",
     "synonyms_id": [
       "mizan",
@@ -4624,6 +4921,7 @@
     "label_id": "Shirath",
     "label_en": "Straight Path",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الصراط",
     "synonyms_id": [
       "shirath",
@@ -4661,6 +4959,7 @@
     "label_id": "Syafaat",
     "label_en": "Intercession",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الشفاعة",
     "synonyms_id": [
       "syafaat",
@@ -4697,6 +4996,7 @@
     "label_id": "Kematian",
     "label_en": "Death",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الموت",
     "synonyms_id": [
       "kematian",
@@ -4738,6 +5038,7 @@
     "label_id": "Barzakh",
     "label_en": "Barrier Realm",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "البرزخ",
     "synonyms_id": [
       "barzakh",
@@ -4774,6 +5075,7 @@
     "label_id": "Malaikat Maut",
     "label_en": "Angel of Death",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "ملك الموت",
     "synonyms_id": [
       "malaikat maut",
@@ -4810,6 +5112,7 @@
     "label_id": "Mahsyar",
     "label_en": "Gathering",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "المحشر",
     "synonyms_id": [
       "mahsyar",
@@ -4847,6 +5150,7 @@
     "label_id": "Kitab Catatan",
     "label_en": "Record Book",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "كتاب الأعمال",
     "synonyms_id": [
       "kitab catatan",
@@ -4884,6 +5188,7 @@
     "label_id": "Yaumuddin",
     "label_en": "Day of Recompense",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "يوم الدين",
     "synonyms_id": [
       "yaumul din",
@@ -4920,6 +5225,7 @@
     "label_id": "Pahala",
     "label_en": "Reward",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الأجر",
     "synonyms_id": [
       "pahala",
@@ -4957,6 +5263,7 @@
     "label_id": "Siksa",
     "label_en": "Punishment",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "العذاب",
     "synonyms_id": [
       "siksa",
@@ -4994,6 +5301,7 @@
     "label_id": "Amal Buruk",
     "label_en": "Evil Deeds",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "السيئات",
     "synonyms_id": [
       "amal buruk",
@@ -5031,6 +5339,7 @@
     "label_id": "Wajah Berseri",
     "label_en": "Radiant Faces",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "وجوه ناضرة",
     "synonyms_id": [
       "wajah berseri",
@@ -5067,6 +5376,7 @@
     "label_id": "Wajah Kelam",
     "label_en": "Darkened Faces",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "وجوه باسرة",
     "synonyms_id": [
       "wajah kelam",
@@ -5103,6 +5413,7 @@
     "label_id": "Kekal",
     "label_en": "Eternity",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الخلود",
     "synonyms_id": [
       "kekal",
@@ -5140,6 +5451,7 @@
     "label_id": "Naungan",
     "label_en": "Shade",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الظل",
     "synonyms_id": [
       "naungan",
@@ -5177,6 +5489,7 @@
     "label_id": "Penyesalan",
     "label_en": "Regret",
     "category": "akhirat",
+    "parent_id": "cluster_akhirat",
     "arabic": "الحسرة",
     "synonyms_id": [
       "penyesalan",

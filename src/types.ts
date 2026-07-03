@@ -23,6 +23,9 @@ export interface Topic {
   connected_topics: string[]
   position: TopicPosition
   size: number
+  kind?: 'cluster' | 'topic'
+  parent_id?: string
+  child_topic_ids?: string[]
 }
 
 export interface AyatItem {
@@ -51,6 +54,7 @@ export interface AppStore {
   muted: boolean
   theme: 'dark' | 'light'
   reducedMotion: boolean
+  quality: 'auto' | 'high' | 'medium' | 'low'
   notes: Record<string, string>
 }
 
@@ -125,20 +129,14 @@ export interface FlightState {
   tt: any
 }
 
-export interface NodeData {
-  mesh: any
-  mat: any
-  glow: any
-  label: HTMLElement | null
-  topic: Topic
-}
-
 export interface EdgeData {
   a: string
   b: string
-  line: any
-  part: any
   curve: any
+  baseColor: any
+  vertStart: number
+  vertCount: number
   t: number
   speed: number
+  on: boolean
 }

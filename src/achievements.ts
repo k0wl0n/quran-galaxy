@@ -12,15 +12,17 @@ export function checkBadges(
   chimeFn: (kind: 'ach') => void,
 ): void {
   const newBadges: typeof BADGE_DEFS = []
+  const byId = new Map(topics.map((t) => [t.id, t]))
+  const exploredLeafIds = store.exploredTopics.filter((id) => byId.has(id))
+  const leafStore = { ...store, exploredTopics: exploredLeafIds }
   BADGE_DEFS.forEach((b) => {
     if (!store.badges.includes(b.id)) {
       let passes = false
       if (b.id === 'pengembara') {
-        const byId = new Map(topics.map((t) => [t.id, t]))
-        const cats = new Set(store.exploredTopics.map((id) => byId.get(id)?.category).filter(Boolean))
+        const cats = new Set(exploredLeafIds.map((id) => byId.get(id)?.category).filter(Boolean))
         passes = cats.size >= 6
       } else {
-        passes = b.check(store, sessionLinks, topics.length)
+        passes = b.check(leafStore, sessionLinks, topics.length)
       }
       if (passes) { store.badges.push(b.id); newBadges.push(b) }
     }
@@ -42,13 +44,15 @@ export function renderAchievements(
   },
 ): void {
   const catKeys = Object.keys(CATEGORIES) as CategoryKey[]
-  const exploredCount = store.exploredTopics.length
   const byId = new Map(topics.map((t) => [t.id, t]))
+  const exploredLeafIds = store.exploredTopics.filter((id) => byId.has(id))
+  const exploredCount = exploredLeafIds.length
+  const touchedCategories = new Set(exploredLeafIds.map((id) => byId.get(id)?.category).filter(Boolean)).size
 
   const statsData: Array<[string, string | number, number]> = [
     ['Topik dijelajahi', `${exploredCount} / ${topics.length}`, exploredCount / Math.max(1, topics.length)],
     ['Ayat ditandai', store.markedAyat.length, Math.min(1, store.markedAyat.length / 20)],
-    ['Kategori disentuh', `${new Set(store.exploredTopics.map((id) => byId.get(id)?.category).filter(Boolean)).size} / 6`, new Set(store.exploredTopics.map((id) => byId.get(id)?.category).filter(Boolean)).size / 6],
+    ['Kategori disentuh', `${touchedCategories} / 6`, touchedCategories / 6],
     ['Streak harian', `${store.dailyStreak} hari`, Math.min(1, store.dailyStreak / 30)],
   ]
 
@@ -62,7 +66,7 @@ export function renderAchievements(
 
   els.breakdown.innerHTML = catKeys.map((c) => {
     const total = topics.filter((t) => t.category === c).length
-    const ex = store.exploredTopics.filter((id) => byId.get(id)?.category === c).length
+    const ex = exploredLeafIds.filter((id) => byId.get(id)?.category === c).length
     const cat = CATEGORIES[c]
     return `<div class="br-card" style="color:${cat.color}"><span class="nm">${esc(cat.label)}</span><span class="ct">${ex} / ${total}</span></div>`
   }).join('')

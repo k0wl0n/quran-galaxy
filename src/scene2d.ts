@@ -12,6 +12,11 @@ export function initCanvas(el: HTMLCanvasElement, topics: Topic[]): void {
   resizeCanvas()
 }
 
+export function setTopics2d(topics: Topic[]): void {
+  _topics = topics
+  _byId = new Map(topics.map((t) => [t.id, t]))
+}
+
 export function resizeCanvas(): void {
   if (!canvas) return
   const ctx = canvas.getContext('2d')!
@@ -64,11 +69,11 @@ export function draw2d(selectedId: string | null, quiz: Pick<QuizState, 'active'
     ctx.arc(p.x, p.y, sel ? r * 1.35 : r, 0, Math.PI * 2)
     ctx.fill()
     ctx.shadowBlur = 0
-    if (sel || r > 6.2) {
+    if (sel || r > 4.5) {
       ctx.fillStyle = 'rgba(254,243,199,.92)'
-      ctx.font = '700 11px Inter'
+      ctx.font = `700 ${Math.max(11, Math.round(sc * 3.4))}px Inter`
       ctx.textAlign = 'center'
-      ctx.fillText(t.label_id, p.x, p.y - r - 8)
+      ctx.fillText(t.label_id, p.x, p.y - r - 4)
     }
     ctx.globalAlpha = 1
   })
@@ -82,7 +87,8 @@ export function pick2d(x: number, y: number): Topic | null {
   _topics.forEach((t) => {
     const p = pt(t, sc)
     const dist = Math.hypot(x - p.x, y - p.y)
-    if (dist < bestDist && dist < Math.max(12, t.size * 7)) {
+    const hitR = navigator.maxTouchPoints > 0 ? Math.max(32, t.size * 12) : Math.max(12, t.size * 7)
+    if (dist < bestDist && dist < hitR) {
       best = t
       bestDist = dist
     }

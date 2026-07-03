@@ -618,6 +618,31 @@ button { font: inherit; cursor: pointer; color: inherit; background: none; borde
   /* Verse cards in panel */
   .v-arabic { font-size: 24px }
   .verse-card { padding: 16px 14px }
+  .label { font-size: 14px; padding: 5px 12px }
+}
+
+/* ── Quality selector + perf overlay ─────────────────────────────────── */
+.quality-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: auto;
+  padding: 0 10px;
+  font: 600 11px/1 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+#perf-overlay {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  z-index: 999;
+  pointer-events: none;
+  font: 500 11px 'JetBrains Mono', monospace;
+  color: #7fd9c4;
+  background: rgba(8, 12, 23, 0.7);
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
