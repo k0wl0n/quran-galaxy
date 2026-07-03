@@ -416,7 +416,15 @@ function updateLabelLod(selectedId: string | null, hoverId: string | null, el: n
   if (selectedId) visible.add(selectedId)
   if (hoverId) visible.add(hoverId)
   ctx.labelMap.forEach((entry, id) => {
-    entry.obj.visible = visible.has(id)
+    const show = visible.has(id)
+    const attached = entry.obj.parent !== null
+    if (show && !attached) {
+      ctx!.nodeGroup.add(entry.obj)
+      entry.el.style.display = ''
+    } else if (!show && attached) {
+      ctx!.nodeGroup.remove(entry.obj)
+      entry.el.style.display = 'none'
+    }
   })
 }
 

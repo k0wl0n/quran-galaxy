@@ -82,19 +82,17 @@ export function resolveTier(setting: QualitySetting): Tier {
 }
 
 // Rolling FPS monitor: warms up, then evaluates the median frame time per
-// 2.5s window. Below 45fps -> onDowngrade(). After 4 consecutive good
-// windows it switches itself off. Deltas > 500ms (tab was hidden) are ignored.
+// 2.5s window. Below 45fps -> onDowngrade(). Runs for the page's lifetime
+// (cost is negligible). Deltas > 500ms (tab was hidden) are ignored.
 export function createFpsMonitor(onDowngrade: () => void): { frame(now: number): void; stop(): void } {
   const WARMUP_MS = 1500
   const WINDOW_MS = 2500
   const MIN_FPS = 45
-  const GOOD_WINDOWS_TO_STOP = 4
   const started = performance.now()
   let deltas: number[] = []
   let last = 0
   let windowStart = 0
   let active = true
-  let good = 0
   return {
     frame(now: number): void {
       if (!active) return
@@ -108,8 +106,7 @@ export function createFpsMonitor(onDowngrade: () => void): { frame(now: number):
       const median = sorted[Math.floor(sorted.length / 2)]
       deltas = []
       windowStart = now
-      if (1000 / median < MIN_FPS) { good = 0; onDowngrade() }
-      else if (++good >= GOOD_WINDOWS_TO_STOP) active = false
+      if (1000 / median < MIN_FPS) onDowngrade()
     },
     stop(): void { active = false },
   }
