@@ -160,17 +160,6 @@ async function boot(): Promise<void> {
     }, tierCfg)
   }
 
-  bar(20, 'Mengambil mushaf dari CDN...')
-  try {
-    const raw = await loadQuran({ onProgress: bar })
-    const norm = normalizeQuran(raw)
-    lookup = norm.lookup
-    ayat = norm.ayat
-  } catch (e) {
-    console.error(e)
-    return fatal('Data Quran belum bisa dimuat dari CDN utama maupun fallback.', true)
-  }
-
   buildSearchIndex(leafTopics())
 
   if (fallback) {
@@ -212,8 +201,31 @@ async function boot(): Promise<void> {
   updateHUD(store, leafTopics().length, { hexp: d.hexp, htotal: d.htotal, hbar: d.hbar })
   renderAch()
   doCheckBadges()
-  bar(100, 'Siap menjelajah.')
+  bar(100, 'Galaksi siap. Mushaf dimuat di latar...')
   hideLoading(d.loading)
+  void loadQuranInBackground()
+}
+
+async function loadQuranInBackground(): Promise<void> {
+  try {
+    const raw = await loadQuran({ onProgress: () => {} })
+    const norm = normalizeQuran(raw)
+    lookup = norm.lookup
+    ayat = norm.ayat
+    if (selectedId && d.panel.classList.contains('open') && activeTab === 'ayat') {
+      const topic = byId.get(selectedId)
+      if (topic) {
+        const verses = topicVerses(topic, lookup, ayat, 9)
+        store.readSurahs = uniq([...store.readSurahs, ...verses.map((v) => String(v.surah))])
+        save()
+        renderPanelBody(topic, activeTab, verses, byId, store, d.panelBody)
+      }
+    }
+    toast('Mushaf lengkap siap.', 'ok')
+  } catch (e) {
+    console.error(e)
+    toast('Data Quran gagal dimuat. Muat ulang halaman untuk mencoba lagi.', 'bad')
+  }
 }
 
 // ── Rail ──────────────────────────────────────────────────────────────────

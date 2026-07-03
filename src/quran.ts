@@ -4,30 +4,51 @@ import {
 import { lsGet, lsSet } from './store'
 import type { AyatItem, NormalizedQuran, RawQuranSurah } from './types'
 
+const QURAN_CACHE_NAME = 'qte-quran-v1'
+
+async function readQuranCache(): Promise<RawQuranSurah[] | null> {
+  try {
+    if (!('caches' in window)) return null
+    const cache = await caches.open(QURAN_CACHE_NAME)
+    const hit = await cache.match(PRIMARY_QURAN_URL)
+    if (!hit) return null
+    const data = await hit.json() as unknown
+    return Array.isArray(data) ? data as RawQuranSurah[] : null
+  } catch {
+    return null
+  }
+}
+
+async function writeQuranCache(data: RawQuranSurah[]): Promise<void> {
+  try {
+    if (!('caches' in window)) return
+    const cache = await caches.open(QURAN_CACHE_NAME)
+    await cache.put(PRIMARY_QURAN_URL, new Response(JSON.stringify(data), {
+      headers: { 'Content-Type': 'application/json' },
+    }))
+  } catch {
+    // quota / private browsing — cache is best-effort
+  }
+}
+
 export interface QuranLoadOptions {
   onProgress: (percent: number, message: string) => void
 }
 
 export async function loadQuran(opts: QuranLoadOptions): Promise<RawQuranSurah[]> {
   const { onProgress } = opts
-  const cached = lsGet('quran_cache')
+  try { localStorage.removeItem('qte_v1_quran_cache') } catch { /* ignore */ }
+  const cached = await readQuranCache()
   if (cached) {
-    try {
-      const parsed = JSON.parse(cached)
-      if (parsed.version === 1 && Array.isArray(parsed.data)) {
-        onProgress(40, 'Memakai cache Quran lokal...')
-        return parsed.data as RawQuranSurah[]
-      }
-    } catch {
-      localStorage.removeItem('qte_v1_quran_cache')
-    }
+    onProgress(40, 'Memakai cache Quran lokal...')
+    return cached
   }
 
   onProgress(22, 'Mengambil mushaf dari CDN utama...')
   try {
     const data = await fetchJson<RawQuranSurah[]>(PRIMARY_QURAN_URL)
     if (!Array.isArray(data)) throw new Error('format')
-    lsSet('quran_cache', JSON.stringify({ version: 1, at: Date.now(), data }))
+    await writeQuranCache(data)
     return data
   } catch (e) {
     console.warn(e)
@@ -55,7 +76,7 @@ export async function loadQuran(opts: QuranLoadOptions): Promise<RawQuranSurah[]
           })),
         })
       }
-      lsSet('quran_cache', JSON.stringify({ version: 1, at: Date.now(), data: out }))
+      await writeQuranCache(out)
       return out
     } catch (e) {
       console.warn(e)

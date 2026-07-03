@@ -50,7 +50,7 @@ export function renderPanelBody(
   if (tab === 'ayat') {
     panelBodyEl.innerHTML = verses.length
       ? verses.map((v) => renderCard(v, store.markedAyat)).join('')
-      : `<p style="color:var(--muted);font-size:14px;line-height:1.6">Ayat terkait belum tersedia dari cache lokal. Coba buka beberapa topik lain agar Quran selesai dimuat.</p>`
+      : `<p style="color:var(--muted);font-size:14px;line-height:1.6">Ayat sedang dimuat di latar belakang. Panel ini terisi otomatis begitu mushaf siap.</p>`
     hydrateVerses(verses)
     return
   }
